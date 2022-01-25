@@ -15,7 +15,7 @@ Until internal private servers are set up and configured, you will act as your o
    1. `verdaccio`
 4. It will be running on `http://localhost:4873`
 5. Navigate to the root directory of your local version of the repository and run the following script:
-   1. `npm run local-publish`
+   1. `npm install && npm run local-publish`
    2. If necessary, create a local user to sign in as before the local-publish.
 
 You now have a private registry running on your local machine and have successfully published the library to it.
