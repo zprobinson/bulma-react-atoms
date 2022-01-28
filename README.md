@@ -24,7 +24,7 @@ In order to use your locally hosted npm package, we need to utilize the `---regi
 
 1. Navigate to your project directory where you'd like to use this component library.
 2. Run the following command:
-   1. `npm install bulma-react --registry http://localhost:4873`
+   1. `npm install control-bulma-react --registry http://localhost:4873`
 
 You should now be ready to use Bulma React!
 
@@ -39,7 +39,7 @@ All of these Bulma components are wrappers around the CSS styles and therefore t
 ```tsx
 import React from "react";
 import "bulma/css/bulma.min.css";
-import { Button } from "bulma-react";
+import { Button } from "control-bulma-react";
 
 export default () => (
   <Button
