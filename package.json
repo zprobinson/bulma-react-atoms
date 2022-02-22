@@ -1,6 +1,6 @@
 {
-  "name": "control-bulma-react",
-  "version": "0.0.1",
+  "name": "control-bulma-atoms",
+  "version": "0.0.2",
   "main": "build/index.js",
   "module": "build/index.esm.js",
   "files": [
@@ -16,13 +16,14 @@
     "storybook:export": "build-storybook",
     "generate": "node ./util/create-component",
     "prepublishOnly": "npm run build",
-    "local-publish": "npm publish --registry http://localhost:4873",
+    "local-publish": "npm publish --registry http://icsi-teamsrvr:8081/",
     "local-patch": "npm version patch && npm run local-publish",
+    "local-minor": "npm version minor && npm run local-publish",
     "compile": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/msrobinson42/comp-lib-test"
+    "url": "git+http://icsi-teamsrvr:8080/tfs/Samples/Web%20Components/_git/BulmaReact"
   },
   "keywords": [
     "React",
@@ -39,9 +40,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/msrobinson42/comp-lib-test/issues"
+    "url": "http://icsi-teamsrvr:8080/tfs/Samples/Web%20Components/_workitems/"
   },
-  "homepage": "https://github.com/msrobinson42/comp-lib-test#bulma-react",
+  "homepage": "http://icsi-teamsrvr:8080/tfs/Samples/Web%20Components/_git/BulmaReact",
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
@@ -74,6 +75,6 @@
     "typescript": "^4.4.2"
   },
   "publishConfig": {
-    "registry": "http://localhost:4873"
+    "registry": "http://icsi-teamsrvr:8081/"
   }
 }
