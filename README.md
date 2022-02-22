@@ -18,8 +18,8 @@ This should have no change in your current npm package installation behavior oth
 If you would like to keep your registry as default, but _opt in_ to the internal registry on a _per npm install_ basis, you can do the following instead:
 
 1. Add the `--registry` flag to the CLI command when performing an `npm install`
-1. e.g. `npm i control-bulma-atoms --registry http://icsi-teamsrvr:8081/`
-1. You're done!
+   1. e.g. `npm i control-bulma-atoms --registry http://icsi-teamsrvr:8081/`
+2. You're done!
 
 Careful with this approach, however... If there are naming conflicts (some other shmuck published a public npm package called `control-bulma-atoms`), and you forgot the `--registry` flag, you will grab **their** version of the package instead of _our_ wonderful package! The recommended approach is to update your npm configuration via `npm set registry http://icsi-teamsrvr:8081/` and never have to worry about it again.
 
