@@ -50,7 +50,7 @@ With your configuration chosen, you are now able to perform `npm update control-
 
 # Documentation
 
-There is currently no Storybook documentation for this project.
+There is currently no Storybook documentation for this project, but it is on the [to-do list](http://icsi-teamsrvr:8080/tfs/Samples/Web%20Components/_workitems/edit/5/).
 
 All of these Bulma components are wrappers around the CSS styles and therefore this library's effectiveness will be maximized if the developer follows the CSS layout rules outlined in the [Bulma documentation](https://bulma.io/documentation/). Usage inconsistent with the described documentation may result in weird behavior.
 
