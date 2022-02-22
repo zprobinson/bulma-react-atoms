@@ -15,13 +15,19 @@ You will still be able to access the public npm registry, we are using a tool ca
 
 This should have no change in your current npm package installation behavior other that allowing you to also access internal packages.
 
+<<<<<<< HEAD
 If you would like to keep your registry as default, but _opt in_ to the internal registry on a _per npm install_ basis, you can do the following instead:
 
 1. Add the `--registry` flag to the CLI command when performing an `npm install`
 1. e.g. `npm i control-bulma-atoms --registry http://icsi-teamsrvr:8081/`
 1. You're done!
 
-Careful with this approach, however... If there are naming conflicts (some other shmuck published a public npm package called `control-bulma-atoms`), and you forgot the `--registry` flag, you will grab **their** version of the package instead of _our_ wonderful package! The recommended approach is to update your npm configuration via `npm set registry http://icsi-teamsrvr:8081/` and never have to worry about it again.
+# Careful with this approach, however... If there are naming conflicts (some other shmuck published a public npm package called `control-bulma-atoms`), and you forgot the `--registry` flag, you will grab **their** version of the package instead of _our_ wonderful package! The recommended approach is to update your npm configuration via `npm set registry http://icsi-teamsrvr:8081/` and never have to worry about it again.
+
+1. Navigate to your project directory where you'd like to use this component library.
+2. Run the following command:
+   1. `npm install control-bulma-react --registry http://localhost:4873`
+      > > > > > > > development
 
 You should now be ready to use Bulma React!
 
