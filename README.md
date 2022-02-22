@@ -1,32 +1,52 @@
-# Bulma React
+# Control Bulma Atoms
 
 Atomic React/TypeScript components for [Bulma v0.9.3](https://bulma.io/documentation/). Useful for type-safe implementations of the Bulma CSS Framework.
 
 # To Install
 
-As this will be a privately hosted npm package, there is some setup required before you are able to access this package directly from your project.
+`control-bulma-atoms` is hosted on Interstates' private internal npm registry, which is hosted on [http://icsi-teamsrvr:8081/](http://icsi-teamsrvr:8081/).
 
-Until internal private servers are set up and configured, you will act as your own private npm registry locally. Fortunately, set up is easy!
+In order to access the internal npm registry, you will need to update your npm configuration to point at the new internal location (instead of the default public registry).
 
-1. Clone this git repository locally to your machine.
-2. Globally install [Verdaccio](https://verdaccio.org/), a private proxy registry:
-   1. `npm install --global verdaccio`
-3. From the command prompt, run the following command to start your private proxy registry
-   1. `verdaccio`
-4. It will be running on `http://localhost:4873`
-5. Navigate to the root directory of your local version of the repository and run the following script:
-   1. `npm install && npm run local-publish`
-   2. If necessary, create a local user to sign in as before the local-publish.
+1. `npm set registry http://icsi-teamsrvr:8081/`
+2. You're done!
 
-You now have a private registry running on your local machine and have successfully published the library to it.
+You will still be able to access the public npm registry, we are using a tool called [Verdaccio](https://verdaccio.org) that acts as a middleman/cache between us and the scary world. We also get the benefit of being able to publish packages internally that no one else can access/use.
 
-In order to use your locally hosted npm package, we need to utilize the `---registry` flag when performing an `npm install` to tell npm where to look for our package.
+This should have no change in your current npm package installation behavior other that allowing you to also access internal packages.
 
-1. Navigate to your project directory where you'd like to use this component library.
-2. Run the following command:
-   1. `npm install bulma-react --registry http://localhost:4873`
+If you would like to keep your registry as default, but _opt in_ to the internal registry on a _per npm install_ basis, you can do the following instead:
+
+1. Add the `--registry` flag to the CLI command when performing an `npm install`
+1. e.g. `npm i control-bulma-atoms --registry http://icsi-teamsrvr:8081/`
+1. You're done!
+
+Careful with this approach, however... If there are naming conflicts (some other shmuck published a public npm package called `control-bulma-atoms`), and you forgot the `--registry` flag, you will grab **their** version of the package instead of _our_ wonderful package! The recommended approach is to update your npm configuration via `npm set registry http://icsi-teamsrvr:8081/` and never have to worry about it again.
 
 You should now be ready to use Bulma React!
+
+# Versioning
+
+`control-bulma-atoms` will use [**semantic versioning**](https://semver.org). This means the following:
+
+1. MAJOR version when breaking changes are made (incompatible API changes)
+2. MINOR version when functionality is added in a backwards compatible manner
+3. PATCH version when adding no new functionality and when added in a backwards compatible manner. (think bug fixes or performance improvements)
+
+It is important for consumers of the library to understand because as features are released, you may need to update your `package.json` in order to retrieve the features that you desire.
+
+If:
+
+- You want the absolute latest and greatest changes and throw caution to the wind about backwards compatibility use:
+  - Major release configuration: `"control-bulma-atoms": "*"` or `"control-bulma-atoms": "x"`
+- You want all of the latest additions that are still backwards compatible to when you first installed the package (**MOST LIKELY**) use:
+  - Minor release configuration: `"control-bulma-atoms": "^1.0.4"` or `"control-bulma-atoms": "1.x"`
+- You are quite happy with what you have already, thank you very much, and would only like updates to improve performance and fix bugs, use:
+  - Patch release configuration: `"control-bulma-atoms": "~1.0.4"` or `"control-bulma-atoms": "1.0.x"`
+- I don't trust package.json to handle updating my packages and I'd rather explicitly define _exactly_ what version I'm using, use:
+  - I know what I'm doing configuration: `"control-bulma-atoms": "1.0.4"`
+
+With your configuration chosen, you are now able to perform `npm update control-bulma-atoms` and rest assured that you will get the version that matches your needs.
 
 # Documentation
 
@@ -39,7 +59,7 @@ All of these Bulma components are wrappers around the CSS styles and therefore t
 ```tsx
 import React from "react";
 import "bulma/css/bulma.min.css";
-import { Button } from "bulma-react";
+import { Button } from "control-bulma-atoms";
 
 export default () => (
   <Button
