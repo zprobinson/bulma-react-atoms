@@ -21,11 +21,7 @@ If you would like to keep your registry as default, but _opt in_ to the internal
 1. e.g. `npm i control-bulma-atoms --registry http://icsi-teamsrvr:8081/`
 1. You're done!
 
-# Careful with this approach, however... If there are naming conflicts (some other shmuck published a public npm package called `control-bulma-atoms`), and you forgot the `--registry` flag, you will grab **their** version of the package instead of _our_ wonderful package! The recommended approach is to update your npm configuration via `npm set registry http://icsi-teamsrvr:8081/` and never have to worry about it again.
-
-1. Navigate to your project directory where you'd like to use this component library.
-2. Run the following command:
-   1. `npm install control-bulma-react --registry http://localhost:4873`
+Careful with this approach, however... If there are naming conflicts (some other shmuck published a public npm package called `control-bulma-atoms`), and you forgot the `--registry` flag, you will grab **their** version of the package instead of _our_ wonderful package! The recommended approach is to update your npm configuration via `npm set registry http://icsi-teamsrvr:8081/` and never have to worry about it again.
 
 You should now be ready to use `control-bulma-atoms`!
 
