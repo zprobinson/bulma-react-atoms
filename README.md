@@ -27,7 +27,7 @@ If you would like to keep your registry as default, but _opt in_ to the internal
 2. Run the following command:
    1. `npm install control-bulma-react --registry http://localhost:4873`
 
-You should now be ready to use Bulma React!
+You should now be ready to use `control-bulma-atoms`!
 
 # Versioning
 
