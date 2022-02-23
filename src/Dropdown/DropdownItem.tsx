@@ -1,7 +1,5 @@
 import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaPropsG } from "../utilities/propUtilities";
-
+import { useInnerBulmaProps } from "../utilities/propUtilities";
 import { DropdownItemProps } from "./Dropdown.types";
 
 const _default_element_ = "a";
@@ -11,15 +9,10 @@ const DropdownItem = <E extends React.ElementType = typeof _default_element_>({
   isActive = false,
   ...props
 }: DropdownItemProps<E>) => {
-  const { bulmaProps, componentProps } = partitionBulmaPropsG(props);
-  const helpers = foldHelpers(bulmaProps);
-  const { className, ...rest } = componentProps;
-  const classNames = foldClassNames([
-    className ?? "",
-    isActive ? "is-active" : "",
-    helpers,
-  ]);
-
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
+    isActive ? "is-active" : ""
+  );
   const Component = as ?? _default_element_;
 
   return (

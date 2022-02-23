@@ -2,16 +2,12 @@ import React from "react";
 import { render } from "@testing-library/react";
 
 import Dropdown from "./Dropdown";
-import DropdownAnchor from "./DropdownAnchor";
 import DropdownContent from "./DropdownContent";
-import DropdownDiv from "./DropdownDiv";
 import DropdownItem from "./DropdownItem";
 import DropdownMenu from "./DropdownMenu";
 import DropdownTrigger from "./DropdownTrigger";
 import {
-  DropdownAnchorProps,
   DropdownContentProps,
-  DropdownDivProps,
   DropdownMenuProps,
   DropdownProps,
   DropdownTriggerProps,
@@ -35,22 +31,6 @@ describe("Dropdown Component", () => {
   testBulmaProps("Dropdown", renderComponent);
 });
 
-describe("Dropdown Anchor Component", () => {
-  const renderComponent = (props: DropdownAnchorProps) =>
-    render(<DropdownAnchor {...props} />);
-
-  it("should render children correctly", () => {
-    const expected = "some text";
-    const { getByTestId } = renderComponent({ children: expected });
-
-    const component = getByTestId("DropdownAnchor");
-
-    expect(component).toHaveTextContent(expected);
-  });
-
-  testBulmaProps("DropdownAnchor", renderComponent);
-});
-
 describe("Dropdown Content Component", () => {
   const renderComponent = (props: DropdownContentProps) =>
     render(<DropdownContent {...props} />);
@@ -65,22 +45,6 @@ describe("Dropdown Content Component", () => {
   });
 
   testBulmaProps("DropdownContent", renderComponent);
-});
-
-describe("Dropdown Div Component", () => {
-  const renderComponent = (props: DropdownDivProps) =>
-    render(<DropdownDiv {...props} />);
-
-  it("should render children correctly", () => {
-    const expected = "some text";
-    const { getByTestId } = renderComponent({ children: expected });
-
-    const component = getByTestId("DropdownDiv");
-
-    expect(component).toHaveTextContent(expected);
-  });
-
-  testBulmaProps("DropdownDiv", renderComponent);
 });
 
 describe("Dropdown Menu Component", () => {
