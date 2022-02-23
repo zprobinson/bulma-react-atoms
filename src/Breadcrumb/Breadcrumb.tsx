@@ -1,33 +1,31 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
 
-import { InnerBreadcrumbProps } from "./Breadcrumb.types";
+import { BreadcrumbProps } from "./Breadcrumb.types";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
 
-const Breadcrumb: React.FC<InnerBreadcrumbProps> = ({
+const Breadcrumb: React.FC<BreadcrumbProps> = ({
   children,
-  className,
   alignment,
   separator,
   size,
   ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    alignment ?? "",
-    separator ?? "",
-    size ?? "",
-  ]);
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
+    alignment,
+    separator,
+    size
+  );
 
   return (
     <nav
       data-testid="Breadcrumb"
       className={`breadcrumb ${classNames}`}
-      {...props}
+      {...rest}
     >
       <ul>{children}</ul>
     </nav>
   );
 };
 
-export default withBulmaProps(Breadcrumb);
+export default Breadcrumb;
