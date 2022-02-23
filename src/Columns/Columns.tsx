@@ -1,36 +1,36 @@
 import React from "react";
-import withBulmaProps from "../bulma";
 import { OneOrMore } from "../types";
 import { foldClassNames } from "../utilities/listUtils";
-import { ColumnsGap, InnerColumnsProps } from "./Columns.types";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { ColumnsGap, ColumnsProps } from "./Columns.types";
 
 const getGapClass: (gap: OneOrMore<ColumnsGap> | undefined) => string = (gap) =>
-  gap != null
+  gap !== undefined
     ? gap === "is-gapless"
       ? gap
       : `is-variable ${foldClassNames(gap)}`
     : "";
 
-const Columns: React.FC<InnerColumnsProps> = ({
-  children,
-  className,
+const Columns: React.FC<ColumnsProps> = ({
   gap,
   responsive,
   options,
   ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    responsive ?? "",
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
     getGapClass(gap),
-    foldClassNames(options),
-  ]);
+    responsive,
+    foldClassNames(options)
+  );
 
   return (
-    <div data-testid="Columns" className={`columns ${classNames}`} {...props}>
-      {children}
-    </div>
+    <div
+      data-testid="Columns"
+      className={`columns ${classNames}`}
+      {...rest}
+    ></div>
   );
 };
 
-export default withBulmaProps(Columns);
+export default Columns;
