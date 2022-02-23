@@ -9,13 +9,11 @@ import {
   WithoutHelpers,
 } from "../types";
 
-export type InnerButtonProps = WithoutHelpers<ButtonProps>;
-
 export type ButtonProps = BulmaComponentPropsWithoutRef<"button"> & {
   onClick: MouseEventHandler<HTMLButtonElement>;
   color?: ButtonColor;
-  size?: ButtonSize;
-  state?: Exclude<ButtonState, "is-loading">;
+  size?: Size;
+  state?: Exclude<Is<State>, "is-loading">;
   modifiers?: OneOrMore<ButtonModifier>;
   isLoading?: boolean;
 };
@@ -30,8 +28,6 @@ export type ButtonColor =
   | Is<SecondaryColor>
   | ButtonColorOption
   | ButtonColorLightOption;
-export type ButtonSize = Size;
-export type ButtonState = Is<State>;
 export type ButtonModifier = Is<
   "fullwidth" | "outlined" | "inverted" | "rounded" | "static" | "selected"
 >;
