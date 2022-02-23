@@ -13,4 +13,4 @@ export const foldHelpers: (helpers: BulmaHelpers) => string = (helpers) => {
 };
 
 export const foldClassNames = (input: string | string[]): string =>
-  isStringArray(input) ? input.join(" ") : input;
+  isStringArray(input) ? input.filter((s) => !!s).join(" ") : input;
