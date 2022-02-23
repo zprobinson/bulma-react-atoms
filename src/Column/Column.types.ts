@@ -7,8 +7,6 @@ import {
   Breakpoint,
 } from "../types";
 
-export type InnerColumnProps = WithoutHelpers<ColumnProps>;
-
 export type ColumnProps = BulmaComponentPropsWithoutRef<"div"> &
   PartialReadonly<{
     columnSize: OneOrMore<ColumnSize>;
