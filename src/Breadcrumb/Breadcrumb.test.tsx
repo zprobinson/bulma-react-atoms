@@ -37,6 +37,24 @@ describe("Breadcrumb Component", () => {
     expect(component).toHaveClass(expected);
   });
 
+  it("should have arrow separator", () => {
+    const expected: BreadcrumbProps["separator"] = 'has-arrow-separator';
+    const { getByTestId } = renderComponent({ separator: expected });
+
+    const component = getByTestId("Breadcrumb");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should be medium size", () => {
+    const expected: BreadcrumbProps["size"] = 'is-medium';
+    const { getByTestId } = renderComponent({ size: expected });
+
+    const component = getByTestId("Breadcrumb");
+
+    expect(component).toHaveClass(expected);
+  });
+
   testBulmaProps("Breadcrumb", renderComponent);
 
   describe("Breadcrumb Item Component", () => {
