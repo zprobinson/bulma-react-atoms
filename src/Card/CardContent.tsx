@@ -1,20 +1,16 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { CardContentProps } from "./Card.types";
 
-const CardContent: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const CardContent: React.FC<CardContentProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
     <div
       data-testid="CardContent"
-      className={`card-content ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
+      className={`card-content ${classNames}`}
+      {...rest}
+    ></div>
   );
 };
 
-export default withBulmaProps(CardContent);
+export default CardContent;

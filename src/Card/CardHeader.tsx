@@ -1,20 +1,16 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { CardHeaderProps } from "./Card.types";
 
-const CardHeader: React.FC<React.ComponentPropsWithoutRef<"header">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const CardHeader: React.FC<CardHeaderProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
     <header
       data-testid="CardHeader"
-      className={`card-header ${className}`}
-      {...props}
-    >
-      {children}
-    </header>
+      className={`card-header ${classNames}`}
+      {...rest}
+    ></header>
   );
 };
 
-export default withBulmaProps(CardHeader);
+export default CardHeader;
