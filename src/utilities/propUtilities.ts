@@ -1,11 +1,15 @@
 import React from "react";
-import { BulmaComponentPropsWithoutRef, BulmaHelpers } from "../types";
+import { BulmaHelpers } from "../types";
+import { foldClassNames, foldHelpers } from "./listUtils";
+import { BulmaComponentPropsWithRef } from "../types/component";
 
-export const partitionBulmaComponentProps = <T extends React.ElementType>(
-  props: BulmaComponentPropsWithoutRef<T>
+export const partitionBulmaPropsG = <
+  TProps extends { className?: string } & BulmaHelpers = BulmaHelpers
+>(
+  props: TProps
 ): {
   bulmaProps: BulmaHelpers;
-  componentProps: React.ComponentPropsWithoutRef<T>;
+  componentProps: Omit<TProps, keyof BulmaHelpers>;
 } => {
   const {
     textColor,
@@ -56,64 +60,22 @@ export const partitionBulmaComponentProps = <T extends React.ElementType>(
     otherHelper,
   } as BulmaHelpers;
 
-  const componentProps: React.ComponentPropsWithoutRef<T> = rest as React.ComponentPropsWithoutRef<T>;
-
-  return { bulmaProps, componentProps };
+  return { bulmaProps, componentProps: rest };
 };
 
-export const partitionBulmaPropsG = <
-  TProps extends { className?: string } & BulmaHelpers = BulmaHelpers
->(
-  props: TProps
-) => {
-  const {
-    textColor,
-    backgroundColor,
-    margin,
-    padding,
-    fontSize,
-    fontAlignment,
-    fontTransform,
-    fontWeight,
-    fontFamily,
-    show,
-    hide,
-    otherVisibility,
-    flexDirection,
-    flexWrap,
-    justifyContent,
-    alignContent,
-    alignItems,
-    alignSelf,
-    flexGrow,
-    flexShrink,
-    otherHelper,
-    ...rest
-  } = props;
+export const useInnerBulmaProps = <TElement extends React.ElementType>(
+  props: BulmaComponentPropsWithRef<TElement>
+): {
+  classNames: string;
+  rest: Omit<
+    Omit<BulmaComponentPropsWithRef<TElement>, keyof BulmaHelpers>,
+    "className"
+  >;
+} => {
+  const { bulmaProps, componentProps } = partitionBulmaPropsG(props);
+  const { className, ...rest } = componentProps;
+  const helpers = foldHelpers(bulmaProps);
+  const classNames = foldClassNames([className ?? "", helpers]);
 
-  const bulmaProps = {
-    textColor,
-    backgroundColor,
-    margin,
-    padding,
-    fontSize,
-    fontAlignment,
-    fontTransform,
-    fontWeight,
-    fontFamily,
-    show,
-    hide,
-    otherVisibility,
-    flexDirection,
-    flexWrap,
-    justifyContent,
-    alignContent,
-    alignItems,
-    alignSelf,
-    flexGrow,
-    flexShrink,
-    otherHelper,
-  } as BulmaHelpers;
-
-  return { bulmaProps, componentProps: rest };
+  return { classNames, rest };
 };
