@@ -1,17 +1,16 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { FooterProps } from "./Footer.types";
 
-const Footer: React.FC<React.ComponentPropsWithoutRef<"footer">> = ({
-  className,
-  ...props
-}) => {
+const Footer: React.FC<FooterProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
     <div
       data-testid="Footer"
-      className={`footer ${className}`}
-      {...props}
+      className={`footer ${classNames}`}
+      {...rest}
     ></div>
   );
 };
 
-export default withBulmaProps(Footer);
+export default Footer;
