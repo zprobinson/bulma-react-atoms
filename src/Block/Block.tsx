@@ -1,5 +1,4 @@
 import React from "react";
-import withBulmaProps from "../bulma";
 import { BlockProps } from "./Block.types";
 import { useInnerBulmaProps } from "../utilities/propUtilities";
 
@@ -10,4 +9,4 @@ const Block: React.FC<BlockProps> = (props) => {
   );
 };
 
-export default withBulmaProps(Block);
+export default Block;
