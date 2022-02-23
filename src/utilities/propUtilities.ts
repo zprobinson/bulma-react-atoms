@@ -69,7 +69,8 @@ export const partitionBulmaPropsG = <
 export const useInnerBulmaProps = <
   TProps extends BulmaComponentPropsWithoutRef<React.ElementType>
 >(
-  props: TProps
+  props: TProps,
+  ...classes: string[]
 ): {
   classNames: string;
   rest: Omit<Omit<TProps, keyof BulmaHelpers>, "className">;
@@ -77,7 +78,11 @@ export const useInnerBulmaProps = <
   const { bulmaProps, componentProps } = partitionBulmaPropsG(props);
   const { className, ...rest } = componentProps;
   const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
+  const classNames = foldClassNames([
+    className ?? "",
+    helpers,
+    ...classes.filter((s) => !!s),
+  ]);
 
   return { classNames, rest };
 };
