@@ -1,7 +1,10 @@
 import React from "react";
 import { BulmaHelpers } from "../types";
 import { foldClassNames, foldHelpers } from "./listUtils";
-import { BulmaComponentPropsWithRef } from "../types/component";
+import {
+  BulmaComponentPropsWithoutRef,
+  BulmaComponentPropsWithRef,
+} from "../types/component";
 
 export const partitionBulmaPropsG = <
   TProps extends { className?: string } & BulmaHelpers = BulmaHelpers
@@ -63,14 +66,13 @@ export const partitionBulmaPropsG = <
   return { bulmaProps, componentProps: rest };
 };
 
-export const useInnerBulmaProps = <TElement extends React.ElementType>(
-  props: BulmaComponentPropsWithRef<TElement>
+export const useInnerBulmaProps = <
+  TProps extends BulmaComponentPropsWithoutRef<React.ElementType>
+>(
+  props: TProps
 ): {
   classNames: string;
-  rest: Omit<
-    Omit<BulmaComponentPropsWithRef<TElement>, keyof BulmaHelpers>,
-    "className"
-  >;
+  rest: Omit<Omit<TProps, keyof BulmaHelpers>, "className">;
 } => {
   const { bulmaProps, componentProps } = partitionBulmaPropsG(props);
   const { className, ...rest } = componentProps;

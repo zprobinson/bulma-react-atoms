@@ -25,7 +25,8 @@ import {
 } from "./bulma";
 import { OneOrMore, PartialReadonly } from "./utility";
 
-export type BulmaHelpers = PartialReadonly<{
+export interface BulmaHelpers extends BulmaHelpersPrep {}
+export type BulmaHelpersPrep = PartialReadonly<{
   textColor: TextColor;
   backgroundColor: BackgroundColor;
 
