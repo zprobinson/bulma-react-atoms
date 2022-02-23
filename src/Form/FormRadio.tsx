@@ -1,18 +1,18 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { InnerFormRadioProps } from "./Form.types";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { FormRadioProps } from "./Form.types";
 
-const FormRadio: React.FC<InnerFormRadioProps> = ({
+const FormRadio: React.FC<FormRadioProps> = ({
   children,
-  className,
   _innerDisabledColor,
   _innerRadioClassName,
   ...props
 }) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
     <label
       data-testid="FormRadioLabel"
-      className={`radio ${className}`}
+      className={`radio ${classNames}`}
       style={{
         cursor: props.disabled ? "not-allowed" : undefined,
         /* `disabled` is not a valid property on labels.
@@ -25,11 +25,11 @@ const FormRadio: React.FC<InnerFormRadioProps> = ({
         type="radio"
         data-testid="FormRadio"
         className={_innerRadioClassName}
-        {...props}
+        {...rest}
       />
       {children}
     </label>
   );
 };
 
-export default withBulmaProps(FormRadio);
+export default FormRadio;

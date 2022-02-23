@@ -1,14 +1,11 @@
 import React, { forwardRef } from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { FormTextAreaProps } from "./Form.types";
 import useFormFieldContext from "./formFieldContext";
 
-import { InnerFormTextAreaProps } from "./Form.types";
-
 const FormTextArea: React.FC<
-  InnerFormTextAreaProps & { innerRef?: React.Ref<HTMLTextAreaElement> }
+  FormTextAreaProps & { innerRef?: React.Ref<HTMLTextAreaElement> }
 > = ({
-  className,
   size,
   color,
   state,
@@ -18,30 +15,27 @@ const FormTextArea: React.FC<
   ...props
 }) => {
   const context = useFormFieldContext();
-  const classNames = foldClassNames([
-    className ?? "",
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
     size ?? context.size ?? "",
     color ?? "",
     state ?? "",
     isLoading ? "is-loading" : "",
-    hasFixedSize ? "has-fixed-size" : "",
-  ]);
-
+    hasFixedSize ? "has-fixed-size" : ""
+  );
   return (
     <textarea
       data-testid="FormTextArea"
       className={`textarea ${classNames}`}
       ref={innerRef}
-      {...props}
+      {...rest}
     ></textarea>
   );
 };
 
-const WrappedBulmaTextAreaInput = withBulmaProps(FormTextArea);
-
 export default forwardRef<
   HTMLTextAreaElement,
-  Parameters<typeof WrappedBulmaTextAreaInput>[0]
+  Parameters<typeof FormTextArea>[0]
 >((props, ref) => {
-  return <WrappedBulmaTextAreaInput {...props} innerRef={ref} />;
+  return <FormTextArea {...props} innerRef={ref} />;
 });

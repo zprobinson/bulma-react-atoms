@@ -1,11 +1,11 @@
 import React from "react";
-import withBulmaProps from "../bulma";
 import { foldClassNames } from "../utilities/listUtils";
-import { InnerFormFieldProps } from "./Form.types";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { FormFieldProps } from "./Form.types";
 import useFormFieldContext, { FormFieldContext } from "./formFieldContext";
 
 type KindProps = Pick<
-  InnerFormFieldProps,
+  FormFieldProps,
   "kind" | "alignment" | "groupMultiline" | "isExpanded"
 >;
 
@@ -37,8 +37,7 @@ const getKindClasses: (props: KindProps) => string = ({ kind, ...props }) => {
   return kind === "addons" ? getAddonsClasses(props) : getGroupedClasses(props);
 };
 
-const FormField: React.FC<InnerFormFieldProps> = ({
-  className,
+const FormField: React.FC<FormFieldProps> = ({
   kind,
   alignment,
   size,
@@ -54,21 +53,20 @@ const FormField: React.FC<InnerFormFieldProps> = ({
     groupMultiline,
     isExpanded,
   });
-  const classNames = foldClassNames([
-    className ?? "",
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
     kindClass,
-    isHorizontal ? "is-horizontal" : "",
-  ]);
-
+    isHorizontal ? "is-horizontal" : ""
+  );
   return (
     <FormFieldContext.Provider value={{ size: size ?? context.size }}>
       <div
         data-testid="FormField"
         className={`field ${classNames}`}
-        {...props}
+        {...rest}
       ></div>
     </FormFieldContext.Provider>
   );
 };
 
-export default withBulmaProps(FormField);
+export default FormField;

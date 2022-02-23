@@ -1,10 +1,10 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-
+import { useInnerBulmaProps } from "../utilities/propUtilities";
 import { FormProps } from "./Form.types";
 
 const Form: React.FC<FormProps> = (props) => {
-  return <form data-testid="Form" {...props}></form>;
+  const { classNames, rest } = useInnerBulmaProps(props);
+  return <form data-testid="Form" className={classNames} {...rest}></form>;
 };
 
-export default withBulmaProps(Form);
+export default Form;

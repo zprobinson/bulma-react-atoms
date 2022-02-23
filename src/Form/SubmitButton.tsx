@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../Button/Button";
 import { ButtonProps } from "../Button/Button.types";
 
 /**
@@ -11,14 +12,14 @@ const SubmitButton: React.FC<Omit<ButtonProps, "type" | "onClick">> = ({
   ...props
 }) => {
   return (
-    <button
+    <Button
       data-testid="SubmitButton"
       type="submit"
       onClick={() => {}}
       {...props}
     >
       {children ?? "Submit"}
-    </button>
+    </Button>
   );
 };
 
