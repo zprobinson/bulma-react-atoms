@@ -1,13 +1,9 @@
-import { BulmaComponentPropsWithoutRef, WithoutHelpers } from "..";
-
-export type InnerLevelProps = WithoutHelpers<LevelProps>;
+import { BulmaComponentPropsWithoutRef } from "..";
 
 export type LevelProps = BulmaComponentPropsWithoutRef<"div"> & {
   isMobile?: boolean;
 };
 
-type LevelSideProps = BulmaComponentPropsWithoutRef<"div">;
-export type LevelLeftProps = LevelSideProps;
-export type LevelRightProps = LevelSideProps;
-
-export type LevelItemProps = BulmaComponentPropsWithoutRef<"div">;
+export type LevelLeftProps = BulmaComponentPropsWithoutRef<"div">;
+export type LevelRightProps = LevelLeftProps;
+export type LevelItemProps = LevelLeftProps;
