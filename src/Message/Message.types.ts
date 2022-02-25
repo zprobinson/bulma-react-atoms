@@ -1,13 +1,10 @@
 import {
   BulmaComponentPropsWithoutRef,
-  WithoutHelpers,
   Is,
   PrimaryColor,
   SecondaryColor,
   Size,
 } from "../types";
-
-export type InnerMessageProps = WithoutHelpers<MessageProps>;
 
 export type MessageProps = BulmaComponentPropsWithoutRef<"article"> & {
   color?: MessageColor;
