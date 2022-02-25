@@ -1,16 +1,13 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
 
-const MediaLeft: React.FC<React.ComponentPropsWithoutRef<"figure">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const MediaLeft: React.FC<React.ComponentPropsWithoutRef<"figure">> = (
+  props
+) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
-    <figure data-testid="MediaLeft" className={className} {...props}>
-      {children}
-    </figure>
+    <figure data-testid="MediaLeft" className={classNames} {...rest}></figure>
   );
 };
 
-export default withBulmaProps(MediaLeft);
+export default MediaLeft;

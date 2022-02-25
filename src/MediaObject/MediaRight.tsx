@@ -1,16 +1,10 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { MediaRightProps } from "./MediaObject.types";
 
-const MediaRight: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <div data-testid="MediaRight" className={className} {...props}>
-      {children}
-    </div>
-  );
+const MediaRight: React.FC<MediaRightProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
+  return <div data-testid="MediaRight" className={classNames} {...rest}></div>;
 };
 
-export default withBulmaProps(MediaRight);
+export default MediaRight;
