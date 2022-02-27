@@ -6,12 +6,7 @@ import {
   Size,
 } from "../types";
 
-export type InnerPaginationProps = WithoutHelpers<PaginationProps>;
-export type InnerPaginationIncrementalProps = WithoutHelpers<PaginationIncrementalProps> & {
-  type: "previous" | "next";
-};
 export type InnerPaginationLinkProps = WithoutHelpers<PaginationLinkProps>;
-export type InnerPaginationEllipsisProps = WithoutHelpers<PaginationEllipsisProps>;
 
 export type PaginationProps = BulmaComponentPropsWithoutRef<"nav"> & {
   alignment?: Is<"centered" | "right">;
@@ -24,9 +19,13 @@ export type PaginationIncrementalProps = BulmaComponentPropsWithoutRef<"a"> & {
   // see https://github.com/jgthms/bulma/commit/a28bf751b10d47d59f83a979748b32c3e7f85a62
   // see https://github.com/jgthms/bulma/issues/276#issuecomment-578889739
   isDisabled?: boolean;
+  paginationType: "previous" | "next";
 };
-export type PaginationPreviousProps = PaginationIncrementalProps;
-export type PaginationNextProps = PaginationIncrementalProps;
+export type PaginationPreviousProps = Omit<
+  PaginationIncrementalProps,
+  "paginationType"
+>;
+export type PaginationNextProps = PaginationPreviousProps;
 
 export type PaginationListProps = BulmaComponentPropsWithoutRef<"ul">;
 export type PaginationLinkProps = BulmaComponentPropsWithoutRef<"a"> & {
