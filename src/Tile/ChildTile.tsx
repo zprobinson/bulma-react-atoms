@@ -1,11 +1,9 @@
 import React from "react";
-import withBulmaProps from "../bulma";
 import Tile from "./Tile";
+import { ChildTileProps } from "./Tile.types";
 
-import { InnerChildTileProps } from "./Tile.types";
-
-const ChildTile: React.FC<InnerChildTileProps> = (props) => {
+const ChildTile: React.FC<ChildTileProps> = (props) => {
   return <Tile kind="is-child" {...props} />;
 };
 
-export default withBulmaProps(ChildTile);
+export default ChildTile;
