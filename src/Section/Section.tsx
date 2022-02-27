@@ -1,19 +1,17 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
-
+import { useInnerBulmaProps } from "../utilities/propUtilities";
 import { SectionProps } from "./Section.types";
 
-const Section: React.FC<SectionProps> = ({ className, size, ...props }) => {
-  const classNames = foldClassNames([className ?? "", size ?? ""]);
+const Section: React.FC<SectionProps> = ({ size, ...props }) => {
+  const { classNames, rest } = useInnerBulmaProps(props, size ?? "");
 
   return (
     <div
       data-testid="Section"
       className={`section ${classNames}`}
-      {...props}
+      {...rest}
     ></div>
   );
 };
 
-export default withBulmaProps(Section);
+export default Section;
