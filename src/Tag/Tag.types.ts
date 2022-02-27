@@ -1,34 +1,11 @@
 import {
-  BulmaComponentPropsWithoutRef,
-  WithoutHelpers,
+  BulmaHelpers,
   Is,
+  Polymorphic,
   PrimaryColor,
   SecondaryColor,
   Size,
-  Polymorphic,
-  BulmaHelpers,
 } from "../types";
-
-export type InnerTagAnchorProps = WithoutHelpers<TagAnchorProps>;
-export type InnerTagSpanProps = WithoutHelpers<TagSpanProps>;
-
-/**
- * @deprecated Use Tag with the `as` prop instead.
- */
-export type TagAnchorProps = BulmaComponentPropsWithoutRef<"a"> & {
-  color?: TagColor;
-  size?: Exclude<Size, "is-small">;
-  isDelete?: boolean;
-};
-
-/**
- * @deprecated Use Tag with the `as` prop instead.
- */
-export type TagSpanProps = BulmaComponentPropsWithoutRef<"span"> & {
-  color?: TagColor;
-  size?: Exclude<Size, "is-small">;
-  isDelete?: boolean;
-};
 
 export type TagProps<
   E extends React.ElementType = React.ElementType
