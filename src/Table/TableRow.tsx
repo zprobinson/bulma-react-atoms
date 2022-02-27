@@ -1,25 +1,17 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { TableRowProps } from "./Table.types";
 
-import { InnerTableRowProps } from "./Table.types";
-
-const TableRow: React.FC<InnerTableRowProps> = ({
-  children,
-  className,
+const TableRow: React.FC<TableRowProps> = ({
   isSelected = false,
   ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    isSelected ? "is-selected" : "",
-  ]);
-
-  return (
-    <tr data-testid="TableRow" className={classNames} {...props}>
-      {children}
-    </tr>
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
+    isSelected ? "is-selected" : ""
   );
+
+  return <tr data-testid="TableRow" className={classNames} {...rest}></tr>;
 };
 
-export default withBulmaProps(TableRow);
+export default TableRow;
