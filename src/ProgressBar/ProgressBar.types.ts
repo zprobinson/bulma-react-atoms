@@ -9,7 +9,10 @@ import {
 
 export type InnerProgressBarProps = WithoutHelpers<ProgressBarProps>;
 
-export type ProgressBarProps = BulmaComponentPropsWithoutRef<"progress"> & {
+export type ProgressBarProps = Omit<
+  BulmaComponentPropsWithoutRef<"progress">,
+  "children"
+> & {
   color?: ProgressBarColor;
   size?: ProgressBarSize;
 };
