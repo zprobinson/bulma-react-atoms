@@ -1,25 +1,22 @@
 import React from "react";
-import withBulmaProps from "../bulma";
 import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { NavbarProps } from "./Navbar.types";
 
-import { InnerNavbarProps } from "./Navbar.types";
-
-const Navbar: React.FC<InnerNavbarProps> = ({
-  children,
-  className,
+const Navbar: React.FC<NavbarProps> = ({
   color,
   modifiers,
   isFixedHtmlInterop,
   isTransparent = false,
   ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
     color ?? "",
     foldClassNames(modifiers),
     isFixedHtmlInterop ?? "",
-    isTransparent ? "is-transparent" : "",
-  ]);
+    isTransparent ? "is-transparent" : ""
+  );
 
   return (
     <nav
@@ -27,11 +24,9 @@ const Navbar: React.FC<InnerNavbarProps> = ({
       className={`navbar ${classNames}`}
       role="navigation"
       aria-label="main navigation"
-      {...props}
-    >
-      {children}
-    </nav>
+      {...rest}
+    ></nav>
   );
 };
 
-export default withBulmaProps(Navbar);
+export default Navbar;

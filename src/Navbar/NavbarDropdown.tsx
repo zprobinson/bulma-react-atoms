@@ -1,31 +1,25 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { NavbarDropdownProps } from "./Navbar.types";
 
-import { InnerNavbarDropdownProps } from "./Navbar.types";
-
-const NavbarDropdown: React.FC<InnerNavbarDropdownProps> = ({
-  children,
-  className,
+const NavbarDropdown: React.FC<NavbarDropdownProps> = ({
   isRight = false,
   isBoxed = false,
   ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
     isRight ? "is-right" : "",
-    isBoxed ? "is-boxed" : "",
-  ]);
+    isBoxed ? "is-boxed" : ""
+  );
 
   return (
     <div
       data-testid="NavbarDropdown"
       className={`navbar-dropdown ${classNames}`}
-      {...props}
-    >
-      {children}
-    </div>
+      {...rest}
+    ></div>
   );
 };
 
-export default withBulmaProps(NavbarDropdown);
+export default NavbarDropdown;

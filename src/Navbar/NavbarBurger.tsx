@@ -1,15 +1,12 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { NavbarBurgerProps } from "./Navbar.types";
 
-import { InnerNavbarBurgerProps } from "./Navbar.types";
-
-const NavbarBurger: React.VFC<Omit<InnerNavbarBurgerProps, "children">> = ({
-  className,
+const NavbarBurger: React.VFC<NavbarBurgerProps> = ({
   isActive = false,
   ...props
 }) => {
-  const classNames = foldClassNames([className ?? ""]);
+  const { classNames, rest } = useInnerBulmaProps(props);
 
   return (
     <a
@@ -17,7 +14,7 @@ const NavbarBurger: React.VFC<Omit<InnerNavbarBurgerProps, "children">> = ({
       className={`navbar-burger ${classNames}`}
       aria-label="menu"
       aria-expanded={isActive ? "true" : "false"}
-      {...props}
+      {...rest}
     >
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -26,4 +23,4 @@ const NavbarBurger: React.VFC<Omit<InnerNavbarBurgerProps, "children">> = ({
   );
 };
 
-export default withBulmaProps(NavbarBurger);
+export default NavbarBurger;
