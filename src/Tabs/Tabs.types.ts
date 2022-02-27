@@ -1,13 +1,4 @@
-import {
-  BulmaComponentPropsWithoutRef,
-  Is,
-  Size,
-  WithoutHelpers,
-} from "../types";
-
-export type InnerTabsProps = WithoutHelpers<TabsProps>;
-export type InnerTabsListItemProps = WithoutHelpers<TabsListItemProps>;
-export type InnerTabsLinkProps = WithoutHelpers<TabsLinkProps>;
+import { BulmaComponentPropsWithoutRef, Is, Size } from "../types";
 
 export type TabsProps = BulmaComponentPropsWithoutRef<"div"> & {
   alignment?: Is<"centered" | "right">;

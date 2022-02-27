@@ -1,12 +1,8 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { TabsProps } from "./Tabs.types";
 
-import { InnerTabsProps } from "./Tabs.types";
-
-const Tabs: React.FC<InnerTabsProps> = ({
-  children,
-  className,
+const Tabs: React.FC<TabsProps> = ({
   alignment,
   size,
   isBoxed = false,
@@ -20,21 +16,18 @@ const Tabs: React.FC<InnerTabsProps> = ({
     : isToggle
     ? "is-toggle"
     : "";
-
-  const classNames = foldClassNames([
-    className ?? "",
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
     alignment ?? "",
     size ?? "",
     isBoxed ? "is-boxed" : "",
     toggled,
-    isFullwidth ? "is-fullwidth" : "",
-  ]);
+    isFullwidth ? "is-fullwidth" : ""
+  );
 
   return (
-    <div data-testid="Tabs" className={`tabs ${classNames}`} {...props}>
-      {children}
-    </div>
+    <div data-testid="Tabs" className={`tabs ${classNames}`} {...rest}></div>
   );
 };
 
-export default withBulmaProps(Tabs);
+export default Tabs;

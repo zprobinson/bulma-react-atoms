@@ -1,29 +1,29 @@
 import React from "react";
-import withBulmaProps from "../bulma";
 import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { TabsLinkProps } from "./Tabs.types";
 
-import { InnerTabsLinkProps } from "./Tabs.types";
-
-const TabsLink: React.FC<InnerTabsLinkProps> = ({
-  children,
-  className,
+const TabsLink: React.FC<TabsLinkProps> = ({
   isActive = false,
   innerListItemProps,
   ...props
 }) => {
+  const { classNames: anchorClassNames, rest } = useInnerBulmaProps(props);
   const { className: liClassName = "", ...liProps } = innerListItemProps ?? {};
-  const classNames = foldClassNames([
+  const listItemClassNames = foldClassNames([
     liClassName ?? "",
     isActive ? "is-active" : "",
   ]);
 
   return (
-    <li data-testid="TabsLink" className={classNames} {...liProps}>
-      <a data-testid="TabsLinkAnchor" className={className} {...props}>
-        {children}
-      </a>
+    <li data-testid="TabsLink" className={listItemClassNames} {...liProps}>
+      <a
+        data-testid="TabsLinkAnchor"
+        className={anchorClassNames}
+        {...rest}
+      ></a>
     </li>
   );
 };
 
-export default withBulmaProps(TabsLink);
+export default TabsLink;
