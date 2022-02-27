@@ -6,7 +6,6 @@ import {
   PrimaryColor,
   SecondaryColor,
   Size,
-  WithoutHelpers,
 } from "../types";
 
 export type ButtonProps = BulmaComponentPropsWithoutRef<"button"> & {
