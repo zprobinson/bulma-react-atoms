@@ -1,12 +1,4 @@
-import {
-  BulmaComponentPropsWithoutRef,
-  WithoutHelpers,
-  BulmaHelpers,
-  Is,
-  Size,
-} from "../types";
-
-export type InnerPaginationLinkProps = WithoutHelpers<PaginationLinkProps>;
+import { BulmaComponentPropsWithoutRef, Is, Size } from "../types";
 
 export type PaginationProps = BulmaComponentPropsWithoutRef<"nav"> & {
   alignment?: Is<"centered" | "right">;
