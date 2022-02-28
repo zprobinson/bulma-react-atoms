@@ -7,14 +7,14 @@
 
 This project skeleton was created to help people get started with creating their own React component library using:
 
-- [Rollup](https://github.com/rollup/rollup)
-- [Sass](https://sass-lang.com/)
-- [TypeScript](https://www.typescriptlang.org/)
+-   [Rollup](https://github.com/rollup/rollup)
+-   [Sass](https://sass-lang.com/)
+-   [TypeScript](https://www.typescriptlang.org/)
 
 It also features:
 
-- [Storybook](https://storybook.js.org/) to help you create and show off your components
-- [Jest](https://jestjs.io/) and [React Testing Library](https://github.com/testing-library/react-testing-library) enabling testing of the components
+-   [Storybook](https://storybook.js.org/) to help you create and show off your components
+-   [Jest](https://jestjs.io/) and [React Testing Library](https://github.com/testing-library/react-testing-library) enabling testing of the components
 
 [**Read my blog post about why and how I created this project skeleton ▸**](https://blog.harveydelaney.com/creating-your-own-react-component-library/)
 
@@ -204,8 +204,8 @@ Read https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-schem
 
 The Rollup plugin `rollup-plugin-postcss` supports Sass, Less and Stylus:
 
-- For Stylus, install stylus: `yarn add stylus --dev`
-- For Less, install less: `yarn add less --dev`
+-   For Stylus, install stylus: `yarn add stylus --dev`
+-   For Less, install less: `yarn add less --dev`
 
 You can then remove `node-sass` from your dependencies.
 
@@ -262,12 +262,12 @@ plugins:[
 You can then import and render images in your components like:
 
 ```tsx
-import logo from "./rollup.png";
+import logo from './rollup.png';
 
 export const ImageComponent = () => (
-  <div>
-    <img src={logo} />
-  </div>
+    <div>
+        <img src={logo} />
+    </div>
 );
 ```
 
@@ -294,7 +294,7 @@ plugins:[
 You can then import and use JSON as ES6 Modules:
 
 ```tsx
-import data from "./some-data.json";
+import data from './some-data.json';
 
 export const JsonDataComponent = () => <div>{data.description}</div>;
 ```

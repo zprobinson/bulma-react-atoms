@@ -1,9 +1,8 @@
-
-import React from "react";
-import Tabs from "./Tabs";
+import React from 'react';
+import Tabs from './Tabs';
 
 export default {
-    title: "Tabs"
+    title: 'Tabs',
 };
 
 export const WithBar = () => <Tabs foo="bar" />;

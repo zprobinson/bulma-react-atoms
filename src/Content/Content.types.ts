@@ -1,7 +1,7 @@
-import { BulmaComponentPropsWithoutRef, Is } from "..";
+import { BulmaComponentPropsWithoutRef, Is } from '..';
 
-export type ContentProps = BulmaComponentPropsWithoutRef<"div"> & {
-  size?: ContentSize;
+export type ContentProps = BulmaComponentPropsWithoutRef<'div'> & {
+    size?: ContentSize;
 };
 
-type ContentSize = Is<"small" | "normal" | "medium" | "large">;
+type ContentSize = Is<'small' | 'normal' | 'medium' | 'large'>;

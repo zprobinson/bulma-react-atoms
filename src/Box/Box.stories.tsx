@@ -1,9 +1,9 @@
 // Generated with util/create-component.js
-import React from "react";
-import Box from "./Box";
+import React from 'react';
+import Box from './Box';
 
 export default {
-    title: "Box"
+    title: 'Box',
 };
 
 export const WithBar = () => <Box foo="bar" />;

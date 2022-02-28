@@ -1,214 +1,216 @@
-import React from "react";
-import { render } from "@testing-library/react";
+import React from 'react';
+import { render } from '@testing-library/react';
 
-import Card from "./Card";
-import CardHeader from "./CardHeader";
-import CardHeaderTitle from "./CardHeaderTitle";
-import CardHeaderIcon from "./CardHeaderIcon";
-import CardImage from "./CardImage";
-import CardContent from "./CardContent";
-import CardFooter from "./CardFooter";
-import CardFooterItemAnchor from "./CardFooterItemAnchor";
-import CardFooterItemParagraph from "./CardFooterItemParagraph";
+import Card from './Card';
+import CardHeader from './CardHeader';
+import CardHeaderTitle from './CardHeaderTitle';
+import CardHeaderIcon from './CardHeaderIcon';
+import CardImage from './CardImage';
+import CardContent from './CardContent';
+import CardFooter from './CardFooter';
+import CardFooterItemAnchor from './CardFooterItemAnchor';
+import CardFooterItemParagraph from './CardFooterItemParagraph';
 import {
-  CardContentProps,
-  CardFooterItemAnchorProps,
-  CardFooterItemParagraphProps,
-  CardFooterProps,
-  CardHeaderIconProps,
-  CardHeaderProps,
-  CardHeaderTitleProps,
-  CardImageProps,
-  CardProps,
-  CardFooterItemProps,
-} from "./Card.types";
-import { testBulmaProps } from "../bulmaTests/bulmaTests";
+    CardContentProps,
+    CardFooterItemAnchorProps,
+    CardFooterItemParagraphProps,
+    CardFooterProps,
+    CardHeaderIconProps,
+    CardHeaderProps,
+    CardHeaderTitleProps,
+    CardImageProps,
+    CardProps,
+    CardFooterItemProps,
+} from './Card.types';
+import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
-import CardFooterItem from "./CardFooterItem";
+import CardFooterItem from './CardFooterItem';
 
-describe("Card Component", () => {
-  const renderComponent = (props: CardProps) => render(<Card {...props} />);
+describe('Card Component', () => {
+    const renderComponent = (props: CardProps) => render(<Card {...props} />);
 
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    it('should render children correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({ children: expected });
 
-    const component = getByTestId("Card");
+        const component = getByTestId('Card');
 
-    expect(component).toHaveTextContent(expected);
-  });
-
-  testBulmaProps("Card", renderComponent);
-
-  describe("Card Header Component", () => {
-    const renderComponent = (props: CardHeaderProps) =>
-      render(<CardHeader {...props} />);
-
-    it("should render children correctly", () => {
-      const expected = "harvey was here";
-      const { getByTestId } = renderComponent({ children: expected });
-
-      const component = getByTestId("CardHeader");
-
-      expect(component).toHaveTextContent(expected);
+        expect(component).toHaveTextContent(expected);
     });
 
-    testBulmaProps("CardHeader", renderComponent);
-  });
+    testBulmaProps('Card', renderComponent);
 
-  describe("Card Header Title Component", () => {
-    const renderComponent = (props: CardHeaderTitleProps) =>
-      render(<CardHeaderTitle {...props} />);
+    describe('Card Header Component', () => {
+        const renderComponent = (props: CardHeaderProps) =>
+            render(<CardHeader {...props} />);
 
-    it("should render children correctly", () => {
-      const expected = "harvey was here";
-      const { getByTestId } = renderComponent({ children: expected });
+        it('should render children correctly', () => {
+            const expected = 'harvey was here';
+            const { getByTestId } = renderComponent({ children: expected });
 
-      const component = getByTestId("CardHeaderTitle");
+            const component = getByTestId('CardHeader');
 
-      expect(component).toHaveTextContent(expected);
+            expect(component).toHaveTextContent(expected);
+        });
+
+        testBulmaProps('CardHeader', renderComponent);
     });
 
-    testBulmaProps("CardHeaderTitle", renderComponent);
-  });
+    describe('Card Header Title Component', () => {
+        const renderComponent = (props: CardHeaderTitleProps) =>
+            render(<CardHeaderTitle {...props} />);
 
-  describe("Card Header Icon Component", () => {
-    const renderComponent = (props: CardHeaderIconProps) =>
-      render(<CardHeaderIcon {...props} />);
+        it('should render children correctly', () => {
+            const expected = 'harvey was here';
+            const { getByTestId } = renderComponent({ children: expected });
 
-    it("should render children correctly", () => {
-      const expected = "harvey was here";
-      const { getByTestId } = renderComponent({ children: expected });
+            const component = getByTestId('CardHeaderTitle');
 
-      const component = getByTestId("CardHeaderIcon");
+            expect(component).toHaveTextContent(expected);
+        });
 
-      expect(component).toHaveTextContent(expected);
+        testBulmaProps('CardHeaderTitle', renderComponent);
     });
 
-    testBulmaProps("CardHeaderIcon", renderComponent);
-  });
+    describe('Card Header Icon Component', () => {
+        const renderComponent = (props: CardHeaderIconProps) =>
+            render(<CardHeaderIcon {...props} />);
 
-  describe("Card Image Component", () => {
-    const renderComponent = (props: CardImageProps) =>
-      render(<CardImage {...props} />);
+        it('should render children correctly', () => {
+            const expected = 'harvey was here';
+            const { getByTestId } = renderComponent({ children: expected });
 
-    it("should render children correctly", () => {
-      const expected = "harvey was here";
-      const { getByTestId } = renderComponent({ children: expected });
+            const component = getByTestId('CardHeaderIcon');
 
-      const component = getByTestId("CardImage");
+            expect(component).toHaveTextContent(expected);
+        });
 
-      expect(component).toHaveTextContent(expected);
+        testBulmaProps('CardHeaderIcon', renderComponent);
     });
 
-    testBulmaProps("CardImage", renderComponent);
-  });
+    describe('Card Image Component', () => {
+        const renderComponent = (props: CardImageProps) =>
+            render(<CardImage {...props} />);
 
-  describe("Card Content Component", () => {
-    const renderComponent = (props: CardContentProps) =>
-      render(<CardContent {...props} />);
+        it('should render children correctly', () => {
+            const expected = 'harvey was here';
+            const { getByTestId } = renderComponent({ children: expected });
 
-    it("should render children correctly", () => {
-      const expected = "harvey was here";
-      const { getByTestId } = renderComponent({ children: expected });
+            const component = getByTestId('CardImage');
 
-      const component = getByTestId("CardContent");
+            expect(component).toHaveTextContent(expected);
+        });
 
-      expect(component).toHaveTextContent(expected);
+        testBulmaProps('CardImage', renderComponent);
     });
 
-    testBulmaProps("CardContent", renderComponent);
-  });
+    describe('Card Content Component', () => {
+        const renderComponent = (props: CardContentProps) =>
+            render(<CardContent {...props} />);
 
-  describe("Card Footer Component", () => {
-    const renderComponent = (props: CardFooterProps) =>
-      render(<CardFooter {...props} />);
+        it('should render children correctly', () => {
+            const expected = 'harvey was here';
+            const { getByTestId } = renderComponent({ children: expected });
 
-    it("should render children correctly", () => {
-      const expected = "harvey was here";
-      const { getByTestId } = renderComponent({ children: expected });
+            const component = getByTestId('CardContent');
 
-      const component = getByTestId("CardFooter");
+            expect(component).toHaveTextContent(expected);
+        });
 
-      expect(component).toHaveTextContent(expected);
+        testBulmaProps('CardContent', renderComponent);
     });
 
-    testBulmaProps("CardFooter", renderComponent);
-  });
+    describe('Card Footer Component', () => {
+        const renderComponent = (props: CardFooterProps) =>
+            render(<CardFooter {...props} />);
 
-  describe("Card Footer Item Anchor Component", () => {
-    const renderComponent = (props: CardFooterItemAnchorProps) =>
-      render(<CardFooterItemAnchor {...props} />);
+        it('should render children correctly', () => {
+            const expected = 'harvey was here';
+            const { getByTestId } = renderComponent({ children: expected });
 
-    it("should render children correctly", () => {
-      const expected = "harvey was here";
-      const { getByTestId } = renderComponent({
-        children: expected,
-      });
+            const component = getByTestId('CardFooter');
 
-      const component = getByTestId("CardFooterItem");
+            expect(component).toHaveTextContent(expected);
+        });
 
-      expect(component).toHaveTextContent(expected);
+        testBulmaProps('CardFooter', renderComponent);
     });
 
-    testBulmaProps("CardFooterItem", renderComponent);
-  });
+    describe('Card Footer Item Anchor Component', () => {
+        const renderComponent = (props: CardFooterItemAnchorProps) =>
+            render(<CardFooterItemAnchor {...props} />);
 
-  describe("Card Footer Item Paragraph Component", () => {
-    const renderComponent = (props: CardFooterItemParagraphProps) =>
-      render(<CardFooterItemParagraph {...props} />);
+        it('should render children correctly', () => {
+            const expected = 'harvey was here';
+            const { getByTestId } = renderComponent({
+                children: expected,
+            });
 
-    it("should render children correctly", () => {
-      const expected = "harvey was here";
-      const { getByTestId } = renderComponent({
-        children: expected,
-      });
+            const component = getByTestId('CardFooterItem');
 
-      const component = getByTestId("CardFooterItem");
+            expect(component).toHaveTextContent(expected);
+        });
 
-      expect(component).toHaveTextContent(expected);
-    });
-  });
-
-  describe("Card Footer Item", () => {
-    const renderComponent = <E extends React.ElementType = React.ElementType>(
-      props: CardFooterItemProps<E>
-    ) => render(<CardFooterItem {...props} />);
-
-    it("should render children correctly", () => {
-      const expected = "harvey was here";
-      const { getByTestId } = renderComponent({ children: expected });
-
-      const component = getByTestId("CardFooterItem");
-
-      expect(component).toHaveTextContent(expected);
+        testBulmaProps('CardFooterItem', renderComponent);
     });
 
-    it("should have card-footer class", () => {
-      const expected = "card-footer";
-      const { getByTestId } = renderComponent({});
+    describe('Card Footer Item Paragraph Component', () => {
+        const renderComponent = (props: CardFooterItemParagraphProps) =>
+            render(<CardFooterItemParagraph {...props} />);
 
-      const component = getByTestId("CardFooterItem");
+        it('should render children correctly', () => {
+            const expected = 'harvey was here';
+            const { getByTestId } = renderComponent({
+                children: expected,
+            });
 
-      expect(component).toHaveClass(expected);
+            const component = getByTestId('CardFooterItem');
+
+            expect(component).toHaveTextContent(expected);
+        });
     });
 
-    it("should render as an anchor tag", () => {
-      const { getByTestId } = renderComponent({ href: "test" });
+    describe('Card Footer Item', () => {
+        const renderComponent = <
+            E extends React.ElementType = React.ElementType
+        >(
+            props: CardFooterItemProps<E>
+        ) => render(<CardFooterItem {...props} />);
 
-      const component = getByTestId("CardFooterItem");
+        it('should render children correctly', () => {
+            const expected = 'harvey was here';
+            const { getByTestId } = renderComponent({ children: expected });
 
-      expect(component.tagName).toMatch(/a/i);
+            const component = getByTestId('CardFooterItem');
+
+            expect(component).toHaveTextContent(expected);
+        });
+
+        it('should have card-footer class', () => {
+            const expected = 'card-footer';
+            const { getByTestId } = renderComponent({});
+
+            const component = getByTestId('CardFooterItem');
+
+            expect(component).toHaveClass(expected);
+        });
+
+        it('should render as an anchor tag', () => {
+            const { getByTestId } = renderComponent({ href: 'test' });
+
+            const component = getByTestId('CardFooterItem');
+
+            expect(component.tagName).toMatch(/a/i);
+        });
+
+        it('should render as a div tag', () => {
+            const { getByTestId } = renderComponent({ as: 'div' });
+
+            const component = getByTestId('CardFooterItem');
+
+            expect(component.tagName).toMatch(/div/i);
+        });
+
+        testBulmaProps('CardFooterItem', renderComponent);
     });
-
-    it("should render as a div tag", () => {
-      const { getByTestId } = renderComponent({ as: "div" });
-
-      const component = getByTestId("CardFooterItem");
-
-      expect(component.tagName).toMatch(/div/i);
-    });
-
-    testBulmaProps("CardFooterItem", renderComponent);
-  });
 });

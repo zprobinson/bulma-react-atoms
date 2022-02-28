@@ -1,25 +1,25 @@
-import { Polymorphic } from "..";
+import { Polymorphic } from '..';
 import {
-  BulmaComponentPropsWithoutRef,
-  BulmaHelpers,
-} from "./../types/component";
+    BulmaComponentPropsWithoutRef,
+    BulmaHelpers,
+} from './../types/component';
 
-export type DropdownProps = BulmaComponentPropsWithoutRef<"div"> & {
-  isActive?: boolean;
-  isHoverable?: boolean;
-  isRightAligned?: boolean;
+export type DropdownProps = BulmaComponentPropsWithoutRef<'div'> & {
+    isActive?: boolean;
+    isHoverable?: boolean;
+    isRightAligned?: boolean;
 };
 
-export type DropdownTriggerProps = BulmaComponentPropsWithoutRef<"div">;
-export type DropdownMenuProps = BulmaComponentPropsWithoutRef<"div">;
-export type DropdownContentProps = BulmaComponentPropsWithoutRef<"div">;
+export type DropdownTriggerProps = BulmaComponentPropsWithoutRef<'div'>;
+export type DropdownMenuProps = BulmaComponentPropsWithoutRef<'div'>;
+export type DropdownContentProps = BulmaComponentPropsWithoutRef<'div'>;
 
 export type DropdownItemProps<E extends React.ElementType> = Polymorphic<
-  E,
-  BulmaHelpers & { isActive?: boolean }
+    E,
+    BulmaHelpers & { isActive?: boolean }
 >;
 
 export type DropdownDividerProps = Omit<
-  BulmaComponentPropsWithoutRef<"hr">,
-  "children"
+    BulmaComponentPropsWithoutRef<'hr'>,
+    'children'
 >;

@@ -1,9 +1,8 @@
-
-import React from "react";
-import Section from "./Section";
+import React from 'react';
+import Section from './Section';
 
 export default {
-    title: "Section"
+    title: 'Section',
 };
 
 export const WithBar = () => <Section foo="bar" />;

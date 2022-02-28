@@ -1,6 +1,6 @@
-import React from "react";
-import { useInnerBulmaProps } from "../utilities/propUtilities";
-import { MenuLinkProps } from "./Menu.types";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { MenuLinkProps } from './Menu.types';
 
 /**
  * For _\<Menu\>_ to work appropriately, the _\<MenuLink\>_ should be a child of an _\<li\>_ tag which is itself a child of the _\<MenuList\>_ component.\
@@ -11,12 +11,12 @@ import { MenuLinkProps } from "./Menu.types";
  * @see {@link [Bulma Menu Documentation](https//bulma.io/documentation/components/menu)}
  */
 const MenuLink: React.FC<MenuLinkProps> = ({ isActive = false, ...props }) => {
-  const { classNames, rest } = useInnerBulmaProps(
-    props,
-    isActive ? "is-active" : ""
-  );
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        isActive ? 'is-active' : ''
+    );
 
-  return <a data-testid="MenuLink" className={classNames} {...rest}></a>;
+    return <a data-testid="MenuLink" className={classNames} {...rest}></a>;
 };
 
 export default MenuLink;
