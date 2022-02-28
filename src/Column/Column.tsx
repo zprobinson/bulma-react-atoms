@@ -11,9 +11,9 @@ const Column: React.FC<ColumnProps> = ({
 }) => {
   const { classNames, rest } = useInnerBulmaProps(
     props,
-    foldClassNames(columnSize),
-    foldClassNames(offset),
-    foldClassNames(narrow)
+    foldClassNames(columnSize ?? ""),
+    foldClassNames(offset ?? ""),
+    foldClassNames(narrow ?? "")
   );
   return (
     <div
