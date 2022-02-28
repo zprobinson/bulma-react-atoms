@@ -2,10 +2,9 @@ import React from "react";
 import { PaginationIncrementalProps } from "./Pagination.types";
 import PaginationIncremental from "./PaginationIncremental";
 
-const PaginationNext: React.FC<Omit<PaginationIncrementalProps, "type">> = ({
-  children,
-  ...props
-}) => {
+const PaginationNext: React.FC<
+  Omit<PaginationIncrementalProps, "paginationType">
+> = ({ children, ...props }) => {
   return (
     <PaginationIncremental
       data-testid="PaginationNext"
