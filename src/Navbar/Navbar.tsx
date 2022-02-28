@@ -13,7 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({
   const { classNames, rest } = useInnerBulmaProps(
     props,
     color ?? "",
-    foldClassNames(modifiers),
+    foldClassNames(modifiers ?? ""),
     isFixedHtmlInterop ?? "",
     isTransparent ? "is-transparent" : ""
   );
