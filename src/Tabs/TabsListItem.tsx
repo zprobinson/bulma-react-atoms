@@ -17,7 +17,10 @@ const TabsListItem: React.FC<TabsListItemProps> = ({
   isActive = false,
   ...props
 }) => {
-  const { classNames, rest } = useInnerBulmaProps(props);
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
+    isActive ? "is-active" : ""
+  );
 
   return <li data-testid="TabsListItem" className={classNames} {...rest}></li>;
 };
