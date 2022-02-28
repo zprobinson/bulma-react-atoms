@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.3] - 2022-02-28
+
+### Added
+
+- `useInnerBulmaProps` function to replace the `withBulmaProps` Higher Order Component
+
+### Changed
+
+- Every single component that was exporting the component using `withBulmaProps` (i.e. all of them) has been altered to instead use the `useInnerBulmaProps` function.
+- The types for the non-trivial components has been altered in the cases where an additional helper type was required to integrate with the higher order component.
+- The types for Void Function Components has been changed to omit `'children'` from the props object type.
+
+### Removed
+
+- `withBulmaProps` higher order component has been removed in favor of using the hook internally.
+  - The helper function `withBulmaProps` is no longer exported in the external API to incentivize calling the hook instead.
+- Removed deprecated components whose functionality is covered by the polymorphic component replacements
+  - Dropdown
+    - DropdownDiv.tsx
+    - DropdownAnchor.tsx
+  - Card
+    - CardFooterItemAnchor.tsx (todo)
+    - CardFooterItemParagraph.tsx (todo)
+  - Navbar
+    - NavbarItemAnchor.tsx
+    - NavbarItemDiv.tsx
+  - Panel
+    - PanelBlockAnchor.tsx
+    - PanelBlockDiv.tsx
+    - PanelBlockLabel.tsx
+  - Tag
+    - TagAnchor.tsx
+    - TagSpan.tsx
+
 ## [0.0.2] - 2022-02-22
 
 ### Added
