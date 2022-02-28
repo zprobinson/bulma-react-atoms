@@ -1,15 +1,12 @@
 import React, { forwardRef } from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { FormFileProps } from "./Form.types";
 import useFormFieldContext from "./formFieldContext";
 
-import { InnerFormFileProps } from "./Form.types";
-
 const FormFile: React.FC<
-  InnerFormFileProps & { innerRef?: React.Ref<HTMLInputElement> }
+  FormFileProps & { innerRef?: React.Ref<HTMLInputElement> }
 > = ({
   children,
-  className,
   fileName,
   fileLabel,
   fileIcon,
@@ -23,15 +20,15 @@ const FormFile: React.FC<
   ...props
 }) => {
   const context = useFormFieldContext();
-  const classNames = foldClassNames([
-    className ?? "",
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
     color ?? "",
     size ?? context.size ?? "",
     alignment ?? "",
     hasName ? "has-name" : "",
     isFullwidth ? "is-fullwidth" : "",
-    isBoxed ? "is-boxed" : "",
-  ]);
+    isBoxed ? "is-boxed" : ""
+  );
 
   return (
     <div data-testid="FormFileDiv" className={`file ${classNames}`}>
@@ -41,7 +38,7 @@ const FormFile: React.FC<
           className={`file-input`}
           type="file"
           ref={innerRef}
-          {...props}
+          {...rest}
         />
         <span data-testid="FormFileCta" className="file-cta">
           {fileIcon ?? children}
@@ -59,11 +56,8 @@ const FormFile: React.FC<
   );
 };
 
-const WrappedBulmaFormFileInput = withBulmaProps(FormFile);
-
-export default forwardRef<
-  HTMLInputElement,
-  Parameters<typeof WrappedBulmaFormFileInput>[0]
->((props, ref) => {
-  return <WrappedBulmaFormFileInput {...props} innerRef={ref} />;
-});
+export default forwardRef<HTMLInputElement, Parameters<typeof FormFile>[0]>(
+  (props, ref) => {
+    return <FormFile {...props} innerRef={ref} />;
+  }
+);

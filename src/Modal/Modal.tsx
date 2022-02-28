@@ -1,25 +1,15 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { ModalProps } from "./Modal.types";
 
-import { InnerModalProps } from "./Modal.types";
-
-const Modal: React.FC<InnerModalProps> = ({
-  children,
-  className,
-  isActive = false,
-  ...props
-}) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    isActive ? "is-active" : "",
-  ]);
-
+const Modal: React.FC<ModalProps> = ({ isActive = false, ...props }) => {
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
+    isActive ? "is-active" : ""
+  );
   return (
-    <div data-testid="Modal" className={`modal ${classNames}`} {...props}>
-      {children}
-    </div>
+    <div data-testid="Modal" className={`modal ${classNames}`} {...rest}></div>
   );
 };
 
-export default withBulmaProps(Modal);
+export default Modal;

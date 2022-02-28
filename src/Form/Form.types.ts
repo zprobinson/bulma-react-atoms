@@ -1,31 +1,19 @@
 import { IconProps } from "./../Icon/Icon.types";
 import {
-  BulmaComponentPropsWithRef,
   BulmaComponentPropsWithoutRef,
-  WithoutHelpers,
-  Is,
+  BulmaComponentPropsWithRef,
   Has,
-  Size,
+  Is,
   OneOrMore,
+  Override,
   PrimaryColor,
   SecondaryColor,
-  Override,
+  Size,
 } from "./../types";
 
 export type FormFieldContextType = {
   size?: Size | undefined;
 };
-
-export type InnerFormFieldProps = WithoutHelpers<FormFieldProps>;
-export type InnerFormFieldLabelProps = WithoutHelpers<FormFieldLabelProps>;
-export type InnerFormControlProps = WithoutHelpers<FormControlProps>;
-export type InnerFormIconProps = WithoutHelpers<FormIconProps>;
-export type InnerFormInputProps = WithoutHelpers<FormInputProps>;
-export type InnerFormTextAreaProps = WithoutHelpers<FormTextAreaProps>;
-export type InnerFormSelectProps = WithoutHelpers<FormSelectProps>;
-export type InnerFormCheckboxProps = WithoutHelpers<FormCheckboxProps>;
-export type InnerFormRadioProps = WithoutHelpers<FormRadioProps>;
-export type InnerFormFileProps = WithoutHelpers<FormFileProps>;
 
 export type FormProps = BulmaComponentPropsWithRef<"form">;
 
@@ -72,7 +60,7 @@ export type FormInputProps = Override<
 >;
 
 export type FormTextAreaProps = Override<
-  BulmaComponentPropsWithRef<"textarea">,
+  Omit<BulmaComponentPropsWithRef<"textarea">, "children">,
   {
     size?: Size;
     color?: Is<PrimaryColor | "dark">;

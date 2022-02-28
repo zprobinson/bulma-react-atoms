@@ -1,16 +1,16 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { MenuProps } from "./Menu.types";
 
-const Menu: React.FC<React.ComponentPropsWithoutRef<"aside">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const Menu: React.FC<MenuProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
-    <aside data-testid="Menu" className={`menu ${className}`} {...props}>
-      {children}
-    </aside>
+    <aside
+      data-testid="Menu"
+      className={`menu ${classNames}`}
+      {...rest}
+    ></aside>
   );
 };
 
-export default withBulmaProps(Menu);
+export default Menu;

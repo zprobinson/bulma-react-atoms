@@ -1,28 +1,21 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { FormFieldLabelProps } from "./Form.types";
 import useFormFieldContext from "./formFieldContext";
 
-import { InnerFormFieldLabelProps } from "./Form.types";
-
-const FormFieldLabel: React.FC<InnerFormFieldLabelProps> = ({
-  className,
-  size,
-  ...props
-}) => {
+const FormFieldLabel: React.FC<FormFieldLabelProps> = ({ size, ...props }) => {
   const context = useFormFieldContext();
-  const classNames = foldClassNames([
-    className ?? "",
-    size ?? context.size ?? "",
-  ]);
-
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
+    size ?? context.size ?? ""
+  );
   return (
     <label
       data-testid="FormFieldLabel"
       className={`label ${classNames}`}
-      {...props}
+      {...rest}
     ></label>
   );
 };
 
-export default withBulmaProps(FormFieldLabel);
+export default FormFieldLabel;

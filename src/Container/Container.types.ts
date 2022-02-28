@@ -1,6 +1,4 @@
-import { BulmaComponentPropsWithoutRef, WithoutHelpers } from "../types";
-
-export type InnerContainerProps = WithoutHelpers<ContainerProps>;
+import { BulmaComponentPropsWithoutRef } from "../types";
 
 export type ContainerProps = BulmaComponentPropsWithoutRef<"div"> & {
   isFluid?: boolean;

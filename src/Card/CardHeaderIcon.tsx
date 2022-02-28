@@ -1,20 +1,16 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { CardHeaderIconProps } from "./Card.types";
 
-const CardHeaderIcon: React.FC<React.ComponentPropsWithoutRef<"button">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const CardHeaderIcon: React.FC<CardHeaderIconProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
     <button
       data-testid="CardHeaderIcon"
-      className={`card-header-icon ${className}`}
-      {...props}
-    >
-      {children}
-    </button>
+      className={`card-header-icon ${classNames}`}
+      {...rest}
+    ></button>
   );
 };
 
-export default withBulmaProps(CardHeaderIcon);
+export default CardHeaderIcon;

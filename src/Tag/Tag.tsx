@@ -1,7 +1,5 @@
 import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaPropsG } from "../utilities/propUtilities";
-
+import { useInnerBulmaProps } from "../utilities/propUtilities";
 import { TagProps } from "./Tag.types";
 
 const _default_element_ = "span";
@@ -13,17 +11,12 @@ const Tag = <E extends React.ElementType = typeof _default_element_>({
   isDelete = false,
   ...props
 }: TagProps<E>) => {
-  const { bulmaProps, componentProps } = partitionBulmaPropsG(props);
-  const helpers = foldHelpers(bulmaProps);
-  const { className, ...rest } = componentProps;
-  const classNames = foldClassNames([
-    className ?? "",
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
     color ?? "",
     size ?? "",
-    isDelete ? "is-delete" : "",
-    helpers,
-  ]);
-
+    isDelete ? "is-delete" : ""
+  );
   const Component = as ?? _default_element_;
 
   return (

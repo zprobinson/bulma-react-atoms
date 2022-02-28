@@ -1,13 +1,10 @@
 import {
+  Breakpoint,
   BulmaComponentPropsWithoutRef,
-  WithoutHelpers,
   Is,
   OneOrMore,
   PartialReadonly,
-  Breakpoint,
 } from "../types";
-
-export type InnerColumnsProps = WithoutHelpers<ColumnsProps>;
 
 export type ColumnsProps = BulmaComponentPropsWithoutRef<"div"> &
   PartialReadonly<{
@@ -16,7 +13,6 @@ export type ColumnsProps = BulmaComponentPropsWithoutRef<"div"> &
     options: OneOrMore<ColumnsOptions>;
   }>;
 
-/* --- Columns Options ---- */
 type GapOption = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
 type GapBreakpointOption = `${GapOption}-${Breakpoint}`;
 

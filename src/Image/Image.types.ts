@@ -1,15 +1,10 @@
-import { WithoutHelpers } from "./../types/component";
+import React from "react";
 import { BulmaComponentPropsWithoutRef, Is } from "..";
-
-export type InnerImageProps = WithoutHelpers<ImageProps>;
 
 export type ImageProps = BulmaComponentPropsWithoutRef<"figure"> & {
   dimension: FixedSquare | Ratio;
   isFullwidth?: boolean;
-  imgProps?: React.DetailedHTMLProps<
-    React.ImgHTMLAttributes<HTMLImageElement>,
-    HTMLImageElement
-  >;
+  imgProps?: React.ComponentPropsWithoutRef<"img">;
 };
 
 type FixedSquareOption =

@@ -1,28 +1,25 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { ImageProps } from "./Image.types";
 
-import { InnerImageProps } from "./Image.types";
-
-const Image: React.FC<InnerImageProps> = ({
+const Image: React.FC<ImageProps> = ({
   children,
-  className,
   dimension,
   imgProps,
   isFullwidth = false,
   ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
     dimension ?? "",
-    isFullwidth ? "is-fullwidth" : "",
-  ]);
+    isFullwidth ? "is-fullwidth" : ""
+  );
 
   return (
-    <figure data-testid="Image" className={`image ${classNames}`} {...props}>
+    <figure data-testid="Image" className={`image ${classNames}`} {...rest}>
       {children ?? <img {...imgProps} />}
     </figure>
   );
 };
 
-export default withBulmaProps(Image);
+export default Image;

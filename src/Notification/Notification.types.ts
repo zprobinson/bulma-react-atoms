@@ -4,10 +4,7 @@ import {
   Is,
   PrimaryColor,
   SecondaryColor,
-  WithoutHelpers,
 } from "../types";
-
-export type InnerNotificationProps = WithoutHelpers<NotificationProps>;
 
 export type NotificationProps = BulmaComponentPropsWithoutRef<"div"> & {
   onClose: () => void;

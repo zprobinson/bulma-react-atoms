@@ -1,16 +1,16 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { PanelTabsProps } from "./Panel.types";
 
-const PanelTabs: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const PanelTabs: React.FC<PanelTabsProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
-    <p data-testid="PanelTabs" className={`panel-tabs ${className}`} {...props}>
-      {children}
-    </p>
+    <p
+      data-testid="PanelTabs"
+      className={`panel-tabs ${classNames}`}
+      {...rest}
+    ></p>
   );
 };
 
-export default withBulmaProps(PanelTabs);
+export default PanelTabs;

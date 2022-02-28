@@ -1,20 +1,16 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { LevelItemProps } from "./Level.types";
 
-const LevelItem: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const LevelItem: React.FC<LevelItemProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
     <div
       data-testid="LevelItem"
-      className={`level-item ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
+      className={`level-item ${classNames}`}
+      {...rest}
+    ></div>
   );
 };
 
-export default withBulmaProps(LevelItem);
+export default LevelItem;

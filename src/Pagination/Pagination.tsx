@@ -1,34 +1,28 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { PaginationProps } from "./Pagination.types";
 
-import { InnerPaginationProps } from "./Pagination.types";
-
-const Pagination: React.FC<InnerPaginationProps> = ({
-  children,
-  className,
+const Pagination: React.FC<PaginationProps> = ({
   alignment,
   size,
   isRounded = false,
   ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
     alignment ?? "",
     size ?? "",
-    isRounded ? "is-rounded" : "",
-  ]);
+    isRounded ? "is-rounded" : ""
+  );
   return (
     <nav
       data-testid="Pagination"
       className={`pagination ${classNames}`}
       role="navigation"
       aria-label="pagination"
-      {...props}
-    >
-      {children}
-    </nav>
+      {...rest}
+    ></nav>
   );
 };
 
-export default withBulmaProps(Pagination);
+export default Pagination;

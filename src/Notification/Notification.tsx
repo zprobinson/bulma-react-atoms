@@ -1,25 +1,22 @@
 import React from "react";
 import { Delete } from "../Delete";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { NotificationProps } from "./Notification.types";
 
-import { InnerNotificationProps } from "./Notification.types";
-
-const Notification: React.FC<InnerNotificationProps> = ({
+const Notification: React.FC<NotificationProps> = ({
   children,
-  className,
   onClose,
   color,
   deleteProps,
   ...props
 }) => {
-  const classNames = foldClassNames([className ?? "", color ?? ""]);
+  const { classNames, rest } = useInnerBulmaProps(props, color ?? "");
 
   return (
     <div
       data-testid="Notification"
       className={`notification ${classNames}`}
-      {...props}
+      {...rest}
     >
       <Delete
         data-testid="NotificationDelete"
@@ -31,4 +28,4 @@ const Notification: React.FC<InnerNotificationProps> = ({
   );
 };
 
-export default withBulmaProps(Notification);
+export default Notification;

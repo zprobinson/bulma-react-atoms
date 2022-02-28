@@ -1,22 +1,16 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { ContentProps } from "./Content.types";
 
-import { InnerContentProps } from "./Content.types";
-
-const Content: React.FC<InnerContentProps> = ({
-  children,
-  className,
-  size,
-  ...props
-}) => {
-  const classNames = foldClassNames([className ?? "", size ?? ""]);
-
+const Content: React.FC<ContentProps> = ({ size, ...props }) => {
+  const { classNames, rest } = useInnerBulmaProps(props, size ?? "");
   return (
-    <div data-testid="Content" className={`content ${classNames}`} {...props}>
-      {children}
-    </div>
+    <div
+      data-testid="Content"
+      className={`content ${classNames}`}
+      {...rest}
+    ></div>
   );
 };
 
-export default withBulmaProps(Content);
+export default Content;

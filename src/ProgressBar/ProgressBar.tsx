@@ -1,26 +1,27 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { ProgressBarProps } from "./ProgressBar.types";
 
-import { InnerProgressBarProps } from "./ProgressBar.types";
-
-const ProgressBar: React.VFC<Omit<InnerProgressBarProps, "children">> = ({
-  className,
+const ProgressBar: React.VFC<ProgressBarProps> = ({
   color,
   size,
   ...props
 }) => {
-  const classNames = foldClassNames([className ?? "", color ?? "", size ?? ""]);
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
+    color ?? "",
+    size ?? ""
+  );
 
   return (
     <progress
       data-testid="ProgressBar"
       className={`progress ${classNames}`}
-      {...props}
+      {...rest}
     >
       {props.value ?? undefined}
     </progress>
   );
 };
 
-export default withBulmaProps(ProgressBar);
+export default ProgressBar;

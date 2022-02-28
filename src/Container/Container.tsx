@@ -1,31 +1,25 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { ContainerProps } from "./Container.types";
 
-import { InnerContainerProps } from "./Container.types";
-
-const Container: React.FC<InnerContainerProps> = ({
-  children,
-  className,
+const Container: React.FC<ContainerProps> = ({
   breakpoint,
   isFluid = false,
   ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
     breakpoint ?? "",
-    isFluid ? "is-fluid" : "",
-  ]);
+    isFluid ? "is-fluid" : ""
+  );
 
   return (
     <div
       data-testid="Container"
       className={`container ${classNames}`}
-      {...props}
-    >
-      {children}
-    </div>
+      {...rest}
+    ></div>
   );
 };
 
-export default withBulmaProps(Container);
+export default Container;

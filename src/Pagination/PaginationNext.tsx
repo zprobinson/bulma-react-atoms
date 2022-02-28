@@ -1,20 +1,19 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { PaginationIncrementalProps } from "./Pagination.types";
 import PaginationIncremental from "./PaginationIncremental";
 
-import { InnerPaginationIncrementalProps } from "./Pagination.types";
-
 const PaginationNext: React.FC<
-  Omit<InnerPaginationIncrementalProps, "type">
+  Omit<PaginationIncrementalProps, "paginationType">
 > = ({ children, ...props }) => {
   return (
     <PaginationIncremental
       data-testid="PaginationNext"
-      type="next"
-      children={children ?? "Next page"}
+      paginationType="next"
       {...props}
-    />
+    >
+      {children ?? "Next page"}
+    </PaginationIncremental>
   );
 };
 
-export default withBulmaProps(PaginationNext);
+export default PaginationNext;

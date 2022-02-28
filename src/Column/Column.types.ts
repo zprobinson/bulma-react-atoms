@@ -1,13 +1,10 @@
 import {
+  Breakpoint,
   BulmaComponentPropsWithoutRef,
-  WithoutHelpers,
   Is,
   OneOrMore,
   PartialReadonly,
-  Breakpoint,
 } from "../types";
-
-export type InnerColumnProps = WithoutHelpers<ColumnProps>;
 
 export type ColumnProps = BulmaComponentPropsWithoutRef<"div"> &
   PartialReadonly<{

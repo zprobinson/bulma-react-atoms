@@ -1,6 +1,4 @@
-import { BulmaComponentPropsWithoutRef, WithoutHelpers } from "../types";
-
-export type InnerTagsProps = WithoutHelpers<TagsProps>;
+import { BulmaComponentPropsWithoutRef } from "../types";
 
 export type TagsProps = BulmaComponentPropsWithoutRef<"div"> & {
   hasAddons?: boolean;

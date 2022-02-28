@@ -2,9 +2,6 @@ import React from "react";
 import { fireEvent, render } from "@testing-library/react";
 
 import Panel from "./Panel";
-import PanelBlockAnchor from "./PanelBlockAnchor";
-import PanelBlockDiv from "./PanelBlockDiv";
-import PanelBlockLabel from "./PanelBlockLabel";
 import PanelBlock from "./PanelBlock";
 import PanelHeading from "./PanelHeading";
 import PanelIcon from "./PanelIcon";
@@ -12,9 +9,6 @@ import PanelTab from "./PanelTab";
 import PanelTabs from "./PanelTabs";
 import {
   PanelProps,
-  PanelBlockAnchorProps,
-  PanelBlockDivProps,
-  PanelBlockLabelProps,
   PanelBlockProps,
   PanelHeadingProps,
   PanelIconProps,
@@ -36,70 +30,6 @@ describe("Panel Component", () => {
   });
 
   testBulmaProps("Panel", renderComponent);
-});
-
-describe("Panel Block Div Component", () => {
-  const renderComponent = (props: PanelBlockDivProps) =>
-    render(<PanelBlockDiv {...props} />);
-
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
-
-    const component = getByTestId("PanelBlock");
-
-    expect(component).toHaveTextContent(expected);
-  });
-
-  testBulmaProps("PanelBlock", renderComponent);
-});
-
-describe("Panel Block Anchor Component", () => {
-  const renderComponent = (props: PanelBlockAnchorProps) =>
-    render(<PanelBlockAnchor {...props} />);
-
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
-
-    const component = getByTestId("PanelBlock");
-
-    expect(component).toHaveTextContent(expected);
-  });
-
-  it("should recognize a single click", () => {
-    const onClick = jest.fn();
-    const { getByTestId } = renderComponent({ onClick });
-
-    const component = getByTestId("PanelBlock");
-    fireEvent.click(component);
-
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-});
-
-describe("Panel Block Label Component", () => {
-  const renderComponent = (props: PanelBlockLabelProps) =>
-    render(<PanelBlockLabel {...props} />);
-
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
-
-    const component = getByTestId("PanelBlock");
-
-    expect(component).toHaveTextContent(expected);
-  });
-
-  it("should recognize a single click", () => {
-    const onClick = jest.fn();
-    const { getByTestId } = renderComponent({ onClick });
-
-    const component = getByTestId("PanelBlock");
-    fireEvent.click(component);
-
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
 });
 
 describe("Panel Heading Component", () => {

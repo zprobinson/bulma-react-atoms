@@ -1,19 +1,18 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { FormCheckboxProps } from "./Form.types";
 
-import { InnerFormCheckboxProps } from "./Form.types";
-
-const FormCheckbox: React.FC<InnerFormCheckboxProps> = ({
+const FormCheckbox: React.FC<FormCheckboxProps> = ({
   children,
-  className,
   _innerDisabledColor,
   _innerCheckboxClassName,
   ...props
 }) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
     <label
       data-testid="FormCheckboxLabel"
-      className={`checkbox ${className}`}
+      className={`checkbox ${classNames}`}
       style={{
         cursor: props.disabled ? "not-allowed" : undefined,
         /* `disabled` is not a valid property on labels.
@@ -26,11 +25,11 @@ const FormCheckbox: React.FC<InnerFormCheckboxProps> = ({
         type="checkbox"
         data-testid="FormCheckbox"
         className={_innerCheckboxClassName}
-        {...props}
+        {...rest}
       />
       {children}
     </label>
   );
 };
 
-export default withBulmaProps(FormCheckbox);
+export default FormCheckbox;

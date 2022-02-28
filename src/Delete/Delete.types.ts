@@ -1,10 +1,10 @@
-import { WithoutHelpers } from "./../types/component";
 import { MouseEventHandler } from "react";
 import { BulmaComponentPropsWithoutRef, Size } from "..";
 
-export type InnerDeleteProps = WithoutHelpers<DeleteProps>;
-
-export type DeleteProps = BulmaComponentPropsWithoutRef<"button"> & {
+export type DeleteProps = Omit<
+  BulmaComponentPropsWithoutRef<"button">,
+  "children"
+> & {
   onClick: MouseEventHandler<HTMLButtonElement>;
   size?: DeleteSize;
 };

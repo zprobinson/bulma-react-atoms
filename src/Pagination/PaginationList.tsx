@@ -1,20 +1,16 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { PaginationListProps } from "./Pagination.types";
 
-const PaginationList: React.FC<React.ComponentPropsWithoutRef<"ul">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const PaginationList: React.FC<PaginationListProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
     <ul
       data-testid="PaginationList"
-      className={`pagination-list ${className}`}
-      {...props}
-    >
-      {children}
-    </ul>
+      className={`pagination-list ${classNames}`}
+      {...rest}
+    ></ul>
   );
 };
 
-export default withBulmaProps(PaginationList);
+export default PaginationList;

@@ -1,10 +1,4 @@
-import {
-  BulmaComponentPropsWithoutRef,
-  WithoutHelpers,
-} from "./../types/component";
-
-export type InnerMenuListItemProps = WithoutHelpers<MenuListItemProps>;
-export type InnerMenuLinkProps = WithoutHelpers<MenuLinkProps>;
+import { BulmaComponentPropsWithoutRef } from "./../types/component";
 
 export type MenuProps = BulmaComponentPropsWithoutRef<"aside">;
 

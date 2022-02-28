@@ -1,20 +1,16 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { DropdownTriggerProps } from ".";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
 
-const DropdownTrigger: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const DropdownTrigger: React.FC<DropdownTriggerProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
     <div
       data-testid="DropdownTrigger"
-      className={`dropdown-trigger ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
+      className={`dropdown-trigger ${classNames}`}
+      {...rest}
+    ></div>
   );
 };
 
-export default withBulmaProps(DropdownTrigger);
+export default DropdownTrigger;

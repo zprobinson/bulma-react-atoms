@@ -1,18 +1,10 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { TableDataCellProps } from "./Table.types";
 
-import { InnerTableDataCellProps } from "./Table.types";
-
-const TableDataCell: React.FC<InnerTableDataCellProps> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <td data-testid="TableDataCell" className={className} {...props}>
-      {children}
-    </td>
-  );
+const TableDataCell: React.FC<TableDataCellProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
+  return <td data-testid="TableDataCell" className={classNames} {...rest}></td>;
 };
 
-export default withBulmaProps(TableDataCell);
+export default TableDataCell;

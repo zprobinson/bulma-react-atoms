@@ -1,7 +1,4 @@
-import { BulmaComponentPropsWithoutRef, Size, WithoutHelpers } from "../types";
-
-export type InnerIconProps = WithoutHelpers<IconProps>;
-export type InnerIconTextProps = WithoutHelpers<IconTextProps>;
+import { BulmaComponentPropsWithoutRef, Size } from "../types";
 
 export type IconProps = BulmaComponentPropsWithoutRef<"span"> & {
   containerSize?: Exclude<Size, "is-normal">;
@@ -9,5 +6,5 @@ export type IconProps = BulmaComponentPropsWithoutRef<"span"> & {
 };
 
 export type IconTextProps = BulmaComponentPropsWithoutRef<"span" | "div"> & {
-  renderAs?: "span" | "div";
+  as?: "span" | "div";
 };

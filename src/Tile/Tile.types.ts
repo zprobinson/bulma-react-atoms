@@ -1,9 +1,4 @@
-import { BulmaComponentPropsWithoutRef, WithoutHelpers, Is } from "./../types";
-
-export type InnerTileProps = WithoutHelpers<TileProps>;
-export type InnerAncestorTileProps = WithoutHelpers<AncestorTileProps>;
-export type InnerParentTileProps = WithoutHelpers<ParentTileProps>;
-export type InnerChildTileProps = WithoutHelpers<ChildTileProps>;
+import { BulmaComponentPropsWithoutRef, Is } from "./../types";
 
 export type TileProps = BulmaComponentPropsWithoutRef<"div"> & {
   kind?: TileKind;

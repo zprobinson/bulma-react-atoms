@@ -1,16 +1,12 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { BoxProps } from "./Box.types";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
 
-const Box: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const Box: React.FC<BoxProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
-    <div data-testid="Box" className={`box ${className}`} {...props}>
-      {children}
-    </div>
+    <div data-testid="Box" className={`box ${classNames}`} {...rest}></div>
   );
 };
 
-export default withBulmaProps(Box);
+export default Box;

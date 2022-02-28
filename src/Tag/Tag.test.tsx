@@ -1,74 +1,10 @@
+import { render } from "@testing-library/react";
 import React from "react";
-import { fireEvent, render } from "@testing-library/react";
-
-import TagAnchor from "./TagAnchor";
-import TagSpan from "./TagSpan";
-import Tag from "./Tag";
-import Tags from "./Tags";
-import { TagAnchorProps, TagProps, TagSpanProps } from "./Tag.types";
-import { TagsProps } from "./Tags.types";
 import { testBulmaProps } from "../bulmaTests/bulmaTests";
-
-describe("Tag Anchor Component", () => {
-  const renderComponent = (props: TagAnchorProps) =>
-    render(<TagAnchor {...props} />);
-
-  it("should render children text correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
-
-    const component = getByTestId("Tag");
-
-    expect(component).toHaveTextContent(expected);
-  });
-
-  it("should recognize a single click", () => {
-    const onClick = jest.fn();
-    const { getByTestId } = renderComponent({ onClick });
-
-    const component = getByTestId("Tag");
-    fireEvent.click(component);
-
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-
-  it("should be able to contain an href attribute", () => {
-    const href = "www.test-href.com";
-    const { getByTestId } = renderComponent({ href });
-
-    const component = getByTestId("Tag");
-
-    expect(component).toHaveAttribute("href", href);
-  });
-
-  testBulmaProps("Tag", renderComponent);
-});
-
-describe("Tag Span Component", () => {
-  const renderComponent = (props: TagSpanProps) =>
-    render(<TagSpan {...props} />);
-
-  it("should render children text correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
-
-    const component = getByTestId("Tag");
-
-    expect(component).toHaveTextContent(expected);
-  });
-
-  it("should recognize a single click", () => {
-    const onClick = jest.fn();
-    const { getByTestId } = renderComponent({ onClick });
-
-    const button = getByTestId("Tag");
-    fireEvent.click(button);
-
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-
-  testBulmaProps("Tag", renderComponent);
-});
+import Tag from "./Tag";
+import { TagProps } from "./Tag.types";
+import Tags from "./Tags";
+import { TagsProps } from "./Tags.types";
 
 describe("Tags Component", () => {
   const renderComponent = (props: TagsProps) => render(<Tags {...props} />);

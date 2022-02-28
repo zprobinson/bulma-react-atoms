@@ -1,8 +1,6 @@
 import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
-
-import { InnerTabsListItemProps } from "./Tabs.types";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { TabsListItemProps } from "./Tabs.types";
 
 /**
  * _TabsListItem_ is only intended for use if you need to manually set the
@@ -15,22 +13,16 @@ import { InnerTabsListItemProps } from "./Tabs.types";
  * use the given _innerListItemProps_ prop instead.
  * @see TabsLink
  */
-const TabsListItem: React.FC<InnerTabsListItemProps> = ({
-  children,
-  className,
+const TabsListItem: React.FC<TabsListItemProps> = ({
   isActive = false,
   ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    isActive ? "is-active" : "",
-  ]);
-
-  return (
-    <li data-testid="TabsListItem" className={classNames} {...props}>
-      {children}
-    </li>
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
+    isActive ? "is-active" : ""
   );
+
+  return <li data-testid="TabsListItem" className={classNames} {...rest}></li>;
 };
 
-export default withBulmaProps(TabsListItem);
+export default TabsListItem;

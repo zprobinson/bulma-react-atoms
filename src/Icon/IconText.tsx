@@ -1,25 +1,18 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { IconTextProps } from "./Icon.types";
 
-import { InnerIconTextProps } from "./Icon.types";
-
-const IconText: React.FC<InnerIconTextProps> = ({
-  children,
-  className,
-  renderAs = "span",
-  ...props
-}) => {
-  const RenderAs = renderAs;
+const IconText: React.FC<IconTextProps> = ({ as = "span", ...props }) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
+  const RenderAs = as;
 
   return (
     <RenderAs
       data-testid="IconText"
-      className={`icon-text ${className}`}
-      {...props}
-    >
-      {children}
-    </RenderAs>
+      className={`icon-text ${classNames}`}
+      {...rest}
+    ></RenderAs>
   );
 };
 
-export default withBulmaProps(IconText);
+export default IconText;

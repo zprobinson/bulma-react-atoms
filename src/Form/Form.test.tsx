@@ -918,7 +918,10 @@ describe("Form Text Area Component", () => {
 
   it("should render children correctly", () => {
     const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    const { getByTestId } = renderComponent({
+      value: expected,
+      readOnly: true,
+    });
 
     const component = getByTestId("FormTextArea");
 

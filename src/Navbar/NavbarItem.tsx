@@ -1,8 +1,7 @@
-import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaPropsG } from "../utilities/propUtilities";
-
-import { InnerNavbarItemDivProps, NavbarItemProps } from "./Navbar.types";
+import React, { useMemo } from "react";
+import { foldClassNames } from "../utilities/listUtils";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { NavbarItemProps } from "./Navbar.types";
 
 const _default_element_ = "div";
 
@@ -16,25 +15,24 @@ const NavbarItem = <E extends React.ElementType = typeof _default_element_>({
   isTab = false,
   ...props
 }: NavbarItemProps<E>) => {
-  const { bulmaProps, componentProps } = partitionBulmaPropsG(props);
-  const helpers = foldHelpers(bulmaProps);
-  const { className, ...rest } = componentProps;
-  const dropdownClassName = hasDropdown
-    ? foldClassNames([
-        "has-dropdown",
-        hasDropdownUp ? "has-dropdown-up" : "",
-        isHoverable ? "is-hoverable" : "",
-      ])
-    : "";
-  const classNames = foldClassNames([
-    className ?? "",
+  const dropdownClass = useMemo(
+    () =>
+      hasDropdown
+        ? foldClassNames([
+            "has-dropdown",
+            hasDropdownUp ? "has-dropdown-up" : "",
+            isHoverable ? "is-hoverable" : "",
+          ])
+        : "",
+    [hasDropdown, hasDropdownUp, isHoverable]
+  );
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
+    dropdownClass,
     isActive ? "is-active" : "",
-    dropdownClassName,
     isExpanded ? "is-expanded" : "",
-    isTab ? "is-tab" : "",
-    helpers,
-  ]);
-
+    isTab ? "is-tab" : ""
+  );
   const Component = as ?? _default_element_;
 
   return (

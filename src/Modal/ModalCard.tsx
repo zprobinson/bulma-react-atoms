@@ -1,20 +1,16 @@
 import React from "react";
-import withBulmaProps from "../bulma";
+import { useInnerBulmaProps } from "../utilities/propUtilities";
+import { ModalCardProps } from "./Modal.types";
 
-const ModalCard: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const ModalCard: React.FC<ModalCardProps> = (props) => {
+  const { classNames, rest } = useInnerBulmaProps(props);
   return (
     <div
       data-testid="ModalCard"
-      className={`modal-card ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
+      className={`modal-card ${classNames}`}
+      {...rest}
+    ></div>
   );
 };
 
-export default withBulmaProps(ModalCard);
+export default ModalCard;

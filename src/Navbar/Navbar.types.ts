@@ -1,21 +1,12 @@
-import { WithoutHelpers } from "./../types/component";
 import {
   BulmaComponentPropsWithoutRef,
+  BulmaHelpers,
   Is,
   OneOrMore,
+  Polymorphic,
   PrimaryColor,
   SecondaryColor,
-  Polymorphic,
-  BulmaHelpers,
 } from "../types";
-
-export type InnerNavbarProps = WithoutHelpers<NavbarProps>;
-export type InnerNavbarBurgerProps = WithoutHelpers<NavbarBurgerProps>;
-export type InnerNavbarMenuProps = WithoutHelpers<NavbarMenuProps>;
-export type InnerNavbarItemAnchorProps = WithoutHelpers<NavbarItemAnchorProps>;
-export type InnerNavbarItemDivProps = WithoutHelpers<NavbarItemDivProps>;
-export type InnerNavbarLinkProps = WithoutHelpers<NavbarLinkProps>;
-export type InnerNavbarDropdownProps = WithoutHelpers<NavbarDropdownProps>;
 
 type NavbarColor = PrimaryColor | SecondaryColor;
 
@@ -30,7 +21,10 @@ export type NavbarProps = BulmaComponentPropsWithoutRef<"nav"> & {
 };
 
 export type NavbarBrandProps = BulmaComponentPropsWithoutRef<"div">;
-export type NavbarBurgerProps = BulmaComponentPropsWithoutRef<"a"> & {
+export type NavbarBurgerProps = Omit<
+  BulmaComponentPropsWithoutRef<"a">,
+  "children"
+> & {
   isActive?: boolean;
 };
 
@@ -39,26 +33,6 @@ export type NavbarMenuProps = BulmaComponentPropsWithoutRef<"div"> & {
 };
 export type NavbarMenuStartProps = BulmaComponentPropsWithoutRef<"div">;
 export type NavbarMenuEndProps = NavbarMenuStartProps;
-
-/**
- * @deprecated Use NavbarItem with the `as` prop instead.
- */
-export type NavbarItemAnchorProps = BulmaComponentPropsWithoutRef<"a"> & {
-  isActive?: boolean;
-  isExpanded?: boolean;
-  isTab?: boolean;
-};
-/**
- * @deprecated Use NavbarItem with the `as` prop instead.
- */
-export type NavbarItemDivProps = BulmaComponentPropsWithoutRef<"div"> & {
-  isActive?: boolean;
-  hasDropdown?: boolean;
-  hasDropdownUp?: boolean;
-  isHoverable?: boolean;
-  isExpanded?: boolean;
-  isTab?: boolean;
-};
 
 export type NavbarItemProps<E extends React.ElementType> = Polymorphic<
   E,
@@ -79,4 +53,7 @@ export type NavbarDropdownProps = BulmaComponentPropsWithoutRef<"div"> & {
   isBoxed?: boolean;
   isRight?: boolean;
 };
-export type NavbarDividerProps = BulmaComponentPropsWithoutRef<"hr">;
+export type NavbarDividerProps = Omit<
+  BulmaComponentPropsWithoutRef<"hr">,
+  "children"
+>;
