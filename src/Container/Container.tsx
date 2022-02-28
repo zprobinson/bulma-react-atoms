@@ -9,7 +9,7 @@ const Container: React.FC<ContainerProps> = ({
 }) => {
   const { classNames, rest } = useInnerBulmaProps(
     props,
-    breakpoint,
+    breakpoint ?? "",
     isFluid ? "is-fluid" : ""
   );
 
