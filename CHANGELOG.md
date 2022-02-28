@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `tsconfig` was updated to use strict compilation rules.
 - Every single component that was exporting the component using `withBulmaProps` (i.e. all of them) has been altered to instead use the `useInnerBulmaProps` function.
 - The types for the non-trivial components has been altered in the cases where an additional helper type was required to integrate with the higher order component.
 - The types for Void Function Components has been changed to omit `'children'` from the props object type.
