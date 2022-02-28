@@ -6,7 +6,10 @@ const CardHeaderTitle: React.FC<CardHeaderTitleProps> = ({
   isCentered,
   ...props
 }) => {
-  const { classNames, rest } = useInnerBulmaProps(props);
+  const { classNames, rest } = useInnerBulmaProps(
+    props,
+    isCentered ? "is-centered" : ""
+  );
 
   return (
     <p
