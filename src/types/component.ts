@@ -26,7 +26,7 @@ import {
 import { OneOrMore, PartialReadonly } from "./utility";
 
 export interface BulmaHelpers extends BulmaHelpersPrep {}
-export type BulmaHelpersPrep = PartialReadonly<{
+type BulmaHelpersPrep = PartialReadonly<{
   textColor: TextColor;
   backgroundColor: BackgroundColor;
 
@@ -62,8 +62,3 @@ export type BulmaComponentPropsWithoutRef<
 export type BulmaComponentPropsWithRef<
   T extends React.ElementType
 > = BulmaHelpers & React.ComponentPropsWithRef<T>;
-
-export type WithoutHelpers<T extends BulmaHelpers> = Omit<
-  T,
-  keyof BulmaHelpers
->;

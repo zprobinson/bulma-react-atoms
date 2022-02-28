@@ -1,11 +1,4 @@
-import {
-  BulmaComponentPropsWithoutRef,
-  WithoutHelpers,
-  Is,
-  OneOrMore,
-} from "../types";
-
-// TODO: either remove narrowed BulmaHelpers types or find fix around HOC. -z
+import { BulmaComponentPropsWithoutRef, Is, OneOrMore } from "../types";
 
 export type TableContainerProps = Omit<
   BulmaComponentPropsWithoutRef<"div">,
