@@ -12,9 +12,9 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 }) => {
   const { classNames, rest } = useInnerBulmaProps(
     props,
-    alignment,
-    separator,
-    size
+    alignment ?? "",
+    separator ?? "",
+    size ?? ""
   );
 
   return (
