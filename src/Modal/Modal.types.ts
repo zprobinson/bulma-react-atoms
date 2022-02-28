@@ -1,7 +1,4 @@
-import { WithoutHelpers } from "./../types/component";
 import { BulmaComponentPropsWithoutRef, Is } from "..";
-
-export type InnerModalCloseProps = WithoutHelpers<ModalCloseProps>;
 
 export type ModalProps = BulmaComponentPropsWithoutRef<"div"> & {
   isActive?: boolean;
