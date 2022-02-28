@@ -13,9 +13,9 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const { classNames, rest } = useInnerBulmaProps(
     props,
-    color,
-    size,
-    state,
+    color ?? "",
+    size ?? "",
+    state ?? "",
     foldClassNames(modifiers),
     isLoading ? "is-loading" : ""
   );
