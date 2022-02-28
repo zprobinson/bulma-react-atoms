@@ -20,8 +20,8 @@ const Columns: React.FC<ColumnsProps> = ({
   const { classNames, rest } = useInnerBulmaProps(
     props,
     getGapClass(gap),
-    responsive,
-    foldClassNames(options)
+    responsive ?? "",
+    foldClassNames(options ?? "")
   );
 
   return (
