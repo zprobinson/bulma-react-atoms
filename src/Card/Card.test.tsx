@@ -8,12 +8,8 @@ import CardHeaderIcon from './CardHeaderIcon';
 import CardImage from './CardImage';
 import CardContent from './CardContent';
 import CardFooter from './CardFooter';
-import CardFooterItemAnchor from './CardFooterItemAnchor';
-import CardFooterItemParagraph from './CardFooterItemParagraph';
 import {
     CardContentProps,
-    CardFooterItemAnchorProps,
-    CardFooterItemParagraphProps,
     CardFooterProps,
     CardHeaderIconProps,
     CardHeaderProps,
@@ -134,40 +130,6 @@ describe('Card Component', () => {
         });
 
         testBulmaProps('CardFooter', renderComponent);
-    });
-
-    describe('Card Footer Item Anchor Component', () => {
-        const renderComponent = (props: CardFooterItemAnchorProps) =>
-            render(<CardFooterItemAnchor {...props} />);
-
-        it('should render children correctly', () => {
-            const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({
-                children: expected,
-            });
-
-            const component = getByTestId('CardFooterItem');
-
-            expect(component).toHaveTextContent(expected);
-        });
-
-        testBulmaProps('CardFooterItem', renderComponent);
-    });
-
-    describe('Card Footer Item Paragraph Component', () => {
-        const renderComponent = (props: CardFooterItemParagraphProps) =>
-            render(<CardFooterItemParagraph {...props} />);
-
-        it('should render children correctly', () => {
-            const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({
-                children: expected,
-            });
-
-            const component = getByTestId('CardFooterItem');
-
-            expect(component).toHaveTextContent(expected);
-        });
     });
 
     describe('Card Footer Item', () => {

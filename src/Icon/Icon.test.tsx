@@ -38,7 +38,7 @@ describe('Icon Test Component', () => {
         const expected = 'some icon text';
         const { getByTestId } = renderComponent({
             children: expected,
-            renderAs: 'div',
+            as: 'div',
         });
 
         const component = getByTestId('IconText');

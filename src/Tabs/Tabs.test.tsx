@@ -52,8 +52,8 @@ describe('Tabs Link Component', () => {
         const onClick = jest.fn();
         const { getByTestId } = renderComponent({ onClick });
 
-        const component = getByTestId('TabsLink');
-        fireEvent.click(component.querySelector('a'));
+        const component = getByTestId('TabsLinkAnchor');
+        fireEvent.click(component);
 
         expect(onClick).toHaveBeenCalledTimes(1);
     });
