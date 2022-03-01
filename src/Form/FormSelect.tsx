@@ -13,6 +13,7 @@ const FormSelect: React.FC<
     isLoading = false,
     isMultiple = false,
     isRounded = false,
+    isFullwidth = false,
     _innerSelectClassName = '',
     _innerSelectSize,
     innerRef,
@@ -25,7 +26,8 @@ const FormSelect: React.FC<
         color ?? '',
         state ?? '',
         isMultiple ? 'is-multiple' : '',
-        isRounded ? 'is-rounded' : ''
+        isRounded ? 'is-rounded' : '',
+        isFullwidth ? 'is-fullwidth' : ''
     );
     const selectClassNames = foldClassNames([
         _innerSelectClassName,

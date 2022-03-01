@@ -935,6 +935,17 @@ describe('Form Select Component', () => {
         expect(component).toHaveAttribute('size', expected.toString());
     });
 
+    it('should have is-fullwidth class on container', () => {
+        const expected = 'is-fullwidth';
+        const isFullwidth: FormSelectProps['isFullwidth'] = true;
+
+        const { getByTestId } = renderComponent({ isFullwidth });
+
+        const component = getByTestId('FormSelectContainer');
+
+        expect(component).toHaveClass(expected);
+    });
+
     testBulmaProps('FormSelectContainer', renderComponent);
 });
 

@@ -80,6 +80,7 @@ export type FormSelectProps = Override<
         isLoading?: boolean;
         isMultiple?: boolean;
         isRounded?: boolean;
+        isFullwidth?: boolean;
         _innerSelectClassName?: React.ComponentProps<'select'>['className'];
         _innerSelectSize?: React.ComponentProps<'select'>['size'];
     }
