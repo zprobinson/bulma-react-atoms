@@ -14,6 +14,7 @@ const FormSelect: React.FC<
     isMultiple = false,
     isRounded = false,
     _innerSelectClassName = '',
+    _innerSelectSize,
     innerRef,
     ...props
 }) => {
@@ -39,6 +40,7 @@ const FormSelect: React.FC<
                 data-testid="FormSelect"
                 className={selectClassNames}
                 ref={innerRef}
+                size={_innerSelectSize}
                 {...rest}
             ></select>
         </div>

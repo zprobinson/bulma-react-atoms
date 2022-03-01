@@ -13,6 +13,7 @@ const FormInput: React.FC<
     isLoading = false,
     isRounded = false,
     type,
+    _innerInputSize,
     innerRef,
     ...props
 }) => {
@@ -33,6 +34,7 @@ const FormInput: React.FC<
             type={type ?? 'text'}
             className={`input ${classNames}`}
             ref={innerRef}
+            size={_innerInputSize}
             {...rest}
         />
     );
