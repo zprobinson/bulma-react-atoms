@@ -1,9 +1,9 @@
 // Generated with util/create-component.js
-import React from "react";
-import Message from "./Message";
+import React from 'react';
+import Message from './Message';
 
 export default {
-    title: "Message"
+    title: 'Message',
 };
 
 export const WithBar = () => <Message foo="bar" />;

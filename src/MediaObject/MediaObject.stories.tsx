@@ -1,9 +1,8 @@
-
-import React from "react";
-import MediaObject from "./MediaObject";
+import React from 'react';
+import MediaObject from './MediaObject';
 
 export default {
-    title: "MediaObject"
+    title: 'MediaObject',
 };
 
 export const WithBar = () => <MediaObject foo="bar" />;

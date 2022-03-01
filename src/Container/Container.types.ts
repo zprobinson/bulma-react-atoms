@@ -1,12 +1,12 @@
-import { BulmaComponentPropsWithoutRef } from "../types";
+import { BulmaComponentPropsWithoutRef } from '../types';
 
-export type ContainerProps = BulmaComponentPropsWithoutRef<"div"> & {
-  isFluid?: boolean;
-  breakpoint?: ContainerBreakpoint;
+export type ContainerProps = BulmaComponentPropsWithoutRef<'div'> & {
+    isFluid?: boolean;
+    breakpoint?: ContainerBreakpoint;
 };
 
 type ContainerBreakpoint =
-  | "is-widescreen"
-  | "is-fullhd"
-  | "is-max-desktop"
-  | "is-max-widescreen";
+    | 'is-widescreen'
+    | 'is-fullhd'
+    | 'is-max-desktop'
+    | 'is-max-widescreen';

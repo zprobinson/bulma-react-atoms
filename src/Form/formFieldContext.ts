@@ -1,12 +1,12 @@
-import React from "react";
-import { FormFieldContextType } from "./Form.types";
+import React from 'react';
+import { FormFieldContextType } from './Form.types';
 
 export const FormFieldContext = React.createContext<FormFieldContextType>({
-  size: undefined,
+    size: undefined,
 });
 
 const useFormFieldContext = () => {
-  return React.useContext(FormFieldContext);
+    return React.useContext(FormFieldContext);
 };
 
 export default useFormFieldContext;

@@ -1,34 +1,35 @@
-import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
 
-import Button from "./Button";
-import { ButtonProps } from "./Button.types";
-import { testBulmaProps } from "../bulmaTests/bulmaTests";
+import Button from './Button';
+import { ButtonProps } from './Button.types';
+import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
-describe("Button Component", () => {
-  const renderComponent = (props: ButtonProps) => render(<Button {...props} />);
+describe('Button Component', () => {
+    const renderComponent = (props: ButtonProps) =>
+        render(<Button {...props} />);
 
-  it("should render children text correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({
-      children: expected,
-      onClick: () => {},
+    it('should render children text correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({
+            children: expected,
+            onClick: () => {},
+        });
+
+        const component = getByTestId('Button');
+
+        expect(component).toHaveTextContent(expected);
     });
 
-    const component = getByTestId("Button");
+    it('should recognize a single click', () => {
+        const onClick = jest.fn();
+        const { getByTestId } = renderComponent({ onClick });
 
-    expect(component).toHaveTextContent(expected);
-  });
+        const button = getByTestId('Button');
+        fireEvent.click(button);
 
-  it("should recognize a single click", () => {
-    const onClick = jest.fn();
-    const { getByTestId } = renderComponent({ onClick });
+        expect(onClick).toHaveBeenCalledTimes(1);
+    });
 
-    const button = getByTestId("Button");
-    fireEvent.click(button);
-
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-
-  testBulmaProps("Button", renderComponent);
+    testBulmaProps('Button', renderComponent);
 });

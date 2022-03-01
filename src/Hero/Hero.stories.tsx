@@ -1,9 +1,8 @@
-
-import React from "react";
-import Hero from "./Hero";
+import React from 'react';
+import Hero from './Hero';
 
 export default {
-    title: "Hero"
+    title: 'Hero',
 };
 
 export const WithBar = () => <Hero foo="bar" />;

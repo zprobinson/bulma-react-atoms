@@ -1,4 +1,4 @@
-import { CardFooterItem } from ".";
+import { CardFooterItem } from '.';
 
 /**
  * @deprecated Use CardFooterItem with the `as` prop instead.

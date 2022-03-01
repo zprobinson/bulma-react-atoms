@@ -1,9 +1,9 @@
 // Generated with util/create-component.js
-import React from "react";
-import Column from "./Column";
+import React from 'react';
+import Column from './Column';
 
 export default {
-    title: "Column"
+    title: 'Column',
 };
 
 export const WithBar = () => <Column foo="bar" />;

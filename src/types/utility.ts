@@ -10,9 +10,9 @@ export type Is<TemplateLiteral extends string> = `is-${TemplateLiteral}`;
 export type Has<TemplateLiteral extends string> = `has-${TemplateLiteral}`;
 
 export type Polymorphic<
-  PolymorphicElement extends React.ElementType = React.ElementType,
-  Props extends {} = {}
+    PolymorphicElement extends React.ElementType = React.ElementType,
+    Props extends {} = {}
 > = Props &
-  Omit<React.ComponentPropsWithoutRef<PolymorphicElement>, keyof Props> & {
-    as?: PolymorphicElement;
-  };
+    Omit<React.ComponentPropsWithoutRef<PolymorphicElement>, keyof Props> & {
+        as?: PolymorphicElement;
+    };

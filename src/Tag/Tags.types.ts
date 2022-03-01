@@ -1,6 +1,6 @@
-import { BulmaComponentPropsWithoutRef } from "../types";
+import { BulmaComponentPropsWithoutRef } from '../types';
 
-export type TagsProps = BulmaComponentPropsWithoutRef<"div"> & {
-  hasAddons?: boolean;
-  groupSize?: `are-${"normal" | "medium" | "large"}`;
+export type TagsProps = BulmaComponentPropsWithoutRef<'div'> & {
+    hasAddons?: boolean;
+    groupSize?: `are-${'normal' | 'medium' | 'large'}`;
 };
