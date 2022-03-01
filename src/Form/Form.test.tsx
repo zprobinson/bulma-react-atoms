@@ -118,6 +118,16 @@ describe('Form Input Component', () => {
         expect(component).toHaveClass(expected);
     });
 
+    it('should have size attribute when provided', () => {
+        const expected: FormInputProps['_innerInputSize'] = 5;
+
+        const { getByTestId } = renderComponent({ _innerInputSize: expected });
+
+        const component = getByTestId('FormInput');
+
+        expect(component).toHaveAttribute('size', expected.toString());
+    });
+
     testBulmaProps('FormInput', renderComponent);
 });
 
@@ -911,6 +921,27 @@ describe('Form Select Component', () => {
         const { getByTestId } = renderComponent({ isLoading });
 
         const component = getByTestId('FormSelect');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have size attribute when applied', () => {
+        const expected: FormSelectProps['_innerSelectSize'] = 5;
+
+        const { getByTestId } = renderComponent({ _innerSelectSize: expected });
+
+        const component = getByTestId('FormSelect');
+
+        expect(component).toHaveAttribute('size', expected.toString());
+    });
+
+    it('should have is-fullwidth class on container', () => {
+        const expected = 'is-fullwidth';
+        const isFullwidth: FormSelectProps['isFullwidth'] = true;
+
+        const { getByTestId } = renderComponent({ isFullwidth });
+
+        const component = getByTestId('FormSelectContainer');
 
         expect(component).toHaveClass(expected);
     });

@@ -56,6 +56,7 @@ export type FormInputProps = Override<
         isLoading?: boolean;
         isRounded?: boolean;
         state?: Is<'focused' | 'hovered'>;
+        _innerInputSize?: React.ComponentProps<'input'>['size'];
     }
 >;
 
@@ -79,7 +80,9 @@ export type FormSelectProps = Override<
         isLoading?: boolean;
         isMultiple?: boolean;
         isRounded?: boolean;
-        _innerSelectClassName?: string;
+        isFullwidth?: boolean;
+        _innerSelectClassName?: React.ComponentProps<'select'>['className'];
+        _innerSelectSize?: React.ComponentProps<'select'>['size'];
     }
 >;
 
