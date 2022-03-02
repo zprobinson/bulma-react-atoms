@@ -44,3 +44,4 @@ jobs:
   displayName: Post-Build Steps
   steps:
     - ${{ parameters.postBuildSteps }}
+  condition: not(eq(length(${{ parameters.postBuildSteps }}), 0))
