@@ -1,0 +1,58 @@
+pool: Default
+
+trigger: main
+
+steps:
+- task: UseNode@1
+  displayName: 'Use Node 16.x'
+  inputs:
+    version: 16.x
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    command: 'custom'
+    customCommand: 'install --registry http://icsi-teamsrvr:8081/'
+
+- task: Npm@1
+  displayName: 'npm run compile'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run compile'
+
+- task: Npm@1
+  displayName: 'npm run build'
+  inputs:
+    command: custom
+    customCommand: 'run build'
+
+- task: Npm@1
+  displayName: 'npm run test'
+  inputs:
+    command: custom
+    customCommand: 'run test'
+
+- task: PowerShell@1
+  displayName: 'Get Version Number'
+  inputs:
+    scriptType: inlineScript
+    inlineScript: |
+    $version = (Get-Content package.json) -join "`n" | ConvertFrom-Json | Select -ExpandProperty "version"
+    Write-Host "##vso[task.setvariable variable=Version]$version";
+
+- task: CmdLine@1
+  displayName: 'Git Create Release Tag'
+  inputs:
+    filename: git
+    arguments: 'tag -a v$(Version) -m "Created release for version $(Version) and build $(Build.BuildID)."'
+    failOnStandardError: true
+
+- task: CmdLine@1
+  displayName: 'Git Push Tag'
+  inputs:
+    filename: git
+    arguments: '-c http.extraheader="AUTHORIZATION: bearer %SYSTEM_ACCESSTOKEN%" push origin --tags -q'
+    failOnStandardError: true
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)

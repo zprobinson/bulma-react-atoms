@@ -1,0 +1,17 @@
+resources:
+  pipelines:
+  - pipeline: main
+    source: control-bulma-atoms main
+    trigger:
+      branches:
+        include:
+        - main
+
+trigger: none
+
+steps:
+- task: Npm@1
+  displayName: 'npm run local-publish'
+  inputs:
+    command: custom
+    customCommand: 'run local-publish'
