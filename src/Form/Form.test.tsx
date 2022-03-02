@@ -30,6 +30,8 @@ import FormFieldBody from './FormFieldBody';
 import FormFileIcon from './FormFileIcon';
 import FormIcon from './FormIcon';
 import FormRadio from './FormRadio';
+import { FormHelpProps } from './Form.types';
+import FormHelp from './FormHelp';
 
 describe('Form Component', () => {
     const renderComponent = (props: FormProps) => render(<Form {...props} />);
@@ -1022,4 +1024,39 @@ describe('Form Text Area Component', () => {
     });
 
     testBulmaProps('FormTextArea', renderComponent);
+});
+
+describe('Form Help Component', () => {
+    const renderComponent = (props: FormHelpProps) =>
+        render(<FormHelp {...props} />);
+    const TEST_ID = 'FormHelp';
+
+    it('should render children correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({ children: expected });
+
+        const component = getByTestId(TEST_ID);
+
+        expect(component).toHaveTextContent(expected);
+    });
+
+    it('should have embedded help class name', () => {
+        const expected = 'help';
+        const { getByTestId } = renderComponent({});
+
+        const component = getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have color class when provided', () => {
+        const expected: FormHelpProps['color'] = 'is-danger';
+        const { getByTestId } = renderComponent({ color: expected });
+
+        const component = getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
+    });
+
+    testBulmaProps(TEST_ID, renderComponent);
 });

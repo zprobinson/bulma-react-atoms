@@ -10,6 +10,7 @@ export { default as Select } from './FormSelect';
 export { default as TextArea } from './FormTextArea';
 export { default as SubmitButton } from './SubmitButton';
 export { default as FormIcon } from './FormIcon';
+export { default as Help } from './FormHelp';
 
 export { default as File } from './FormFile';
 export { default as FileIcon } from './FormFileIcon';
@@ -29,4 +30,5 @@ export {
     FormIconProps,
     FormFileProps,
     FormFileIconProps,
+    FormHelpProps,
 } from './Form.types';
