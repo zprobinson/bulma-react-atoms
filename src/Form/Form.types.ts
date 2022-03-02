@@ -132,3 +132,7 @@ export type FormFileIconProps = Omit<
     FormIconProps,
     'containerSize' | 'alignment'
 >;
+
+export type FormHelpProps = BulmaComponentPropsWithoutRef<'p'> & {
+    color?: Is<PrimaryColor | SecondaryColor>;
+};
