@@ -44,4 +44,3 @@ jobs:
   displayName: Post-Build Steps
   steps:
     - ${{ parameters.postBuildSteps }}
-  condition: gt(length(join('', ${{ parameters.postBuildSteps }})), 0)
