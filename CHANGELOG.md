@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2022-03-01
+
+### Added
+
+-   `Buttons` component with `ButtonsProps` type now exists, encapsulating the logic for the [Bulma Buttons documentation](https://bulma.io/documentation/elements/button/#list-of-buttons)
+-   `Help` component with `FormHelpProps` type now exists, encapsulating hte logic for the [Bulma Form Help documentation](https://bulma.io/documentation/form/general/#complete-form-example)
+-   `ButtonProps` now includes `isSelected` prop to allow appropriate usage with `Buttons` and `has-addons`
+
+### Removed
+
+-   `ButtonProps` no longer has `onClick` as a required property
+    -   There is no need to force calling code to pass an empty function if they have no use for an `onClick`
+
 ## [0.0.3] - 2022-02-28
 
 ### Added
