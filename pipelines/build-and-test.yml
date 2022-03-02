@@ -1,0 +1,46 @@
+parameters:
+- name: postBuildSteps
+  type: stepList
+  default: []
+
+jobs:
+- job: BuildAndTest
+  displayName: Build and Test
+  steps:
+  - task: UseNode@1
+    displayName: 'Use Node 16.x'
+    inputs:
+      version: 16.x
+
+  - task: Npm@1
+    displayName: 'npm install'
+    inputs:
+      command: 'custom'
+      customCommand: 'install --registry http://icsi-teamsrvr:8081/'
+
+  - task: Npm@1
+    displayName: 'npm run compile'
+    inputs:
+      command: custom
+      verbose: false
+      customCommand: 'run compile'
+
+  - task: Npm@1
+    displayName: 'npm run build'
+    inputs:
+      command: custom
+      verbose: false
+      customCommand: 'run build'
+
+  - task: Npm@1
+    displayName: 'npm run test'
+    inputs:
+      command: custom
+      verbose: false
+      customCommand: 'run test'
+
+- job: PostBuildSteps
+  dependsOn: BuildAndTest
+  displayName: Post-Build Steps
+  steps:
+    - ${{ parameters.postBuildSteps }}
