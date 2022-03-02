@@ -1,23 +1,8 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import { CardFooterItem } from '.';
 
 /**
  * @deprecated Use CardFooterItem with the `as` prop instead.
  */
-const CardFooterAnchor: React.FC<React.ComponentPropsWithoutRef<"a">> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <a
-      data-testid="CardFooterItem"
-      className={`card-footer ${className}`}
-      {...props}
-    >
-      {children}
-    </a>
-  );
-};
+const CardFooterAnchor = CardFooterItem;
 
-export default withBulmaProps(CardFooterAnchor);
+export default CardFooterAnchor;

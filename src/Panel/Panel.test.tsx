@@ -1,227 +1,160 @@
-import React from "react";
-import { fireEvent, render } from "@testing-library/react";
+import React from 'react';
+import { fireEvent, render } from '@testing-library/react';
 
-import Panel from "./Panel";
-import PanelBlockAnchor from "./PanelBlockAnchor";
-import PanelBlockDiv from "./PanelBlockDiv";
-import PanelBlockLabel from "./PanelBlockLabel";
-import PanelBlock from "./PanelBlock";
-import PanelHeading from "./PanelHeading";
-import PanelIcon from "./PanelIcon";
-import PanelTab from "./PanelTab";
-import PanelTabs from "./PanelTabs";
+import Panel from './Panel';
+import PanelBlock from './PanelBlock';
+import PanelHeading from './PanelHeading';
+import PanelIcon from './PanelIcon';
+import PanelTab from './PanelTab';
+import PanelTabs from './PanelTabs';
 import {
-  PanelProps,
-  PanelBlockAnchorProps,
-  PanelBlockDivProps,
-  PanelBlockLabelProps,
-  PanelBlockProps,
-  PanelHeadingProps,
-  PanelIconProps,
-  PanelTabProps,
-  PanelTabsProps,
-} from "./Panel.types";
-import { testBulmaProps } from "../bulmaTests/bulmaTests";
+    PanelProps,
+    PanelBlockProps,
+    PanelHeadingProps,
+    PanelIconProps,
+    PanelTabProps,
+    PanelTabsProps,
+} from './Panel.types';
+import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
-describe("Panel Component", () => {
-  const renderComponent = (props: PanelProps) => render(<Panel {...props} />);
+describe('Panel Component', () => {
+    const renderComponent = (props: PanelProps) => render(<Panel {...props} />);
 
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    it('should render children correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({ children: expected });
 
-    const component = getByTestId("Panel");
+        const component = getByTestId('Panel');
 
-    expect(component).toHaveTextContent(expected);
-  });
+        expect(component).toHaveTextContent(expected);
+    });
 
-  testBulmaProps("Panel", renderComponent);
+    testBulmaProps('Panel', renderComponent);
 });
 
-describe("Panel Block Div Component", () => {
-  const renderComponent = (props: PanelBlockDivProps) =>
-    render(<PanelBlockDiv {...props} />);
+describe('Panel Heading Component', () => {
+    const renderComponent = (props: PanelHeadingProps) =>
+        render(<PanelHeading {...props} />);
 
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    it('should render children correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({ children: expected });
 
-    const component = getByTestId("PanelBlock");
+        const component = getByTestId('PanelHeading');
 
-    expect(component).toHaveTextContent(expected);
-  });
+        expect(component).toHaveTextContent(expected);
+    });
 
-  testBulmaProps("PanelBlock", renderComponent);
+    testBulmaProps('PanelHeading', renderComponent);
 });
 
-describe("Panel Block Anchor Component", () => {
-  const renderComponent = (props: PanelBlockAnchorProps) =>
-    render(<PanelBlockAnchor {...props} />);
+describe('Panel Icon Component', () => {
+    const renderComponent = (props: PanelIconProps) =>
+        render(<PanelIcon {...props} />);
 
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    it('should render children correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({ children: expected });
 
-    const component = getByTestId("PanelBlock");
+        const component = getByTestId('PanelIcon');
 
-    expect(component).toHaveTextContent(expected);
-  });
+        expect(component).toHaveTextContent(expected);
+    });
 
-  it("should recognize a single click", () => {
-    const onClick = jest.fn();
-    const { getByTestId } = renderComponent({ onClick });
-
-    const component = getByTestId("PanelBlock");
-    fireEvent.click(component);
-
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
+    testBulmaProps('PanelIcon', renderComponent);
 });
 
-describe("Panel Block Label Component", () => {
-  const renderComponent = (props: PanelBlockLabelProps) =>
-    render(<PanelBlockLabel {...props} />);
+describe('Panel Tab Component', () => {
+    const renderComponent = (props: PanelTabProps) =>
+        render(<PanelTab {...props} />);
 
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    it('should render children correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({ children: expected });
 
-    const component = getByTestId("PanelBlock");
+        const component = getByTestId('PanelTab');
 
-    expect(component).toHaveTextContent(expected);
-  });
+        expect(component).toHaveTextContent(expected);
+    });
 
-  it("should recognize a single click", () => {
-    const onClick = jest.fn();
-    const { getByTestId } = renderComponent({ onClick });
+    it('should recognize a single click', () => {
+        const onClick = jest.fn();
+        const { getByTestId } = renderComponent({ onClick });
 
-    const component = getByTestId("PanelBlock");
-    fireEvent.click(component);
+        const component = getByTestId('PanelTab');
+        fireEvent.click(component);
 
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
+        expect(onClick).toHaveBeenCalledTimes(1);
+    });
+
+    testBulmaProps('PanelTab', renderComponent);
 });
 
-describe("Panel Heading Component", () => {
-  const renderComponent = (props: PanelHeadingProps) =>
-    render(<PanelHeading {...props} />);
+describe('Panel Tabs Component', () => {
+    const renderComponent = (props: PanelTabsProps) =>
+        render(<PanelTabs {...props} />);
 
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    it('should render children correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({ children: expected });
 
-    const component = getByTestId("PanelHeading");
+        const component = getByTestId('PanelTabs');
 
-    expect(component).toHaveTextContent(expected);
-  });
+        expect(component).toHaveTextContent(expected);
+    });
 
-  testBulmaProps("PanelHeading", renderComponent);
+    testBulmaProps('PanelTabs', renderComponent);
 });
 
-describe("Panel Icon Component", () => {
-  const renderComponent = (props: PanelIconProps) =>
-    render(<PanelIcon {...props} />);
+describe('Panel Block Component', () => {
+    const renderComponent = <E extends React.ElementType = React.ElementType>(
+        props: PanelBlockProps<E>
+    ) => render(<PanelBlock {...props} />);
 
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    it('should render children correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({ children: expected });
 
-    const component = getByTestId("PanelIcon");
+        const component = getByTestId('PanelBlock');
 
-    expect(component).toHaveTextContent(expected);
-  });
+        expect(component).toHaveTextContent(expected);
+    });
 
-  testBulmaProps("PanelIcon", renderComponent);
-});
+    it('should have panel-block class', () => {
+        const expected = 'panel-block';
+        const { getByTestId } = renderComponent({});
 
-describe("Panel Tab Component", () => {
-  const renderComponent = (props: PanelTabProps) =>
-    render(<PanelTab {...props} />);
+        const component = getByTestId('PanelBlock');
 
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+        expect(component).toHaveClass(expected);
+    });
 
-    const component = getByTestId("PanelTab");
+    it('should render as an div tag by default', () => {
+        const { getByTestId } = renderComponent({});
 
-    expect(component).toHaveTextContent(expected);
-  });
+        const component = getByTestId('PanelBlock');
 
-  it("should recognize a single click", () => {
-    const onClick = jest.fn();
-    const { getByTestId } = renderComponent({ onClick });
+        expect(component.tagName).toMatch(/div/i);
+    });
 
-    const component = getByTestId("PanelTab");
-    fireEvent.click(component);
+    it('should render as an anchor tag', () => {
+        const { getByTestId } = renderComponent({ as: 'a', href: 'test' });
 
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
+        const component = getByTestId('PanelBlock');
 
-  testBulmaProps("PanelTab", renderComponent);
-});
+        expect(component.tagName).toMatch(/a/i);
+    });
 
-describe("Panel Tabs Component", () => {
-  const renderComponent = (props: PanelTabsProps) =>
-    render(<PanelTabs {...props} />);
+    it('should render as a label tag', () => {
+        const { getByTestId } = renderComponent({
+            as: 'label',
+            htmlFor: 'test',
+        });
 
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+        const component = getByTestId('PanelBlock');
 
-    const component = getByTestId("PanelTabs");
+        expect(component.tagName).toMatch(/label/i);
+    });
 
-    expect(component).toHaveTextContent(expected);
-  });
-
-  testBulmaProps("PanelTabs", renderComponent);
-});
-
-describe("Panel Block Component", () => {
-  const renderComponent = <E extends React.ElementType = React.ElementType>(
-    props: PanelBlockProps<E>
-  ) => render(<PanelBlock {...props} />);
-
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
-
-    const component = getByTestId("PanelBlock");
-
-    expect(component).toHaveTextContent(expected);
-  });
-
-  it("should have panel-block class", () => {
-    const expected = "panel-block";
-    const { getByTestId } = renderComponent({});
-
-    const component = getByTestId("PanelBlock");
-
-    expect(component).toHaveClass(expected);
-  });
-
-  it("should render as an div tag by default", () => {
-    const { getByTestId } = renderComponent({});
-
-    const component = getByTestId("PanelBlock");
-
-    expect(component.tagName).toMatch(/div/i);
-  });
-
-  it("should render as an anchor tag", () => {
-    const { getByTestId } = renderComponent({ as: "a", href: "test" });
-
-    const component = getByTestId("PanelBlock");
-
-    expect(component.tagName).toMatch(/a/i);
-  });
-
-  it("should render as a label tag", () => {
-    const { getByTestId } = renderComponent({ as: "label", htmlFor: "test" });
-
-    const component = getByTestId("PanelBlock");
-
-    expect(component.tagName).toMatch(/label/i);
-  });
-
-  testBulmaProps("PanelBlock", renderComponent);
+    testBulmaProps('PanelBlock', renderComponent);
 });

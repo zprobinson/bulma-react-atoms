@@ -1,28 +1,18 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { DynamicHeadingElement, SubtitleProps } from './Title.types';
 
-import { DynamicHeadingElement, InnerSubtitleProps } from "./Title.types";
+const Subtitle: React.FC<SubtitleProps> = ({ size = '3', ...props }) => {
+    const { classNames, rest } = useInnerBulmaProps(props, `is-${size}`);
+    const Component = `h${size}` as DynamicHeadingElement;
 
-const Subtitle: React.FC<InnerSubtitleProps> = ({
-  children,
-  className,
-  size = "3",
-  ...props
-}) => {
-  const classNames = foldClassNames([className ?? "", `is-${size}`]);
-
-  const RenderAs = `h${size}` as DynamicHeadingElement;
-
-  return (
-    <RenderAs
-      data-testid="Subtitle"
-      className={`subtitle ${classNames}`}
-      {...props}
-    >
-      {children}
-    </RenderAs>
-  );
+    return (
+        <Component
+            data-testid="Subtitle"
+            className={`subtitle ${classNames}`}
+            {...rest}
+        ></Component>
+    );
 };
 
-export default withBulmaProps(Subtitle);
+export default Subtitle;

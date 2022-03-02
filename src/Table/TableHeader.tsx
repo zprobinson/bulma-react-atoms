@@ -1,18 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { TableHeaderProps } from './Table.types';
 
-import { InnerTableHeaderProps } from "./Table.types";
-
-const TableHeader: React.FC<InnerTableHeaderProps> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <thead data-testid="TableHeader" className={className} {...props}>
-      {children}
-    </thead>
-  );
+const TableHeader: React.FC<TableHeaderProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <thead
+            data-testid="TableHeader"
+            className={classNames}
+            {...rest}
+        ></thead>
+    );
 };
 
-export default withBulmaProps(TableHeader);
+export default TableHeader;

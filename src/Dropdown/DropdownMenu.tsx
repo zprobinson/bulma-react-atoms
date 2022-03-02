@@ -1,21 +1,17 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { DropdownMenuProps } from './Dropdown.types';
 
-const DropdownMenu: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <div
-      data-testid="DropdownMenu"
-      className={`dropdown-menu ${className}`}
-      role="menu"
-      {...props}
-    >
-      {children}
-    </div>
-  );
+const DropdownMenu: React.FC<DropdownMenuProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <div
+            data-testid="DropdownMenu"
+            className={`dropdown-menu ${classNames}`}
+            role="menu"
+            {...rest}
+        ></div>
+    );
 };
 
-export default withBulmaProps(DropdownMenu);
+export default DropdownMenu;

@@ -1,3 +1,3 @@
-import { BulmaComponentPropsWithoutRef } from "./../types";
+import { BulmaComponentPropsWithoutRef } from './../types';
 
-export type FooterProps = BulmaComponentPropsWithoutRef<"footer">;
+export type FooterProps = BulmaComponentPropsWithoutRef<'footer'>;

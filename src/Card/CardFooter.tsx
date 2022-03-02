@@ -1,20 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { CardFooterProps } from './Card.types';
 
-const CardFooter: React.FC<React.ComponentPropsWithoutRef<"footer">> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <footer
-      data-testid="CardFooter"
-      className={`card-footer ${className}`}
-      {...props}
-    >
-      {children}
-    </footer>
-  );
+const CardFooter: React.FC<CardFooterProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <footer
+            data-testid="CardFooter"
+            className={`card-footer ${classNames}`}
+            {...rest}
+        ></footer>
+    );
 };
 
-export default withBulmaProps(CardFooter);
+export default CardFooter;

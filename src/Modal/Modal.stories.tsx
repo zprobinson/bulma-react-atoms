@@ -1,9 +1,9 @@
 // Generated with util/create-component.js
-import React from "react";
-import Modal from "./Modal";
+import React from 'react';
+import Modal from './Modal';
 
 export default {
-    title: "Modal"
+    title: 'Modal',
 };
 
 export const WithBar = () => <Modal foo="bar" />;

@@ -1,9 +1,8 @@
-
-import React from "react";
-import Level from "./Level";
+import React from 'react';
+import Level from './Level';
 
 export default {
-    title: "Level"
+    title: 'Level',
 };
 
 export const WithBar = () => <Level foo="bar" />;

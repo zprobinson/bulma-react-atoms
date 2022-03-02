@@ -1,9 +1,8 @@
-
-import React from "react";
-import Panel from "./Panel";
+import React from 'react';
+import Panel from './Panel';
 
 export default {
-    title: "Panel"
+    title: 'Panel',
 };
 
 export const WithBar = () => <Panel foo="bar" />;

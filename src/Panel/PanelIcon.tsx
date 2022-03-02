@@ -1,23 +1,22 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { PanelIconProps } from './Panel.types';
 
-import { InnerPanelIconProps } from "./Panel.types";
-
-const PanelIcon: React.FC<InnerPanelIconProps> = ({
-  children,
-  className,
-  iconFontClass,
-  ...props
+const PanelIcon: React.FC<PanelIconProps> = ({
+    children,
+    iconFontClass,
+    ...props
 }) => {
-  return (
-    <span
-      data-testid="PanelIcon"
-      className={`panel-icon ${className}`}
-      {...props}
-    >
-      {children ?? <i className={iconFontClass}></i>}
-    </span>
-  );
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <span
+            data-testid="PanelIcon"
+            className={`panel-icon ${classNames}`}
+            {...rest}
+        >
+            {children ?? <i className={iconFontClass}></i>}
+        </span>
+    );
 };
 
-export default withBulmaProps(PanelIcon);
+export default PanelIcon;

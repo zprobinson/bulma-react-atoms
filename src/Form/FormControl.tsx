@@ -1,33 +1,31 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { foldClassNames } from '../utilities/listUtils';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { FormControlProps } from './Form.types';
+import useFormFieldContext from './formFieldContext';
 
-import { InnerFormControlProps } from "./Form.types";
-import useFormFieldContext from "./formFieldContext";
-
-const FormControl: React.FC<InnerFormControlProps> = ({
-  className,
-  iconAlignment = [],
-  isFullwidth = false,
-  isLoading = false,
-  ...props
+const FormControl: React.FC<FormControlProps> = ({
+    iconAlignment = [],
+    isFullwidth = false,
+    isLoading = false,
+    ...props
 }) => {
-  const context = useFormFieldContext();
-  const classNames = foldClassNames([
-    className ?? "",
-    foldClassNames(iconAlignment) ?? "",
-    isFullwidth ? "is-fullwidth" : "",
-    isLoading ? "is-loading" : "",
-    context.size ?? "",
-  ]);
+    const context = useFormFieldContext();
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        foldClassNames(iconAlignment) ?? '',
+        isFullwidth ? 'is-fullwidth' : '',
+        isLoading ? 'is-loading' : '',
+        context.size ?? ''
+    );
 
-  return (
-    <div
-      data-testid="FormControl"
-      className={`control ${classNames}`}
-      {...props}
-    ></div>
-  );
+    return (
+        <div
+            data-testid="FormControl"
+            className={`control ${classNames}`}
+            {...rest}
+        ></div>
+    );
 };
 
-export default withBulmaProps(FormControl);
+export default FormControl;

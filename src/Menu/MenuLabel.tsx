@@ -1,20 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { MenuLabelProps } from './Menu.types';
 
-const MenuLabel: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
-  children,
-  className,
-  ...props
-}) => {
+const MenuLabel: React.FC<MenuLabelProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
     return (
-      <p
-        data-testid="MenuLabel"
-        className={`menu-label ${className}`}
-        {...props}
-      >
-        {children}
-      </p>
+        <p
+            data-testid="MenuLabel"
+            className={`menu-label ${classNames}`}
+            {...rest}
+        ></p>
     );
-}
+};
 
-export default withBulmaProps(MenuLabel);
+export default MenuLabel;

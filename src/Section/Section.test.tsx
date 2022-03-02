@@ -1,43 +1,43 @@
-import React from "react";
-import { render } from "@testing-library/react";
+import React from 'react';
+import { render } from '@testing-library/react';
 
-import Section from "./Section";
-import { SectionProps } from "./Section.types";
-import { testBulmaProps } from "../bulmaTests/bulmaTests";
+import Section from './Section';
+import { SectionProps } from './Section.types';
+import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
-describe("Section Component", () => {
-  const renderComponent = (props: SectionProps) =>
-    render(<Section {...props} />);
+describe('Section Component', () => {
+    const renderComponent = (props: SectionProps) =>
+        render(<Section {...props} />);
 
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    it('should render children correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({ children: expected });
 
-    const component = getByTestId("Section");
+        const component = getByTestId('Section');
 
-    expect(component).toHaveTextContent(expected);
-  });
-
-  it("should have the section class", () => {
-    const expected = "section";
-    const { getByTestId } = renderComponent({ className: "foo-bar" });
-
-    const component = getByTestId("Section");
-
-    expect(component).toHaveClass(expected);
-  });
-
-  it("should have the appropriate size class", () => {
-    const expected: SectionProps["size"] = "is-large";
-    const { getByTestId } = renderComponent({
-      className: "foo-bar",
-      size: expected,
+        expect(component).toHaveTextContent(expected);
     });
 
-    const component = getByTestId("Section");
+    it('should have the section class', () => {
+        const expected = 'section';
+        const { getByTestId } = renderComponent({ className: 'foo-bar' });
 
-    expect(component).toHaveClass(expected);
-  });
+        const component = getByTestId('Section');
 
-  testBulmaProps("Section", renderComponent);
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have the appropriate size class', () => {
+        const expected: SectionProps['size'] = 'is-large';
+        const { getByTestId } = renderComponent({
+            className: 'foo-bar',
+            size: expected,
+        });
+
+        const component = getByTestId('Section');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    testBulmaProps('Section', renderComponent);
 });

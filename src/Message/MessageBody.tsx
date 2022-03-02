@@ -1,20 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { MessageBodyProps } from './Message.types';
 
-const MessageBody: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <div
-      data-testid="MessageBody"
-      className={`message-body ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+const MessageBody: React.FC<MessageBodyProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <div
+            data-testid="MessageBody"
+            className={`message-body ${classNames}`}
+            {...rest}
+        ></div>
+    );
 };
 
-export default withBulmaProps(MessageBody);
+export default MessageBody;

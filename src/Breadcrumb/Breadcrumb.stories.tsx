@@ -1,9 +1,9 @@
 // Generated with util/create-component.js
-import React from "react";
-import Breadcrumb from "./Breadcrumb";
+import React from 'react';
+import Breadcrumb from './Breadcrumb';
 
 export default {
-    title: "Breadcrumb"
+    title: 'Breadcrumb',
 };
 
 export const WithBar = () => <Breadcrumb foo="bar" />;

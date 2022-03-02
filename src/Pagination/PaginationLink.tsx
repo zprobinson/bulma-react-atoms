@@ -1,34 +1,27 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { PaginationLinkProps } from './Pagination.types';
 
-import { InnerPaginationLinkProps } from "./Pagination.types";
-
-const PaginationLink: React.FC<InnerPaginationLinkProps> = ({
-  children,
-  className,
-  isCurrent,
-  isDisabled,
-  innerListItemProps,
-  ...props
+const PaginationLink: React.FC<PaginationLinkProps> = ({
+    isCurrent,
+    isDisabled,
+    innerListItemProps,
+    ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    isCurrent ? "is-current" : "",
-    isDisabled ? "is-disabled" : "",
-  ]);
-
-  return (
-    <li {...innerListItemProps}>
-      <a
-        data-testid="PaginationLink"
-        className={`pagination-link ${classNames}`}
-        {...props}
-      >
-        {children}
-      </a>
-    </li>
-  );
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        isCurrent ? 'is-current' : '',
+        isDisabled ? 'is-disabled' : ''
+    );
+    return (
+        <li {...innerListItemProps}>
+            <a
+                data-testid="PaginationLink"
+                className={`pagination-link ${classNames}`}
+                {...rest}
+            ></a>
+        </li>
+    );
 };
 
-export default withBulmaProps(PaginationLink);
+export default PaginationLink;

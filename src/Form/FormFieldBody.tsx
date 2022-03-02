@@ -1,17 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { FormFieldBodyProps } from './Form.types';
 
-const FormFieldBody: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  className,
-  ...props
-}) => {
-  return (
-    <div
-      data-testid="FormFieldBody"
-      className={`field-body ${className}`}
-      {...props}
-    ></div>
-  );
+const FormFieldBody: React.FC<FormFieldBodyProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <div
+            data-testid="FormFieldBody"
+            className={`field-body ${classNames}`}
+            {...rest}
+        ></div>
+    );
 };
 
-export default withBulmaProps(FormFieldBody);
+export default FormFieldBody;

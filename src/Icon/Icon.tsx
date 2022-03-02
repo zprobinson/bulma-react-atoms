@@ -1,23 +1,19 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { IconProps } from './Icon.types';
 
-import { InnerIconProps } from "./Icon.types";
-
-const Icon: React.FC<InnerIconProps> = ({
-  children,
-  className,
-  containerSize,
-  iconFontClass,
-  ...props
+const Icon: React.FC<IconProps> = ({
+    children,
+    containerSize,
+    iconFontClass,
+    ...props
 }) => {
-  const classNames = foldClassNames([className ?? "", containerSize ?? ""]);
-
-  return (
-    <span data-testid="Icon" className={`icon ${classNames}`} {...props}>
-      {children ?? <i className={iconFontClass}></i>}
-    </span>
-  );
+    const { classNames, rest } = useInnerBulmaProps(props, containerSize ?? '');
+    return (
+        <span data-testid="Icon" className={`icon ${classNames}`} {...rest}>
+            {children ?? <i className={iconFontClass}></i>}
+        </span>
+    );
 };
 
-export default withBulmaProps(Icon);
+export default Icon;

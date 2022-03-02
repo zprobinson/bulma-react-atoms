@@ -1,5 +1,5 @@
 module.exports = (componentName) => ({
-  content: `
+    content: `
 import React from "react";
 import { render } from "@testing-library/react";
 
@@ -19,5 +19,5 @@ describe("${componentName} Component", () => {
   });
 });
 `,
-  extension: `.test.tsx`,
+    extension: `.test.tsx`,
 });

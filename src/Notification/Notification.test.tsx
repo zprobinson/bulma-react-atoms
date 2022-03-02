@@ -1,35 +1,35 @@
-import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
 
-import Notification from "./Notification";
-import { NotificationProps } from "./Notification.types";
-import { testBulmaProps } from "../bulmaTests/bulmaTests";
+import Notification from './Notification';
+import { NotificationProps } from './Notification.types';
+import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
-describe("Notification Component", () => {
-  const renderComponent = (props: NotificationProps) =>
-    render(<Notification {...props} />);
+describe('Notification Component', () => {
+    const renderComponent = (props: NotificationProps) =>
+        render(<Notification {...props} />);
 
-  it("should render children text correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({
-      children: expected,
-      onClose: () => {},
+    it('should render children text correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({
+            children: expected,
+            onClose: () => {},
+        });
+
+        const component = getByTestId('Notification');
+
+        expect(component).toHaveTextContent(expected);
     });
 
-    const component = getByTestId("Notification");
+    it('should register a click when delete button is clicked.', () => {
+        const onClick = jest.fn();
+        const { getByTestId } = renderComponent({ onClose: onClick });
 
-    expect(component).toHaveTextContent(expected);
-  });
+        const closeButton = getByTestId('NotificationDelete');
+        fireEvent.click(closeButton);
 
-  it("should register a click when delete button is clicked.", () => {
-    const onClick = jest.fn();
-    const { getByTestId } = renderComponent({ onClose: onClick });
+        expect(onClick).toHaveBeenCalledTimes(1);
+    });
 
-    const closeButton = getByTestId("NotificationDelete");
-    fireEvent.click(closeButton);
-
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-
-  testBulmaProps("Notification", renderComponent);
+    testBulmaProps('Notification', renderComponent);
 });

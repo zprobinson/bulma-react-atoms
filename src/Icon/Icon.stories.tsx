@@ -1,9 +1,9 @@
 // Generated with util/create-component.js
-import React from "react";
-import Icon from "./Icon";
+import React from 'react';
+import Icon from './Icon';
 
 export default {
-    title: "Icon"
+    title: 'Icon',
 };
 
 export const WithBar = () => <Icon foo="bar" />;

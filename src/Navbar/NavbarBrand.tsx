@@ -1,20 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { NavbarBrandProps } from './Navbar.types';
 
-const NavbarBrand: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <div
-      data-testid="NavbarBrand"
-      className={`navbar-brand ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+const NavbarBrand: React.FC<NavbarBrandProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <div
+            data-testid="NavbarBrand"
+            className={`navbar-brand ${classNames}`}
+            {...rest}
+        ></div>
+    );
 };
 
-export default withBulmaProps(NavbarBrand);
+export default NavbarBrand;

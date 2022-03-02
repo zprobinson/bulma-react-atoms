@@ -1,29 +1,23 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { CardHeaderTitleProps } from './Card.types';
 
-import { InnerCardHeaderTitleProps } from "./Card.types";
-
-const CardHeaderTitle: React.FC<InnerCardHeaderTitleProps> = ({
-  children,
-  className,
-  isCentered,
-  ...props
+const CardHeaderTitle: React.FC<CardHeaderTitleProps> = ({
+    isCentered,
+    ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    isCentered ? "is-centered" : "",
-  ]);
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        isCentered ? 'is-centered' : ''
+    );
 
-  return (
-    <p
-      data-testid="CardHeaderTitle"
-      className={`card-header-title ${classNames}`}
-      {...props}
-    >
-      {children}
-    </p>
-  );
+    return (
+        <p
+            data-testid="CardHeaderTitle"
+            className={`card-header-title ${classNames}`}
+            {...rest}
+        ></p>
+    );
 };
 
-export default withBulmaProps(CardHeaderTitle);
+export default CardHeaderTitle;
