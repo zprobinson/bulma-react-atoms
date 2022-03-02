@@ -9,12 +9,17 @@ import {
 } from '../types';
 
 export type ButtonProps = BulmaComponentPropsWithoutRef<'button'> & {
-    onClick: MouseEventHandler<HTMLButtonElement>;
     color?: ButtonColor;
     size?: Size;
     state?: Exclude<Is<State>, 'is-loading'>;
     modifiers?: OneOrMore<ButtonModifier>;
     isLoading?: boolean;
+    isSelected?: boolean;
+};
+
+export type ButtonsProps = BulmaComponentPropsWithoutRef<'div'> & {
+    hasAddons?: boolean;
+    alignment?: 'is-centered' | 'is-right';
 };
 
 type State = 'hovered' | 'focused' | 'active' | 'loading';
