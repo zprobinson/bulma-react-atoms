@@ -40,6 +40,7 @@ jobs:
       customCommand: 'run test'
 
 - job: PostBuildSteps
+  dependsOn: BuildAndTest
   displayName: Post-Build Steps
   steps:
     - ${{ parameters.postBuildSteps }}
