@@ -10,7 +10,7 @@ const Buttons: React.FC<ButtonsProps> = ({
     const { classNames, rest } = useInnerBulmaProps(
         props,
         hasAddons ? 'has-addons' : '',
-        (hasAddons && alignment) || ''
+        alignment ?? ''
     );
     return (
         <div

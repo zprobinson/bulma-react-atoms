@@ -136,22 +136,9 @@ describe('Buttons Component', () => {
         expect(component).toHaveClass(expected);
     });
 
-    it("should not have alignment class if has-addons is'nt provided", () => {
-        const redHerring: ButtonsProps['alignment'] = 'is-centered';
-        const { getByTestId } = renderComponent({ alignment: redHerring });
-
-        const component = getByTestId(TEST_ID);
-
-        expect(component).not.toHaveClass(redHerring);
-    });
-
-    it('should have alignment class if has-addons is provided', () => {
+    it('should have alignment class when provided', () => {
         const expected: ButtonsProps['alignment'] = 'is-right';
-        const hasAddons: ButtonsProps['hasAddons'] = true;
-        const { getByTestId } = renderComponent({
-            alignment: expected,
-            hasAddons,
-        });
+        const { getByTestId } = renderComponent({ alignment: expected });
 
         const component = getByTestId(TEST_ID);
 
