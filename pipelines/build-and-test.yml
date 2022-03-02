@@ -39,7 +39,6 @@ jobs:
       verbose: false
       customCommand: 'run test'
 
-jobs:
 - job: PostBuildSteps
   displayName: Post-Build Steps
   steps:
