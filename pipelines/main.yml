@@ -1,6 +1,7 @@
 pool: Default
 
-trigger: main
+trigger:
+- main
 
 extends:
   template: build-and-test.yml
