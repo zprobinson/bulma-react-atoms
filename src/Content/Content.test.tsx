@@ -15,41 +15,34 @@ describe('Content Component', () => {
 
         const component = getByTestId('Content');
 
-<<<<<<< HEAD
-    expect(component).toHaveTextContent(expected);
-  });
-  
-  it("should have class 'content'", () => {
-    const expected = "content";
-    const { getByTestId } = renderComponent({});
-
-    const component = getByTestId("Content");
-
-    expect(component).toHaveClass(expected);
-  });
-  
-  it("should always render as a div tag", () => {
-    const { getByTestId } = renderComponent({});
-
-    const component = getByTestId("Content");
-
-    expect(component.tagName).toMatch(/div/i);
-  })
-
-  it("should have medium content size", () => {
-    const expected: ContentProps["size"] = "is-medium";
-    const { getByTestId } = renderComponent({ size: expected });
-
-    const component = getByTestId("Content");
-
-    expect(component).toHaveClass(expected);
-  });
-  
-  testBulmaProps("Content", renderComponent);
-=======
         expect(component).toHaveTextContent(expected);
     });
 
+    it("should have class 'content'", () => {
+        const expected = 'content';
+        const { getByTestId } = renderComponent({});
+
+        const component = getByTestId('Content');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should always render as a div tag', () => {
+        const { getByTestId } = renderComponent({});
+
+        const component = getByTestId('Content');
+
+        expect(component.tagName).toMatch(/div/i);
+    });
+
+    it('should have medium content size', () => {
+        const expected: ContentProps['size'] = 'is-medium';
+        const { getByTestId } = renderComponent({ size: expected });
+
+        const component = getByTestId('Content');
+
+        expect(component).toHaveClass(expected);
+    });
+
     testBulmaProps('Content', renderComponent);
->>>>>>> development
 });

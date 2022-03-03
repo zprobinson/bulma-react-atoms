@@ -22,54 +22,49 @@ describe('Columns Component', () => {
         expect(component).toHaveTextContent(expected);
     });
 
-<<<<<<< HEAD
+    it("should have class 'columns'", () => {
+        const expected = 'columns';
+        const { getByTestId } = renderComponent({});
 
-  it("should have class 'columns'", () => {
-    const expected = "columns";
-    const { getByTestId } = renderComponent({});
+        const component = getByTestId('Columns');
 
-    const component = getByTestId("Columns");
+        expect(component).toHaveClass(expected);
+    });
 
-    expect(component).toHaveClass(expected);
-  });
+    it('should always render as a div tag', () => {
+        const { getByTestId } = renderComponent({});
 
-  it("should always render as a div tag", () => {
-    const { getByTestId } = renderComponent({});
+        const component = getByTestId('Columns');
 
-    const component = getByTestId("Columns");
+        expect(component.tagName).toMatch(/div/i);
+    });
 
-    expect(component.tagName).toMatch(/div/i);
-  })
+    it('should have gap option of 1', () => {
+        const expected: ColumnsProps['gap'] = 'is-1';
+        const { getByTestId } = renderComponent({ gap: expected });
 
-  it("should have gap option of 1", () => {
-    const expected: ColumnsProps["gap"] = "is-1";
-    const { getByTestId } = renderComponent({ gap: expected });
+        const component = getByTestId('Columns');
 
-    const component = getByTestId("Columns");
+        expect(component).toHaveClass(expected);
+    });
 
-    expect(component).toHaveClass(expected);
-  });
+    it('should have mobile responsiveness', () => {
+        const expected: ColumnsProps['responsive'] = 'is-mobile';
+        const { getByTestId } = renderComponent({ responsive: expected });
 
-  it("should have mobile responsiveness", () => {
-    const expected: ColumnsProps["responsive"] = "is-mobile";
-    const { getByTestId } = renderComponent({ responsive: expected });
+        const component = getByTestId('Columns');
 
-    const component = getByTestId("Columns");
+        expect(component).toHaveClass(expected);
+    });
 
-    expect(component).toHaveClass(expected);
-  });
+    it('should vertically aligned', () => {
+        const expected: ColumnsProps['options'] = 'is-vcentered';
+        const { getByTestId } = renderComponent({ options: expected });
 
-  it("should vertically aligned", () => {
-    const expected: ColumnsProps["options"] = "is-vcentered";
-    const { getByTestId } = renderComponent({ options: expected });
+        const component = getByTestId('Columns');
 
-    const component = getByTestId("Columns");
+        expect(component).toHaveClass(expected);
+    });
 
-    expect(component).toHaveClass(expected);
-  });
-
-  testBulmaProps("Columns", renderComponent);
-=======
     testBulmaProps('Columns', renderComponent);
->>>>>>> development
 });
