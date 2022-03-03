@@ -1,20 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { ModalCardHeaderProps } from './Modal.types';
 
-const ModalCardHeader: React.FC<React.ComponentPropsWithoutRef<"header">> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <header
-      data-testid="ModalCardHeader"
-      className={`modal-card-head ${className}`}
-      {...props}
-    >
-      {children}
-    </header>
-  );
+const ModalCardHeader: React.FC<ModalCardHeaderProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <header
+            data-testid="ModalCardHeader"
+            className={`modal-card-head ${classNames}`}
+            {...rest}
+        ></header>
+    );
 };
 
-export default withBulmaProps(ModalCardHeader);
+export default ModalCardHeader;

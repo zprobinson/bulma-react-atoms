@@ -1,9 +1,9 @@
 // Generated with util/create-component.js
-import React from "react";
-import Notification from "./Notification";
+import React from 'react';
+import Notification from './Notification';
 
 export default {
-    title: "Notification"
+    title: 'Notification',
 };
 
 export const WithBar = () => <Notification foo="bar" />;

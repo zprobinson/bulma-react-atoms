@@ -1,29 +1,28 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { HeroProps, __FULLHEIGHT_WITH_NAVBAR__ } from './Hero.types';
 
-import { InnerHeroProps, __FULLHEIGHT_WITH_NAVBAR__ } from "./Hero.types";
-
-const Hero: React.FC<InnerHeroProps> = ({
-  children,
-  className,
-  color,
-  size,
-  isFullHeightWithNavbar = false,
-  ...props
+const Hero: React.FC<HeroProps> = ({
+    color,
+    size,
+    isFullHeightWithNavbar = false,
+    ...props
 }) => {
-  const sizeClass = isFullHeightWithNavbar ? __FULLHEIGHT_WITH_NAVBAR__ : size;
-  const classNames = foldClassNames([
-    className ?? "",
-    color ?? "",
-    sizeClass ?? "",
-  ]);
-
-  return (
-    <section data-testid="Hero" className={`hero ${classNames}`} {...props}>
-      {children}
-    </section>
-  );
+    const sizeClass = isFullHeightWithNavbar
+        ? __FULLHEIGHT_WITH_NAVBAR__
+        : size;
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        color ?? '',
+        sizeClass ?? ''
+    );
+    return (
+        <section
+            data-testid="Hero"
+            className={`hero ${classNames}`}
+            {...rest}
+        ></section>
+    );
 };
 
-export default withBulmaProps(Hero);
+export default Hero;

@@ -1,39 +1,34 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { foldClassNames } from '../utilities/listUtils';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { ButtonProps } from './Button.types';
 
-import { InnerButtonProps } from "./Button.types";
-
-const Button: React.FC<InnerButtonProps> = ({
-  children,
-  className,
-  onClick,
-  color,
-  size,
-  state,
-  modifiers = [],
-  isLoading = false,
-  ...props
+const Button: React.FC<ButtonProps> = ({
+    color,
+    size,
+    state,
+    modifiers = [],
+    isLoading = false,
+    isSelected = false,
+    ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    color ?? "",
-    size ?? "",
-    state ?? "",
-    foldClassNames(modifiers),
-    isLoading ? "is-loading" : "",
-  ]);
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        color ?? '',
+        size ?? '',
+        state ?? '',
+        foldClassNames(modifiers),
+        isLoading ? 'is-loading' : '',
+        isSelected ? 'is-selected' : ''
+    );
 
-  return (
-    <button
-      data-testid="Button"
-      onClick={onClick}
-      className={`button ${classNames}`}
-      {...props}
-    >
-      {children}
-    </button>
-  );
+    return (
+        <button
+            data-testid="Button"
+            className={`button ${classNames}`}
+            {...rest}
+        ></button>
+    );
 };
 
-export default withBulmaProps(Button);
+export default Button;

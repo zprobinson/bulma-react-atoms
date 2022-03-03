@@ -1,25 +1,21 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { foldClassNames } from '../utilities/listUtils';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { TableProps } from './Table.types';
 
-import { InnerTableProps } from "./Table.types";
+const Table: React.FC<TableProps> = ({ modifiers = '', ...props }) => {
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        foldClassNames(modifiers)
+    );
 
-const Table: React.FC<InnerTableProps> = ({
-  children,
-  className,
-  modifiers = "",
-  ...props
-}) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    foldClassNames(modifiers),
-  ]);
-
-  return (
-    <table data-testid="Table" className={`table ${classNames}`} {...props}>
-      {children}
-    </table>
-  );
+    return (
+        <table
+            data-testid="Table"
+            className={`table ${classNames}`}
+            {...rest}
+        ></table>
+    );
 };
 
-export default withBulmaProps(Table);
+export default Table;

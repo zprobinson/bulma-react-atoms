@@ -1,29 +1,22 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { NavbarMenuProps } from './Navbar.types';
 
-import { InnerNavbarMenuProps } from "./Navbar.types";
-
-const NavbarMenu: React.FC<InnerNavbarMenuProps> = ({
-  children,
-  className,
-  isActive = false,
-  ...props
+const NavbarMenu: React.FC<NavbarMenuProps> = ({
+    isActive = false,
+    ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    isActive ? "is-active" : "",
-  ]);
-
-  return (
-    <div
-      data-testid="NavbarMenu"
-      className={`navbar-menu ${classNames}`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        isActive ? 'is-active' : ''
+    );
+    return (
+        <div
+            data-testid="NavbarMenu"
+            className={`navbar-menu ${classNames}`}
+            {...rest}
+        ></div>
+    );
 };
 
-export default withBulmaProps(NavbarMenu);
+export default NavbarMenu;

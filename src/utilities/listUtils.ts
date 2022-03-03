@@ -1,23 +1,16 @@
-import { BulmaHelpers } from "../types";
+import { BulmaHelpers } from '../types';
 
-const isString = (str: unknown): str is string => typeof str === "string";
+const isString = (str: unknown): str is string => typeof str === 'string';
 
 const isStringArray = (array: unknown): array is string[] =>
-  Array.isArray(array) && array.every(isString);
+    Array.isArray(array) && array.every(isString);
 
 export const foldHelpers: (helpers: BulmaHelpers) => string = (helpers) => {
-  return Object.values(helpers)
-    .filter((item) => !!item && (isString(item) || isStringArray(item)))
-    .reduce(
-      (acc, curr) =>
-        isString(curr)
-          ? [acc, curr].join(" ").trim()
-          : [acc, ...(curr as string[])].join(" ").trim(),
-      ""
-    );
+    return Object.values(helpers)
+        .filter((s) => !!s)
+        .flat()
+        .join(' ');
 };
 
 export const foldClassNames = (input: string | string[]): string =>
-  Array.isArray(input)
-    ? input.reduce((acc, curr) => [acc, curr].join(" ").trim(), "")
-    : input;
+    isStringArray(input) ? input.filter((s) => !!s).join(' ') : input;

@@ -1,18 +1,11 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { Icon } from "../Icon";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { Icon } from '../Icon';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { FormIconProps } from './Form.types';
 
-import { InnerFormIconProps } from "./Form.types";
-
-const FormIcon: React.FC<InnerFormIconProps> = ({
-  className,
-  alignment,
-  ...props
-}) => {
-  const classNames = foldClassNames([className ?? "", alignment ?? ""]);
-
-  return <Icon className={classNames} {...props} />;
+const FormIcon: React.FC<FormIconProps> = ({ alignment, ...props }) => {
+    const { classNames, rest } = useInnerBulmaProps(props, alignment ?? '');
+    return <Icon className={classNames} {...rest} />;
 };
 
-export default withBulmaProps(FormIcon);
+export default FormIcon;

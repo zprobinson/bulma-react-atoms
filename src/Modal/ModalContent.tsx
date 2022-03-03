@@ -1,20 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { ModalContentProps } from './Modal.types';
 
-const ModalContent: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <div
-      data-testid="ModalContent"
-      className={`modal-content ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+const ModalContent: React.FC<ModalContentProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <div
+            data-testid="ModalContent"
+            className={`modal-content ${classNames}`}
+            {...rest}
+        ></div>
+    );
 };
 
-export default withBulmaProps(ModalContent);
+export default ModalContent;

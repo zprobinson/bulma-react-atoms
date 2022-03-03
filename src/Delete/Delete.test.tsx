@@ -1,20 +1,22 @@
-import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
 
-import Delete from "./Delete";
-import { DeleteProps } from "./Delete.types";
-import { testBulmaProps } from "../bulmaTests/bulmaTests";
+import Delete from './Delete';
+import { DeleteProps } from './Delete.types';
+import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
-describe("Delete Component", () => {
-  const renderComponent = (props: DeleteProps) => render(<Delete {...props} />);
+describe('Delete Component', () => {
+    const renderComponent = (props: DeleteProps) =>
+        render(<Delete {...props} />);
 
-  it("should recognize a single click", () => {
-    const onClick = jest.fn();
-    const { getByTestId } = renderComponent({ onClick: onClick });
+    it('should recognize a single click', () => {
+        const onClick = jest.fn();
+        const { getByTestId } = renderComponent({ onClick: onClick });
 
-    const component = getByTestId("Delete");
-    fireEvent.click(component);
+        const component = getByTestId('Delete');
+        fireEvent.click(component);
 
+<<<<<<< HEAD
     expect(onClick).toHaveBeenCalledTimes(1);
   });
   
@@ -46,6 +48,10 @@ describe("Delete Component", () => {
 
     expect(component).toHaveClass(expected);
   });
+=======
+        expect(onClick).toHaveBeenCalledTimes(1);
+    });
+>>>>>>> development
 
-  testBulmaProps("Delete", renderComponent);
+    testBulmaProps('Delete', renderComponent);
 });

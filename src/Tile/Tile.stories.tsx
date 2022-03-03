@@ -1,9 +1,8 @@
-
-import React from "react";
-import Tile from "./Tile";
+import React from 'react';
+import Tile from './Tile';
 
 export default {
-    title: "Tile"
+    title: 'Tile',
 };
 
 export const WithBar = () => <Tile foo="bar" />;

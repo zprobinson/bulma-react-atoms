@@ -1,22 +1,24 @@
-import React from "react";
-import { render } from "@testing-library/react";
+import React from 'react';
+import { render } from '@testing-library/react';
 
-import Column from "./Column";
-import { ColumnProps } from "./Column.types";
-import { testBulmaProps } from "../bulmaTests/bulmaTests";
+import Column from './Column';
+import { ColumnProps } from './Column.types';
+import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
-describe("Column Component", () => {
-  const renderComponent = (props: ColumnProps) => render(<Column {...props} />);
+describe('Column Component', () => {
+    const renderComponent = (props: ColumnProps) =>
+        render(<Column {...props} />);
 
-  it("should render text correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    it('should render text correctly', () => {
+        const expected = 'harvey was here';
+        const { getByTestId } = renderComponent({ children: expected });
 
-    const component = getByTestId("Column");
+        const component = getByTestId('Column');
 
-    expect(component).toHaveTextContent(expected);
-  });
+        expect(component).toHaveTextContent(expected);
+    });
 
+<<<<<<< HEAD
   it("should have column class", () => {
     const expected = "column";
     const { getByTestId } = renderComponent({});
@@ -63,4 +65,7 @@ describe("Column Component", () => {
   })
 
   testBulmaProps("Column", renderComponent);
+=======
+    testBulmaProps('Column', renderComponent);
+>>>>>>> development
 });

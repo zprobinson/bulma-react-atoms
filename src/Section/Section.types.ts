@@ -1,11 +1,5 @@
-import {
-  BulmaComponentPropsWithoutRef,
-  Size,
-  WithoutHelpers,
-} from "./../types";
+import { BulmaComponentPropsWithoutRef, Size } from './../types';
 
-export type InnerSectionProps = WithoutHelpers<SectionProps>;
-
-export type SectionProps = BulmaComponentPropsWithoutRef<"section"> & {
-  size?: Extract<Size, "is-medium" | "is-large">;
+export type SectionProps = BulmaComponentPropsWithoutRef<'section'> & {
+    size?: Extract<Size, 'is-medium' | 'is-large'>;
 };

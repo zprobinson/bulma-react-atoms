@@ -1,23 +1,19 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { ModalCloseProps } from './Modal.types';
 
-import { InnerModalCloseProps } from "./Modal.types";
-
-const ModalClose: React.VFC<Omit<InnerModalCloseProps, "children">> = ({
-  className,
-  size = "is-large",
-  ...props
+const ModalClose: React.VFC<ModalCloseProps> = ({
+    size = 'is-large',
+    ...props
 }) => {
-  const classNames = foldClassNames([className ?? "", size]);
-
-  return (
-    <button
-      data-testid="ModalClose"
-      className={`modal-close ${classNames}`}
-      {...props}
-    ></button>
-  );
+    const { classNames, rest } = useInnerBulmaProps(props, size);
+    return (
+        <button
+            data-testid="ModalClose"
+            className={`modal-close ${classNames}`}
+            {...rest}
+        ></button>
+    );
 };
 
-export default withBulmaProps(ModalClose);
+export default ModalClose;

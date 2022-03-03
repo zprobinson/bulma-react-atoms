@@ -1,3 +1,3 @@
-import { BulmaComponentPropsWithoutRef } from "..";
+import { BulmaComponentPropsWithoutRef } from '..';
 
-export type BoxProps = BulmaComponentPropsWithoutRef<"div">;
+export type BoxProps = BulmaComponentPropsWithoutRef<'div'>;

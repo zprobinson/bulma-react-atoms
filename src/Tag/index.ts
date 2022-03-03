@@ -1,5 +1,4 @@
-export { default as TagAnchor } from "./TagAnchor";
-export { default as TagSpan } from "./TagSpan";
-export { default as Tags } from "./Tags";
-export { TagAnchorProps, TagSpanProps } from "./Tag.types";
-export { TagsProps } from "./Tags.types";
+export { default as Tags } from './Tags';
+export { default as Tag } from './Tag';
+export { TagsProps } from './Tags.types';
+export { TagProps } from './Tag.types';

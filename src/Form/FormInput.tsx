@@ -1,51 +1,47 @@
-import React, { forwardRef } from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
-import useFormFieldContext from "./formFieldContext";
-
-import { InnerFormInputProps } from "./Form.types";
+import React, { forwardRef } from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { FormInputProps } from './Form.types';
+import useFormFieldContext from './formFieldContext';
 
 const FormInput: React.FC<
-  InnerFormInputProps & { innerRef?: React.Ref<HTMLInputElement> }
+    FormInputProps & { innerRef?: React.Ref<HTMLInputElement> }
 > = ({
-  className,
-  size,
-  color,
-  state,
-  isStatic = false,
-  isLoading = false,
-  isRounded = false,
-  type,
-  innerRef,
-  ...props
+    size,
+    color,
+    state,
+    isStatic = false,
+    isLoading = false,
+    isRounded = false,
+    type = 'text',
+    _innerInputSize,
+    innerRef,
+    ...props
 }) => {
-  const context = useFormFieldContext();
-  const classNames = foldClassNames([
-    className ?? "",
-    size ?? context.size ?? "",
-    color ?? "",
-    state ?? "",
-    isStatic ? "is-static" : "",
-    isLoading ? "is-loading" : "",
-    isRounded ? "is-rounded" : "",
-  ]);
+    const context = useFormFieldContext();
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        size ?? context.size ?? '',
+        color ?? '',
+        state ?? '',
+        isStatic ? 'is-static' : '',
+        isLoading ? 'is-loading' : '',
+        isRounded ? 'is-rounded' : ''
+    );
 
-  return (
-    <input
-      data-testid="FormInput"
-      type={type ?? "text"}
-      className={`input ${classNames}`}
-      ref={innerRef}
-      {...props}
-    ></input>
-  );
+    return (
+        <input
+            data-testid="FormInput"
+            type={type}
+            className={`input ${classNames}`}
+            ref={innerRef}
+            size={_innerInputSize}
+            {...rest}
+        />
+    );
 };
 
-const WrappedBulmaFormInput = withBulmaProps(FormInput);
-
-export default forwardRef<
-  HTMLInputElement,
-  Parameters<typeof WrappedBulmaFormInput>[0]
->((props, ref) => {
-  return <WrappedBulmaFormInput {...props} innerRef={ref} />;
-});
+export default forwardRef<HTMLInputElement, Parameters<typeof FormInput>[0]>(
+    (props, ref) => {
+        return <FormInput {...props} innerRef={ref} />;
+    }
+);

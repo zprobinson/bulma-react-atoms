@@ -1,16 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { NavbarDividerProps } from './Navbar.types';
 
-const NavbarDivider: React.VFC<
-  Omit<React.ComponentPropsWithoutRef<"hr">, "children">
-> = ({ className, ...props }) => {
-  return (
-    <hr
-      data-testid="NavbarDivider"
-      className={`navbar-divider ${className}`}
-      {...props}
-    />
-  );
+const NavbarDivider: React.VFC<NavbarDividerProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <hr
+            data-testid="NavbarDivider"
+            className={`navbar-divider ${classNames}`}
+            {...rest}
+        />
+    );
 };
 
-export default withBulmaProps(NavbarDivider);
+export default NavbarDivider;

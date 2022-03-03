@@ -1,16 +1,10 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { TabsListProps } from './Tabs.types';
 
-const TabsList: React.FC<React.ComponentPropsWithoutRef<"ul">> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <ul data-testid="TabsList" className={className} {...props}>
-      {children}
-    </ul>
-  );
+const TabsList: React.FC<TabsListProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return <ul data-testid="TabsList" className={classNames} {...rest}></ul>;
 };
 
-export default withBulmaProps(TabsList);
+export default TabsList;

@@ -1,20 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { NavbarMenuEndProps } from './Navbar.types';
 
-const NavbarMenuEnd: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <div
-      data-testid="NavbarMenuEnd"
-      className={`navbar-end ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+const NavbarMenuEnd: React.FC<NavbarMenuEndProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <div
+            data-testid="NavbarMenuEnd"
+            className={`navbar-end ${classNames}`}
+            {...rest}
+        ></div>
+    );
 };
 
-export default withBulmaProps(NavbarMenuEnd);
+export default NavbarMenuEnd;

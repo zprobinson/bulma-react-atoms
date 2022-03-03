@@ -1,17 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { HeroHeaderProps } from './Hero.types';
 
-const HeroHeader: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
-  className,
-  ...props
-}) => {
-  return (
-    <div
-      data-testid="HeroHeader"
-      className={`hero-head ${className}`}
-      {...props}
-    ></div>
-  );
+const HeroHeader: React.FC<HeroHeaderProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <div
+            data-testid="HeroHeader"
+            className={`hero-head ${classNames}`}
+            {...rest}
+        ></div>
+    );
 };
 
-export default withBulmaProps(HeroHeader);
+export default HeroHeader;

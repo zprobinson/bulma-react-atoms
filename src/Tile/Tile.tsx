@@ -1,28 +1,29 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { TileProps } from './Tile.types';
 
-import { InnerTileProps } from "./Tile.types";
-
-const Tile: React.FC<InnerTileProps> = ({
-  className,
-  kind,
-  tileSize,
-  isVertical = false,
-  boxed = false,
-  ...props
+const Tile: React.FC<TileProps> = ({
+    kind,
+    tileSize,
+    isVertical = false,
+    boxed = false,
+    ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    kind ?? "",
-    tileSize ?? "",
-    isVertical ? "is-vertical" : "",
-    boxed ? "box" : "",
-  ]);
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        kind ?? '',
+        tileSize ?? '',
+        isVertical ? 'is-vertical' : '',
+        boxed ? 'box' : ''
+    );
 
-  return (
-    <div data-testid="Tile" className={`tile ${classNames}`} {...props}></div>
-  );
+    return (
+        <div
+            data-testid="Tile"
+            className={`tile ${classNames}`}
+            {...rest}
+        ></div>
+    );
 };
 
-export default withBulmaProps(Tile);
+export default Tile;

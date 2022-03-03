@@ -1,18 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { TableFooterProps } from './Table.types';
 
-import { InnerTableFooterProps } from "./Table.types";
-
-const TableFooter: React.FC<InnerTableFooterProps> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <tfoot data-testid="TableFooter" className={className} {...props}>
-      {children}
-    </tfoot>
-  );
+const TableFooter: React.FC<TableFooterProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <tfoot
+            data-testid="TableFooter"
+            className={classNames}
+            {...rest}
+        ></tfoot>
+    );
 };
 
-export default withBulmaProps(TableFooter);
+export default TableFooter;

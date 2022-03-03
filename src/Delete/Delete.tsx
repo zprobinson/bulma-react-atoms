@@ -1,22 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { DeleteProps } from './Delete.types';
 
-import { InnerDeleteProps } from "./Delete.types";
-
-const Delete: React.VFC<Omit<InnerDeleteProps, "children">> = ({
-  className,
-  onClick,
-  size,
-  ...props
-}) => {
-  return (
-    <button
-      data-testid="Delete"
-      onClick={onClick}
-      className={`delete ${className}`}
-      {...props}
-    ></button>
-  );
+const Delete: React.VFC<DeleteProps> = ({ size, ...props }) => {
+    const { classNames, rest } = useInnerBulmaProps(props, size ?? '');
+    return (
+        <button
+            data-testid="Delete"
+            className={`delete ${classNames}`}
+            {...rest}
+        ></button>
+    );
 };
 
-export default withBulmaProps(Delete);
+export default Delete;

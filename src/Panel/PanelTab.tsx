@@ -1,24 +1,14 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
-import { InnerPanelTabProps } from "./Panel.types";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { PanelTabProps } from './Panel.types';
 
-const PanelTab: React.FC<InnerPanelTabProps> = ({
-  children,
-  className,
-  isActive = false,
-  ...props
-}) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    isActive ? "is-active" : "",
-  ]);
+const PanelTab: React.FC<PanelTabProps> = ({ isActive = false, ...props }) => {
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        isActive ? 'is-active' : ''
+    );
 
-  return (
-    <a data-testid="PanelTab" className={classNames} {...props}>
-      {children}
-    </a>
-  );
+    return <a data-testid="PanelTab" className={classNames} {...rest}></a>;
 };
 
-export default withBulmaProps(PanelTab);
+export default PanelTab;

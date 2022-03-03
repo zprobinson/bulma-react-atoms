@@ -1,0 +1,7 @@
+pool:
+  name: Default
+
+trigger: none
+
+extends:
+  template: build-and-test.yml

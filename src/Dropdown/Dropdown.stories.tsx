@@ -1,9 +1,9 @@
 // Generated with util/create-component.js
-import React from "react";
-import Dropdown from "./Dropdown";
+import React from 'react';
+import Dropdown from './Dropdown';
 
 export default {
-    title: "Dropdown"
+    title: 'Dropdown',
 };
 
 export const WithBar = () => <Dropdown foo="bar" />;

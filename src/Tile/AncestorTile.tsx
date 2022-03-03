@@ -1,11 +1,9 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import Tile from "./Tile";
+import React from 'react';
+import Tile from './Tile';
+import { AncestorTileProps } from './Tile.types';
 
-import { InnerAncestorTileProps } from "./Tile.types";
-
-const AncestorTile: React.FC<InnerAncestorTileProps> = (props) => {
-  return <Tile kind="is-ancestor" {...props} />;
+const AncestorTile: React.FC<AncestorTileProps> = (props) => {
+    return <Tile kind="is-ancestor" {...props} />;
 };
 
-export default withBulmaProps(AncestorTile);
+export default AncestorTile;

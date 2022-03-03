@@ -1,29 +1,22 @@
-import React from "react";
-import withBulmaProps from "../bulma";
-import { foldClassNames } from "../utilities/listUtils";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { NavbarLinkProps } from './Navbar.types';
 
-import { InnerNavbarLinkProps } from "./Navbar.types";
-
-const NavbarLink: React.FC<InnerNavbarLinkProps> = ({
-  children,
-  className,
-  isArrowless = false,
-  ...props
+const NavbarLink: React.FC<NavbarLinkProps> = ({
+    isArrowless = false,
+    ...props
 }) => {
-  const classNames = foldClassNames([
-    className ?? "",
-    isArrowless ? "is-arrowless" : "",
-  ]);
-
-  return (
-    <a
-      data-testid="NavbarLink"
-      className={`navbar-link ${classNames}`}
-      {...props}
-    >
-      {children}
-    </a>
-  );
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        isArrowless ? 'is-arrowless' : ''
+    );
+    return (
+        <a
+            data-testid="NavbarLink"
+            className={`navbar-link ${classNames}`}
+            {...rest}
+        ></a>
+    );
 };
 
-export default withBulmaProps(NavbarLink);
+export default NavbarLink;

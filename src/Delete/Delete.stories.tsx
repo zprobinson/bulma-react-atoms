@@ -1,9 +1,9 @@
 // Generated with util/create-component.js
-import React from "react";
-import Delete from "./Delete";
+import React from 'react';
+import Delete from './Delete';
 
 export default {
-    title: "Delete"
+    title: 'Delete',
 };
 
 export const WithBar = () => <Delete foo="bar" />;

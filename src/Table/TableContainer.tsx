@@ -1,22 +1,16 @@
-import React from "react";
-import withBulmaProps from "../bulma";
+import React from 'react';
+import { useInnerBulmaProps } from '../utilities/propUtilities';
+import { TableContainerProps } from './Table.types';
 
-import { InnerTableContainerProps } from "./Table.types";
-
-const TableContainer: React.FC<InnerTableContainerProps> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <div
-      data-testid="TableContainer"
-      className={`table-container ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+const TableContainer: React.FC<TableContainerProps> = (props) => {
+    const { classNames, rest } = useInnerBulmaProps(props);
+    return (
+        <div
+            data-testid="TableContainer"
+            className={`table-container ${classNames}`}
+            {...rest}
+        ></div>
+    );
 };
 
-export default withBulmaProps(TableContainer);
+export default TableContainer;

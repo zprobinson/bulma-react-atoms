@@ -1,9 +1,9 @@
 // Generated with util/create-component.js
-import React from "react";
-import Image from "./Image";
+import React from 'react';
+import Image from './Image';
 
 export default {
-    title: "Image"
+    title: 'Image',
 };
 
 export const WithBar = () => <Image foo="bar" />;
