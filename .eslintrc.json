@@ -9,5 +9,9 @@
         "react-app/jest",
         "plugin:jest-dom/recommended",
         "prettier"
-    ]
+    ],
+    "rules": {
+        "jsx-a11y/anchor-has-content": 0,
+        "jsx-a11y/alt-text": 0
+    }
 }
