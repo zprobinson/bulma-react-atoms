@@ -25,6 +25,7 @@ import {
 } from './bulma';
 import { OneOrMore, PartialReadonly } from './utility';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface BulmaHelpers extends BulmaHelpersPrep {}
 type BulmaHelpersPrep = PartialReadonly<{
     textColor: TextColor;
@@ -55,8 +56,10 @@ type BulmaHelpersPrep = PartialReadonly<{
     otherHelper: OneOrMore<OtherHelpers>;
 }>;
 
-export type BulmaComponentPropsWithoutRef<T extends React.ElementType> =
-    BulmaHelpers & React.ComponentPropsWithoutRef<T>;
+export type BulmaComponentPropsWithoutRef<
+    T extends React.ElementType
+> = BulmaHelpers & React.ComponentPropsWithoutRef<T>;
 
-export type BulmaComponentPropsWithRef<T extends React.ElementType> =
-    BulmaHelpers & React.ComponentPropsWithRef<T>;
+export type BulmaComponentPropsWithRef<
+    T extends React.ElementType
+> = BulmaHelpers & React.ComponentPropsWithRef<T>;

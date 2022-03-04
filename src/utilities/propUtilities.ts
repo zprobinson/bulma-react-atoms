@@ -1,10 +1,7 @@
 import React from 'react';
 import { BulmaHelpers } from '../types';
+import { BulmaComponentPropsWithoutRef } from '../types/component';
 import { foldClassNames, foldHelpers } from './listUtils';
-import {
-    BulmaComponentPropsWithoutRef,
-    BulmaComponentPropsWithRef,
-} from '../types/component';
 
 export const partitionBulmaPropsG = <
     TProps extends { className?: string } & BulmaHelpers = BulmaHelpers

@@ -11,9 +11,10 @@ describe('Notification Component', () => {
 
     it('should render children text correctly', () => {
         const expected = 'harvey was here';
+        const onClose = jest.fn();
         const { getByTestId } = renderComponent({
             children: expected,
-            onClose: () => {},
+            onClose,
         });
 
         const component = getByTestId('Notification');
