@@ -19,9 +19,9 @@ describe('Progress Bar Component', () => {
     });
 
     it('should not render any text value when not provided a value attribute', () => {
-        const { queryByText } = renderComponent({});
+        renderComponent({});
 
-        const component = queryByText(/./g);
+        const component = screen.queryByText(/./g);
 
         expect(component).not.toBeInTheDocument();
     });
