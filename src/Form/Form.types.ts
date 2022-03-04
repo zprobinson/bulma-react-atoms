@@ -1,4 +1,5 @@
 import { IconProps } from './../Icon/Icon.types';
+import { ButtonProps } from '../Button/Button.types';
 import {
     BulmaComponentPropsWithoutRef,
     BulmaComponentPropsWithRef,
@@ -102,10 +103,7 @@ export type FormRadioProps = Omit<
     'type'
 >;
 
-export type FormSubmitButtonProps = Omit<
-    BulmaComponentPropsWithoutRef<'button'>,
-    'type' | 'onClick'
->;
+export type FormSubmitButtonProps = Omit<ButtonProps, 'type' | 'onClick'>;
 
 export type FormFileProps = Override<
     BulmaComponentPropsWithRef<'input'>,

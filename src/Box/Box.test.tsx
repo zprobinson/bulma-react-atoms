@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Box from './Box';
 import { BoxProps } from './Box.types';
@@ -11,9 +11,9 @@ describe('Box Component', () => {
     it('should render children text correctly', () => {
         const expected = 'some text blah dee blah';
 
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Box');
+        const component = screen.getByTestId('Box');
 
         expect(component).toHaveTextContent(expected);
     });

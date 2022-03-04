@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Title from './Title';
 import Subtitle from './Subtitle';
@@ -11,36 +11,35 @@ describe('Title', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Title');
+        const component = screen.getByTestId('Title');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should render as h3 tag by default', () => {
-        const expected = '3';
-        const { getByRole } = renderComponent({});
+        renderComponent({});
 
-        const component = getByRole('heading', { level: 3 });
+        const component = screen.getByRole('heading', { level: 3 });
 
         expect(component).toBeInTheDocument();
     });
 
     it('should render as h1 tag', () => {
         const expected = '1';
-        const { getByRole } = renderComponent({ size: expected });
+        renderComponent({ size: expected });
 
-        const component = getByRole('heading', { level: 1 });
+        const component = screen.getByRole('heading', { level: 1 });
 
         expect(component).toBeInTheDocument();
     });
 
     it('should render as h5 tag', () => {
         const expected = '5';
-        const { getByRole } = renderComponent({ size: expected });
+        renderComponent({ size: expected });
 
-        const component = getByRole('heading', { level: 5 });
+        const component = screen.getByRole('heading', { level: 5 });
 
         expect(component).toBeInTheDocument();
     });
@@ -48,42 +47,41 @@ describe('Title', () => {
     testBulmaProps('Title', renderComponent);
 });
 
-describe('Subitle', () => {
+describe('Subtitle', () => {
     const renderComponent = (props: SubtitleProps) =>
         render(<Subtitle {...props} />);
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Subtitle');
+        const component = screen.getByTestId('Subtitle');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should render as h3 tag by default', () => {
-        const expected = '3';
-        const { getByRole } = renderComponent({});
+        renderComponent({});
 
-        const component = getByRole('heading', { level: 3 });
+        const component = screen.getByRole('heading', { level: 3 });
 
         expect(component).toBeInTheDocument();
     });
 
     it('should render as h1 tag', () => {
         const expected = '1';
-        const { getByRole } = renderComponent({ size: expected });
+        renderComponent({ size: expected });
 
-        const component = getByRole('heading', { level: 1 });
+        const component = screen.getByRole('heading', { level: 1 });
 
         expect(component).toBeInTheDocument();
     });
 
     it('should render as h5 tag', () => {
         const expected = '5';
-        const { getByRole } = renderComponent({ size: expected });
+        renderComponent({ size: expected });
 
-        const component = getByRole('heading', { level: 5 });
+        const component = screen.getByRole('heading', { level: 5 });
 
         expect(component).toBeInTheDocument();
     });

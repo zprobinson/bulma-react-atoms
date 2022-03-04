@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Breadcrumb from './Breadcrumb';
 import BreadcrumbItem from './BreadcrumbItem';
@@ -12,11 +12,47 @@ describe('Breadcrumb Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Breadcrumb');
+        const component = screen.getByTestId('Breadcrumb');
 
         expect(component).toHaveTextContent(expected);
+    });
+
+    it("should have class 'breadcrumb'", () => {
+        const expected = 'breadcrumb';
+        renderComponent({});
+
+        const component = screen.getByTestId('Breadcrumb');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have alignment is-centered', () => {
+        const expected: BreadcrumbProps['alignment'] = 'is-centered';
+        renderComponent({ alignment: expected });
+
+        const component = screen.getByTestId('Breadcrumb');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have arrow separator', () => {
+        const expected: BreadcrumbProps['separator'] = 'has-arrow-separator';
+        renderComponent({ separator: expected });
+
+        const component = screen.getByTestId('Breadcrumb');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should be medium size', () => {
+        const expected: BreadcrumbProps['size'] = 'is-medium';
+        renderComponent({ size: expected });
+
+        const component = screen.getByTestId('Breadcrumb');
+
+        expect(component).toHaveClass(expected);
     });
 
     testBulmaProps('Breadcrumb', renderComponent);
@@ -27,13 +63,13 @@ describe('Breadcrumb Component', () => {
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({
+            renderComponent({
                 children: expected,
                 className: 'foo-bar',
                 isActive: true,
             });
 
-            const component = getByTestId('BreadcrumbItem');
+            const component = screen.getByTestId('BreadcrumbItem');
 
             expect(component).toHaveTextContent(expected);
         });

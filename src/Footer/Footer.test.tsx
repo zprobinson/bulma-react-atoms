@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Footer from './Footer';
 import { FooterProps } from './Footer.types';
@@ -11,18 +11,18 @@ describe('Footer Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Footer');
+        const component = screen.getByTestId('Footer');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should have the footer class', () => {
         const expected = 'footer';
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('Footer');
+        const component = screen.getByTestId('Footer');
 
         expect(component).toHaveClass(expected);
     });

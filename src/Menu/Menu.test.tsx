@@ -1,6 +1,6 @@
 // Generated with util/create-component.js
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Menu from './Menu';
 import MenuLabel from './MenuLabel';
@@ -21,9 +21,9 @@ describe('Menu Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Menu');
+        const component = screen.getByTestId('Menu');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -37,9 +37,9 @@ describe('Menu Label Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('MenuLabel');
+        const component = screen.getByTestId('MenuLabel');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -53,12 +53,12 @@ describe('Menu Link Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             children: expected,
             isActive: true,
         });
 
-        const component = getByTestId('MenuLink');
+        const component = screen.getByTestId('MenuLink');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -72,9 +72,9 @@ describe('Menu List Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('MenuList');
+        const component = screen.getByTestId('MenuList');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -88,12 +88,12 @@ describe('Menu List Item Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             children: expected,
             isActive: false,
         });
 
-        const component = getByTestId('MenuListItem');
+        const component = screen.getByTestId('MenuListItem');
 
         expect(component).toHaveTextContent(expected);
     });

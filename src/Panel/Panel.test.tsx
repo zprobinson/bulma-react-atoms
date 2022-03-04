@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import Panel from './Panel';
 import PanelBlock from './PanelBlock';
@@ -22,9 +22,9 @@ describe('Panel Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Panel');
+        const component = screen.getByTestId('Panel');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -38,9 +38,9 @@ describe('Panel Heading Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('PanelHeading');
+        const component = screen.getByTestId('PanelHeading');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -54,9 +54,9 @@ describe('Panel Icon Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('PanelIcon');
+        const component = screen.getByTestId('PanelIcon');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -70,18 +70,18 @@ describe('Panel Tab Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('PanelTab');
+        const component = screen.getByTestId('PanelTab');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should recognize a single click', () => {
         const onClick = jest.fn();
-        const { getByTestId } = renderComponent({ onClick });
+        renderComponent({ onClick });
 
-        const component = getByTestId('PanelTab');
+        const component = screen.getByTestId('PanelTab');
         fireEvent.click(component);
 
         expect(onClick).toHaveBeenCalledTimes(1);
@@ -96,9 +96,9 @@ describe('Panel Tabs Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('PanelTabs');
+        const component = screen.getByTestId('PanelTabs');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -113,45 +113,45 @@ describe('Panel Block Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('PanelBlock');
+        const component = screen.getByTestId('PanelBlock');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should have panel-block class', () => {
         const expected = 'panel-block';
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('PanelBlock');
+        const component = screen.getByTestId('PanelBlock');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should render as an div tag by default', () => {
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('PanelBlock');
+        const component = screen.getByTestId('PanelBlock');
 
         expect(component.tagName).toMatch(/div/i);
     });
 
     it('should render as an anchor tag', () => {
-        const { getByTestId } = renderComponent({ as: 'a', href: 'test' });
+        renderComponent({ as: 'a', href: 'test' });
 
-        const component = getByTestId('PanelBlock');
+        const component = screen.getByTestId('PanelBlock');
 
         expect(component.tagName).toMatch(/a/i);
     });
 
     it('should render as a label tag', () => {
-        const { getByTestId } = renderComponent({
+        renderComponent({
             as: 'label',
             htmlFor: 'test',
         });
 
-        const component = getByTestId('PanelBlock');
+        const component = screen.getByTestId('PanelBlock');
 
         expect(component.tagName).toMatch(/label/i);
     });

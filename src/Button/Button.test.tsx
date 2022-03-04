@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 import Button from './Button';
 import Buttons from './Buttons';
@@ -13,18 +13,18 @@ describe('Button Component', () => {
 
     it('should render children text correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should recognize a single click', () => {
         const onClick = jest.fn();
-        const { getByTestId } = renderComponent({ onClick });
+        renderComponent({ onClick });
 
-        const button = getByTestId(TEST_ID);
+        const button = screen.getByTestId(TEST_ID);
         fireEvent.click(button);
 
         expect(onClick).toHaveBeenCalledTimes(1);
@@ -32,36 +32,36 @@ describe('Button Component', () => {
 
     it('should have color class when provided', () => {
         const expected: ButtonProps['color'] = 'is-danger';
-        const { getByTestId } = renderComponent({ color: expected });
+        renderComponent({ color: expected });
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveClass(expected);
     });
 
     it('should have size class when provided', () => {
         const expected: ButtonProps['size'] = 'is-large';
-        const { getByTestId } = renderComponent({ size: expected });
+        renderComponent({ size: expected });
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveClass(expected);
     });
 
     it('should have state class when provided', () => {
         const expected: ButtonProps['state'] = 'is-active';
-        const { getByTestId } = renderComponent({ state: expected });
+        renderComponent({ state: expected });
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveClass(expected);
     });
 
     it('should have one modifier class when provided as single string', () => {
         const expected: ButtonProps['modifiers'] = 'is-fullwidth';
-        const { getByTestId } = renderComponent({ modifiers: expected });
+        renderComponent({ modifiers: expected });
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveClass(expected);
     });
@@ -73,9 +73,9 @@ describe('Button Component', () => {
             'is-rounded',
         ];
         const expected = 'is-fullwidth is-outlined is-rounded';
-        const { getByTestId } = renderComponent({ modifiers });
+        renderComponent({ modifiers });
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveClass(expected);
     });
@@ -83,9 +83,9 @@ describe('Button Component', () => {
     it('should have is-loading class when provided', () => {
         const isLoading: ButtonProps['isLoading'] = true;
         const expected = 'is-loading';
-        const { getByTestId } = renderComponent({ isLoading });
+        renderComponent({ isLoading });
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveClass(expected);
     });
@@ -93,9 +93,9 @@ describe('Button Component', () => {
     it('should have is-selected class when provided', () => {
         const isSelected: ButtonProps['isSelected'] = true;
         const expected = 'is-selected';
-        const { getByTestId } = renderComponent({ isSelected });
+        renderComponent({ isSelected });
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveClass(expected);
     });
@@ -110,18 +110,18 @@ describe('Buttons Component', () => {
 
     it('should render children text correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should have embedded buttons class', () => {
         const expected = 'buttons';
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveClass(expected);
     });
@@ -129,18 +129,18 @@ describe('Buttons Component', () => {
     it('should have has-addons class when provided', () => {
         const expected = 'has-addons';
         const hasAddons: ButtonsProps['hasAddons'] = true;
-        const { getByTestId } = renderComponent({ hasAddons });
+        renderComponent({ hasAddons });
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveClass(expected);
     });
 
     it('should have alignment class when provided', () => {
         const expected: ButtonsProps['alignment'] = 'is-right';
-        const { getByTestId } = renderComponent({ alignment: expected });
+        renderComponent({ alignment: expected });
 
-        const component = getByTestId(TEST_ID);
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveClass(expected);
     });

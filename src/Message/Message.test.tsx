@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Message from './Message';
 import MessageHeader from './MessageHeader';
@@ -17,9 +17,9 @@ describe('Message Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Message');
+        const component = screen.getByTestId('Message');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -32,9 +32,9 @@ describe('Message Component', () => {
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({ children: expected });
+            renderComponent({ children: expected });
 
-            const component = getByTestId('MessageHeader');
+            const component = screen.getByTestId('MessageHeader');
 
             expect(component).toHaveTextContent(expected);
         });
@@ -48,9 +48,9 @@ describe('Message Component', () => {
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({ children: expected });
+            renderComponent({ children: expected });
 
-            const component = getByTestId('MessageBody');
+            const component = screen.getByTestId('MessageBody');
 
             expect(component).toHaveTextContent(expected);
         });

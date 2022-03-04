@@ -1,6 +1,6 @@
 // Generated with util/create-component.js
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 
 import Table from './Table';
 import TableBody from './TableBody';
@@ -32,9 +32,9 @@ describe('Data Cell Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('TableDataCell');
+        const component = screen.getByTestId('TableDataCell');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -50,9 +50,9 @@ describe('Header Cell Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('TableHeaderCell');
+        const component = screen.getByTestId('TableHeaderCell');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -71,9 +71,9 @@ describe('Table Row Component', () => {
     it('should render children correctly', () => {
         const expected = 'harvey was here';
         const children = <td>{expected}</td>;
-        const { getByTestId } = renderComponent({ children });
+        renderComponent({ children });
 
-        const component = getByTestId('TableRow');
+        const component = screen.getByTestId('TableRow');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -96,9 +96,9 @@ describe('Table Header Component', () => {
                 <th>{expected}</th>
             </tr>
         );
-        const { getByTestId } = renderComponent({ children });
+        renderComponent({ children });
 
-        const component = getByTestId('TableHeader');
+        const component = screen.getByTestId('TableHeader');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -121,9 +121,9 @@ describe('Table Footer Component', () => {
                 <th>{expected}</th>
             </tr>
         );
-        const { getByTestId } = renderComponent({ children });
+        renderComponent({ children });
 
-        const component = getByTestId('TableFooter');
+        const component = screen.getByTestId('TableFooter');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -146,9 +146,9 @@ describe('Table Body Component', () => {
                 <td>{expected}</td>
             </tr>
         );
-        const { getByTestId } = renderComponent({ children });
+        renderComponent({ children });
 
-        const component = getByTestId('TableBody');
+        const component = screen.getByTestId('TableBody');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -168,9 +168,9 @@ describe('Table Component', () => {
                 </tr>
             </tbody>
         );
-        const { getByTestId } = renderComponent({ children });
+        renderComponent({ children });
 
-        const component = getByTestId('Table');
+        const component = screen.getByTestId('Table');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -184,9 +184,9 @@ describe('Table Container Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('TableContainer');
+        const component = screen.getByTestId('TableContainer');
 
         expect(component).toHaveTextContent(expected);
     });

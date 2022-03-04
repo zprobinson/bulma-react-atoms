@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
 import Tag from './Tag';
@@ -11,9 +11,9 @@ describe('Tags Component', () => {
 
     it('should render children text correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Tags');
+        const component = screen.getByTestId('Tags');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -28,36 +28,36 @@ describe('Tag Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Tag');
+        const component = screen.getByTestId('Tag');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should have tag class', () => {
         const expected = 'tag';
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('Tag');
+        const component = screen.getByTestId('Tag');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should have color class', () => {
         const expected: TagProps['color'] = 'is-primary is-light';
-        const { getByTestId } = renderComponent({ color: expected });
+        renderComponent({ color: expected });
 
-        const component = getByTestId('Tag');
+        const component = screen.getByTestId('Tag');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should have size class', () => {
         const expected: TagProps['size'] = 'is-medium';
-        const { getByTestId } = renderComponent({ size: expected });
+        renderComponent({ size: expected });
 
-        const component = getByTestId('Tag');
+        const component = screen.getByTestId('Tag');
 
         expect(component).toHaveClass(expected);
     });
@@ -65,25 +65,25 @@ describe('Tag Component', () => {
     it('should have is-delete class', () => {
         const expected = 'is-delete';
         const isDelete: TagProps['isDelete'] = true;
-        const { getByTestId } = renderComponent({ isDelete });
+        renderComponent({ isDelete });
 
-        const component = getByTestId('Tag');
+        const component = screen.getByTestId('Tag');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should render as a span tag by default', () => {
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('Tag');
+        const component = screen.getByTestId('Tag');
 
         expect(component.tagName).toMatch(/span/i);
     });
 
     it('should render as an anchor tag', () => {
-        const { getByTestId } = renderComponent({ as: 'a', href: 'test ' });
+        renderComponent({ as: 'a', href: 'test ' });
 
-        const component = getByTestId('Tag');
+        const component = screen.getByTestId('Tag');
 
         expect(component.tagName).toMatch(/a/i);
     });
