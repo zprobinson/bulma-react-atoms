@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import ProgressBar from './ProgressBar';
 import { ProgressBarProps } from './ProgressBar.types';
@@ -11,9 +11,9 @@ describe('Progress Bar Component', () => {
 
     it('should render value attribute correctly', () => {
         const value = '10%';
-        const { getByTestId } = renderComponent({ value });
+        renderComponent({ value });
 
-        const component = getByTestId('ProgressBar');
+        const component = screen.getByTestId('ProgressBar');
 
         expect(component).toHaveTextContent(value);
     });

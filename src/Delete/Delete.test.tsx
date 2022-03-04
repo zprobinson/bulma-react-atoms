@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 import Delete from './Delete';
 import { DeleteProps } from './Delete.types';
@@ -11,9 +11,9 @@ describe('Delete Component', () => {
 
     it('should recognize a single click', () => {
         const onClick = jest.fn();
-        const { getByTestId } = renderComponent({ onClick: onClick });
+        renderComponent({ onClick: onClick });
 
-        const component = getByTestId('Delete');
+        const component = screen.getByTestId('Delete');
         fireEvent.click(component);
 
         expect(onClick).toHaveBeenCalledTimes(1);

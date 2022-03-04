@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Hero from './Hero';
 import HeroHeader from './HeroHeader';
@@ -19,55 +19,55 @@ describe('Hero Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Hero');
+        const component = screen.getByTestId('Hero');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should have hero class', () => {
         const expected = 'hero';
-        const { getByTestId } = renderComponent({ className: 'foo-bar' });
+        renderComponent({ className: 'foo-bar' });
 
-        const component = getByTestId('Hero');
+        const component = screen.getByTestId('Hero');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should have given color class', () => {
         const expected: HeroProps['color'] = 'is-danger';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             color: expected,
             backgroundColor: 'has-background-danger',
         });
 
-        const component = getByTestId('Hero');
+        const component = screen.getByTestId('Hero');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should have given size class', () => {
         const expected: HeroProps['size'] = 'is-large';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             size: expected,
             textColor: 'has-text-black',
         });
 
-        const component = getByTestId('Hero');
+        const component = screen.getByTestId('Hero');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should have is-fullheight-with-navbar class', () => {
         const expected = __FULLHEIGHT_WITH_NAVBAR__;
-        const { getByTestId } = renderComponent({
+        renderComponent({
             // this size should be overridden
             size: 'is-small',
             isFullHeightWithNavbar: true,
         });
 
-        const component = getByTestId('Hero');
+        const component = screen.getByTestId('Hero');
 
         expect(component).toHaveClass(expected);
     });
@@ -81,18 +81,18 @@ describe('Hero Header Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('HeroHeader');
+        const component = screen.getByTestId('HeroHeader');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should have hero-head class', () => {
         const expected = 'hero-head';
-        const { getByTestId } = renderComponent({ className: 'foo-bar' });
+        renderComponent({ className: 'foo-bar' });
 
-        const component = getByTestId('HeroHeader');
+        const component = screen.getByTestId('HeroHeader');
 
         expect(component).toHaveClass(expected);
     });
@@ -106,18 +106,18 @@ describe('Hero Body Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('HeroBody');
+        const component = screen.getByTestId('HeroBody');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should have hero-body class', () => {
         const expected = 'hero-body';
-        const { getByTestId } = renderComponent({ className: 'foo-bar' });
+        renderComponent({ className: 'foo-bar' });
 
-        const component = getByTestId('HeroBody');
+        const component = screen.getByTestId('HeroBody');
 
         expect(component).toHaveClass(expected);
     });
@@ -131,18 +131,18 @@ describe('Hero Footer Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('HeroFooter');
+        const component = screen.getByTestId('HeroFooter');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should have hero-foot class', () => {
         const expected = 'hero-foot';
-        const { getByTestId } = renderComponent({ className: 'foo-bar' });
+        renderComponent({ className: 'foo-bar' });
 
-        const component = getByTestId('HeroFooter');
+        const component = screen.getByTestId('HeroFooter');
 
         expect(component).toHaveClass(expected);
     });

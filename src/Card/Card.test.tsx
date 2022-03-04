@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Card from './Card';
 import CardHeader from './CardHeader';
@@ -27,9 +27,9 @@ describe('Card Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Card');
+        const component = screen.getByTestId('Card');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -42,9 +42,9 @@ describe('Card Component', () => {
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({ children: expected });
+            renderComponent({ children: expected });
 
-            const component = getByTestId('CardHeader');
+            const component = screen.getByTestId('CardHeader');
 
             expect(component).toHaveTextContent(expected);
         });
@@ -58,9 +58,9 @@ describe('Card Component', () => {
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({ children: expected });
+            renderComponent({ children: expected });
 
-            const component = getByTestId('CardHeaderTitle');
+            const component = screen.getByTestId('CardHeaderTitle');
 
             expect(component).toHaveTextContent(expected);
         });
@@ -74,9 +74,9 @@ describe('Card Component', () => {
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({ children: expected });
+            renderComponent({ children: expected });
 
-            const component = getByTestId('CardHeaderIcon');
+            const component = screen.getByTestId('CardHeaderIcon');
 
             expect(component).toHaveTextContent(expected);
         });
@@ -90,9 +90,9 @@ describe('Card Component', () => {
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({ children: expected });
+            renderComponent({ children: expected });
 
-            const component = getByTestId('CardImage');
+            const component = screen.getByTestId('CardImage');
 
             expect(component).toHaveTextContent(expected);
         });
@@ -106,9 +106,9 @@ describe('Card Component', () => {
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({ children: expected });
+            renderComponent({ children: expected });
 
-            const component = getByTestId('CardContent');
+            const component = screen.getByTestId('CardContent');
 
             expect(component).toHaveTextContent(expected);
         });
@@ -122,9 +122,9 @@ describe('Card Component', () => {
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({ children: expected });
+            renderComponent({ children: expected });
 
-            const component = getByTestId('CardFooter');
+            const component = screen.getByTestId('CardFooter');
 
             expect(component).toHaveTextContent(expected);
         });
@@ -141,34 +141,34 @@ describe('Card Component', () => {
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({ children: expected });
+            renderComponent({ children: expected });
 
-            const component = getByTestId('CardFooterItem');
+            const component = screen.getByTestId('CardFooterItem');
 
             expect(component).toHaveTextContent(expected);
         });
 
         it('should have card-footer class', () => {
             const expected = 'card-footer';
-            const { getByTestId } = renderComponent({});
+            renderComponent({});
 
-            const component = getByTestId('CardFooterItem');
+            const component = screen.getByTestId('CardFooterItem');
 
             expect(component).toHaveClass(expected);
         });
 
         it('should render as an anchor tag', () => {
-            const { getByTestId } = renderComponent({ href: 'test' });
+            renderComponent({ href: 'test' });
 
-            const component = getByTestId('CardFooterItem');
+            const component = screen.getByTestId('CardFooterItem');
 
             expect(component.tagName).toMatch(/a/i);
         });
 
         it('should render as a div tag', () => {
-            const { getByTestId } = renderComponent({ as: 'div' });
+            renderComponent({ as: 'div' });
 
-            const component = getByTestId('CardFooterItem');
+            const component = screen.getByTestId('CardFooterItem');
 
             expect(component.tagName).toMatch(/div/i);
         });

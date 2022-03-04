@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Content from './Content';
 import { ContentProps } from './Content.types';
@@ -11,9 +11,9 @@ describe('Content Component', () => {
 
     it('should render foo text correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Content');
+        const component = screen.getByTestId('Content');
 
         expect(component).toHaveTextContent(expected);
     });

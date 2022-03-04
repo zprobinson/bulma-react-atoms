@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Pagination from './Pagination';
 import PaginationPrevious from './PaginationPrevious';
@@ -23,9 +23,9 @@ describe('Pagination Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Pagination');
+        const component = screen.getByTestId('Pagination');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -39,9 +39,9 @@ describe('Pagination Previous Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('PaginationPrevious');
+        const component = screen.getByTestId('PaginationPrevious');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -55,9 +55,9 @@ describe('Pagination Next Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('PaginationNext');
+        const component = screen.getByTestId('PaginationNext');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -71,11 +71,11 @@ describe('Pagination List Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             children: <li>{expected}</li>,
         });
 
-        const component = getByTestId('PaginationList');
+        const component = screen.getByTestId('PaginationList');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -89,12 +89,12 @@ describe('Pagination Link Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             children: expected,
             textColor: 'has-text-black',
         });
 
-        const component = getByTestId('PaginationLink');
+        const component = screen.getByTestId('PaginationLink');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -108,11 +108,11 @@ describe('Pagination Ellipsis Component', () => {
 
     it('should render ellipsis entity &hellip; (u+2026)', () => {
         const expected = '\u2026';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             textColor: 'has-text-black',
         });
 
-        const component = getByTestId('PaginationEllipsis');
+        const component = screen.getByTestId('PaginationEllipsis');
 
         expect(component).toHaveTextContent(expected);
     });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Breadcrumb from './Breadcrumb';
 import BreadcrumbItem from './BreadcrumbItem';
@@ -12,9 +12,9 @@ describe('Breadcrumb Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Breadcrumb');
+        const component = screen.getByTestId('Breadcrumb');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -27,13 +27,13 @@ describe('Breadcrumb Component', () => {
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
-            const { getByTestId } = renderComponent({
+            renderComponent({
                 children: expected,
                 className: 'foo-bar',
                 isActive: true,
             });
 
-            const component = getByTestId('BreadcrumbItem');
+            const component = screen.getByTestId('BreadcrumbItem');
 
             expect(component).toHaveTextContent(expected);
         });

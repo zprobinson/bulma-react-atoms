@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import Tabs from './Tabs';
 import TabsLink from './TabsLink';
@@ -18,9 +18,9 @@ describe('Tabs Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Tabs');
+        const component = screen.getByTestId('Tabs');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -34,7 +34,7 @@ describe('Tabs Link Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             children: expected,
             isActive: true,
             textColor: 'has-text-danger',
@@ -43,16 +43,16 @@ describe('Tabs Link Component', () => {
             },
         });
 
-        const component = getByTestId('TabsLink');
+        const component = screen.getByTestId('TabsLink');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should recognize a single click', () => {
         const onClick = jest.fn();
-        const { getByTestId } = renderComponent({ onClick });
+        renderComponent({ onClick });
 
-        const component = getByTestId('TabsLinkAnchor');
+        const component = screen.getByTestId('TabsLinkAnchor');
         fireEvent.click(component);
 
         expect(onClick).toHaveBeenCalledTimes(1);
@@ -68,9 +68,9 @@ describe('Tabs List Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('TabsList');
+        const component = screen.getByTestId('TabsList');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -84,12 +84,12 @@ describe('Tabs List Item Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             children: expected,
             textColor: 'has-text-danger',
         });
 
-        const component = getByTestId('TabsListItem');
+        const component = screen.getByTestId('TabsListItem');
 
         expect(component).toHaveTextContent(expected);
     });

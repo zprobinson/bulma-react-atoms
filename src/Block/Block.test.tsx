@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Block from './Block';
 import { BlockProps } from './Block.types';
@@ -10,9 +10,9 @@ describe('Block Component', () => {
 
     it('should render foo text correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Block');
+        const component = screen.getByTestId('Block');
 
         expect(component).toHaveTextContent(expected);
     });

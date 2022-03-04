@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Container from './Container';
 import { ContainerProps } from './Container.types';
@@ -11,9 +11,9 @@ describe('Container Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Container');
+        const component = screen.getByTestId('Container');
 
         expect(component).toHaveTextContent(expected);
     });
