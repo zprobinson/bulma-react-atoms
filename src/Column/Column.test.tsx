@@ -20,44 +20,44 @@ describe('Column Component', () => {
 
     it('should have column class', () => {
         const expected = 'column';
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('Column');
+        const component = screen.getByTestId('Column');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should be full size', () => {
         const expected: ColumnProps['columnSize'] = 'is-full';
-        const { getByTestId } = renderComponent({ columnSize: expected });
+        renderComponent({ columnSize: expected });
 
-        const component = getByTestId('Column');
+        const component = screen.getByTestId('Column');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should be offset by half', () => {
         const expected: ColumnProps['offset'] = 'is-offset-half';
-        const { getByTestId } = renderComponent({ offset: expected });
+        renderComponent({ offset: expected });
 
-        const component = getByTestId('Column');
+        const component = screen.getByTestId('Column');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should be narrow', () => {
         const expected: ColumnProps['narrow'] = 'is-narrow';
-        const { getByTestId } = renderComponent({ narrow: expected });
+        renderComponent({ narrow: expected });
 
-        const component = getByTestId('Column');
+        const component = screen.getByTestId('Column');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should always render as a div tag', () => {
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('Column');
+        const component = screen.getByTestId('Column');
 
         expect(component.tagName).toMatch(/div/i);
     });

@@ -22,18 +22,18 @@ describe('Delete Component', () => {
     it("should have class 'delete'", () => {
         const expected = 'delete';
         const onClick = jest.fn();
-        const { getByTestId } = renderComponent({ onClick });
+        renderComponent({ onClick });
 
-        const component = getByTestId('Delete');
+        const component = screen.getByTestId('Delete');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should always render as a button tag', () => {
         const onClick = jest.fn();
-        const { getByTestId } = renderComponent({ onClick });
+        renderComponent({ onClick });
 
-        const component = getByTestId('Delete');
+        const component = screen.getByTestId('Delete');
 
         expect(component.tagName).toMatch(/button/i);
     });
@@ -41,9 +41,9 @@ describe('Delete Component', () => {
     it('should have large size', () => {
         const expected: DeleteProps['size'] = 'is-large';
         const onClick = jest.fn();
-        const { getByTestId } = renderComponent({ onClick, size: expected });
+        renderComponent({ onClick, size: expected });
 
-        const component = getByTestId('Delete');
+        const component = screen.getByTestId('Delete');
 
         expect(component).toHaveClass(expected);
     });

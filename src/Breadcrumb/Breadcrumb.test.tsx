@@ -21,36 +21,36 @@ describe('Breadcrumb Component', () => {
 
     it("should have class 'breadcrumb'", () => {
         const expected = 'breadcrumb';
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('Breadcrumb');
+        const component = screen.getByTestId('Breadcrumb');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should have alignment is-centered', () => {
         const expected: BreadcrumbProps['alignment'] = 'is-centered';
-        const { getByTestId } = renderComponent({ alignment: expected });
+        renderComponent({ alignment: expected });
 
-        const component = getByTestId('Breadcrumb');
+        const component = screen.getByTestId('Breadcrumb');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should have arrow separator', () => {
         const expected: BreadcrumbProps['separator'] = 'has-arrow-separator';
-        const { getByTestId } = renderComponent({ separator: expected });
+        renderComponent({ separator: expected });
 
-        const component = getByTestId('Breadcrumb');
+        const component = screen.getByTestId('Breadcrumb');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should be medium size', () => {
         const expected: BreadcrumbProps['size'] = 'is-medium';
-        const { getByTestId } = renderComponent({ size: expected });
+        renderComponent({ size: expected });
 
-        const component = getByTestId('Breadcrumb');
+        const component = screen.getByTestId('Breadcrumb');
 
         expect(component).toHaveClass(expected);
     });

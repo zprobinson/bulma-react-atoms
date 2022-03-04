@@ -19,17 +19,17 @@ describe('Block Component', () => {
 
     it('should have block class', () => {
         const expected = 'block';
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('Block');
+        const component = screen.getByTestId('Block');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should always render as a div tag', () => {
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('Block');
+        const component = screen.getByTestId('Block');
 
         expect(component.tagName).toMatch(/div/i);
     });
