@@ -17,5 +17,22 @@ describe('Block Component', () => {
         expect(component).toHaveTextContent(expected);
     });
 
+    it('should have block class', () => {
+        const expected = 'block';
+        const { getByTestId } = renderComponent({});
+
+        const component = getByTestId('Block');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should always render as a div tag', () => {
+        const { getByTestId } = renderComponent({});
+
+        const component = getByTestId('Block');
+
+        expect(component.tagName).toMatch(/div/i);
+    });
+
     testBulmaProps('Block', renderComponent);
 });
