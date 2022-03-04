@@ -20,6 +20,8 @@ import {
     NavbarMenuEndProps,
 } from './Navbar.types';
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
+import { NavbarBurgerProps } from './Navbar.types';
+import NavbarBurger from './NavbarBurger';
 
 describe('Navbar Component', () => {
     const renderComponent = (props: NavbarProps) =>
@@ -54,19 +56,37 @@ describe('Navbar Brand Component', () => {
 });
 
 describe('Navbar Burger Component', () => {
-    const renderComponent = (props: NavbarDropdownProps) =>
-        render(<NavbarDropdown {...props} />);
+    const renderComponent = (props: NavbarBurgerProps) =>
+        render(<NavbarBurger {...props} />);
 
-    it('should render children correctly', () => {
-        const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+    it('should render as an <a> tag by default', () => {
+        const { getByTestId } = renderComponent({});
 
-        const component = getByTestId('NavbarDropdown');
+        const component = getByTestId('NavbarBurger');
 
-        expect(component).toHaveTextContent(expected);
+        expect(component.tagName).toMatch(/a/i);
     });
 
-    testBulmaProps('NavbarDropdown', renderComponent);
+    it('should have navbar-burger class embedded', () => {
+        const expected = 'navbar-burger';
+        const { getByTestId } = renderComponent({});
+
+        const component = getByTestId('NavbarBurger');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have is-active class when provided', () => {
+        const isActive: NavbarBurgerProps['isActive'] = true;
+        const expected = 'is-active';
+        const { getByTestId } = renderComponent({ isActive });
+
+        const component = getByTestId('NavbarBurger');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    testBulmaProps('NavbarBurger', renderComponent);
 });
 
 describe('Navbar Link Component', () => {

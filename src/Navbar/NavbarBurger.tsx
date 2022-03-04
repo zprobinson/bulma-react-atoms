@@ -6,7 +6,10 @@ const NavbarBurger: React.VFC<NavbarBurgerProps> = ({
     isActive = false,
     ...props
 }) => {
-    const { classNames, rest } = useInnerBulmaProps(props);
+    const { classNames, rest } = useInnerBulmaProps(
+        props,
+        isActive ? 'is-active' : ''
+    );
 
     return (
         <a
