@@ -4,12 +4,10 @@ import { render, screen } from '@testing-library/react';
 
 import Menu from './Menu';
 import MenuLabel from './MenuLabel';
-import MenuLink from './MenuLink';
 import MenuList from './MenuList';
 import MenuListItem from './MenuListItem';
 import {
     MenuLabelProps,
-    MenuLinkProps,
     MenuListItemProps,
     MenuListProps,
     MenuProps,
@@ -47,25 +45,6 @@ describe('Menu Label Component', () => {
     testBulmaProps('MenuLabel', renderComponent);
 });
 
-describe('Menu Link Component', () => {
-    const renderComponent = (props: MenuLinkProps) =>
-        render(<MenuLink {...props} />);
-
-    it('should render children correctly', () => {
-        const expected = 'harvey was here';
-        renderComponent({
-            children: expected,
-            isActive: true,
-        });
-
-        const component = screen.getByTestId('MenuLink');
-
-        expect(component).toHaveTextContent(expected);
-    });
-
-    testBulmaProps('MenuLink', renderComponent);
-});
-
 describe('Menu List Component', () => {
     const renderComponent = (props: MenuListProps) =>
         render(<MenuList {...props} />);
@@ -83,8 +62,12 @@ describe('Menu List Component', () => {
 });
 
 describe('Menu List Item Component', () => {
-    const renderComponent = (props: MenuListItemProps) =>
-        render(<MenuListItem {...props} />);
+    const renderComponent = <E extends React.ElementType = 'a'>(
+        props: MenuListItemProps<E>
+    ) => render(<MenuListItem {...props} />);
+    const renderListParent = <E extends React.ElementType = 'a'>(
+        props: MenuListItemProps<E>['_innerListItemProps']
+    ) => render(<MenuListItem _innerListItemProps={props} />);
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
@@ -98,6 +81,23 @@ describe('Menu List Item Component', () => {
         expect(component).toHaveTextContent(expected);
     });
 
+    it('should render as a tag by default', () => {
+        renderComponent({ href: '' });
+
+        const component = screen.getByTestId('MenuListItemAnchor');
+
+        expect(component.tagName).toMatch(/a/i);
+    });
+
+    it('should render as div tag when provided', () => {
+        renderComponent({ as: 'div' });
+
+        const component = screen.getByTestId('MenuListItemAnchor');
+
+        expect(component.tagName).toMatch(/div/i);
+    });
+
     // In this component, bulma styles are applied to the child anchor tag.
     testBulmaProps('MenuListItemAnchor', renderComponent);
+    testBulmaProps('MenuListItem', renderListParent);
 });
