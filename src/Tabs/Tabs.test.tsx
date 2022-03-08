@@ -1,11 +1,10 @@
+import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-
+import { testBulmaProps } from '../bulmaTests/bulmaTests';
 import Tabs from './Tabs';
+import { TabsListItemProps, TabsListProps, TabsProps } from './Tabs.types';
 import TabsList from './TabsList';
 import TabsListItem from './TabsListItem';
-import { TabsProps, TabsListProps, TabsListItemProps } from './Tabs.types';
-import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
 describe('Tabs Component', () => {
     const renderComponent = (props: TabsProps) => render(<Tabs {...props} />);
