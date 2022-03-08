@@ -1,10 +1,15 @@
 import React from 'react';
-import { PaginationIncrementalProps } from './Pagination.types';
+import { PaginationPreviousProps } from './Pagination.types';
 import PaginationIncremental from './PaginationIncremental';
 
-const PaginationPrevious: React.FC<
-    Omit<PaginationIncrementalProps, 'paginationType'>
-> = ({ children, ...props }) => {
+const _default_element_: React.ElementType = 'a';
+
+const PaginationPrevious = <
+    E extends React.ElementType = typeof _default_element_
+>({
+    children,
+    ...props
+}: PaginationPreviousProps<E>) => {
     return (
         <PaginationIncremental
             data-testid="PaginationPrevious"

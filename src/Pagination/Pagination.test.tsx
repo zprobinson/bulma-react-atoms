@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import Pagination from './Pagination';
 import PaginationPrevious from './PaginationPrevious';
@@ -23,9 +23,9 @@ describe('Pagination Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Pagination');
+        const component = screen.getByTestId('Pagination');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -34,32 +34,126 @@ describe('Pagination Component', () => {
 });
 
 describe('Pagination Previous Component', () => {
-    const renderComponent = (props: PaginationPreviousProps) =>
-        render(<PaginationPrevious {...props} />);
+    const renderComponent = <E extends React.ElementType>(
+        props: PaginationPreviousProps<E>
+    ) => render(<PaginationPrevious {...props} />);
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('PaginationPrevious');
+        const component = screen.getByTestId('PaginationPrevious');
 
         expect(component).toHaveTextContent(expected);
+    });
+
+    it('should render as <a> tag by default', () => {
+        renderComponent({ href: '' });
+
+        const component = screen.getByTestId('PaginationPrevious');
+
+        expect(component.tagName).toMatch(/a/i);
+    });
+
+    it('should render as <div> tag', () => {
+        renderComponent({ as: 'div' });
+
+        const component = screen.getByTestId('PaginationPrevious');
+
+        expect(component.tagName).toMatch(/div/i);
+    });
+
+    it('should call onClick when clicked', () => {
+        const onClick = jest.fn();
+        renderComponent({ onClick });
+
+        const component = screen.getByTestId('PaginationPrevious');
+        fireEvent.click(component);
+
+        expect(onClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onClick when clicked if disabled is true', () => {
+        const onClick = jest.fn();
+        renderComponent({ onClick, disabled: true });
+
+        const component = screen.getByTestId('PaginationPrevious');
+        fireEvent.click(component);
+
+        expect(onClick).toHaveBeenCalledTimes(0);
+    });
+
+    it('should not call onClick when clicked if isDisabled is true', () => {
+        const onClick = jest.fn();
+        renderComponent({ onClick, isDisabled: true });
+
+        const component = screen.getByTestId('PaginationPrevious');
+        fireEvent.click(component);
+
+        expect(onClick).toHaveBeenCalledTimes(0);
     });
 
     testBulmaProps('PaginationPrevious', renderComponent);
 });
 
 describe('Pagination Next Component', () => {
-    const renderComponent = (props: PaginationNextProps) =>
-        render(<PaginationNext {...props} />);
+    const renderComponent = <E extends React.ElementType>(
+        props: PaginationNextProps<E>
+    ) => render(<PaginationNext {...props} />);
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('PaginationNext');
+        const component = screen.getByTestId('PaginationNext');
 
         expect(component).toHaveTextContent(expected);
+    });
+
+    it('should render as <a> tag by default', () => {
+        renderComponent({ href: '' });
+
+        const component = screen.getByTestId('PaginationNext');
+
+        expect(component.tagName).toMatch(/a/i);
+    });
+
+    it('should render as <div> tag', () => {
+        renderComponent({ as: 'div' });
+
+        const component = screen.getByTestId('PaginationNext');
+
+        expect(component.tagName).toMatch(/div/i);
+    });
+
+    it('should call onClick when clicked', () => {
+        const onClick = jest.fn();
+        renderComponent({ onClick });
+
+        const component = screen.getByTestId('PaginationNext');
+        fireEvent.click(component);
+
+        expect(onClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onClick when clicked if disabled is true', () => {
+        const onClick = jest.fn();
+        renderComponent({ onClick, disabled: true });
+
+        const component = screen.getByTestId('PaginationNext');
+        fireEvent.click(component);
+
+        expect(onClick).toHaveBeenCalledTimes(0);
+    });
+
+    it('should not call onClick when clicked if isDisabled is true', () => {
+        const onClick = jest.fn();
+        renderComponent({ onClick, isDisabled: true });
+
+        const component = screen.getByTestId('PaginationNext');
+        fireEvent.click(component);
+
+        expect(onClick).toHaveBeenCalledTimes(0);
     });
 
     testBulmaProps('PaginationNext', renderComponent);
@@ -71,11 +165,11 @@ describe('Pagination List Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             children: <li>{expected}</li>,
         });
 
-        const component = getByTestId('PaginationList');
+        const component = screen.getByTestId('PaginationList');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -84,22 +178,70 @@ describe('Pagination List Component', () => {
 });
 
 describe('Pagination Link Component', () => {
-    const renderComponent = (props: PaginationLinkProps) =>
-        render(<PaginationLink {...props} />);
+    const renderComponent = <E extends React.ElementType>(
+        props: PaginationLinkProps<E>
+    ) => render(<PaginationLink {...props} />);
+    const testId = 'PaginationLink';
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             children: expected,
             textColor: 'has-text-black',
         });
 
-        const component = getByTestId('PaginationLink');
+        const component = screen.getByTestId(testId);
 
         expect(component).toHaveTextContent(expected);
     });
 
-    testBulmaProps('PaginationLink', renderComponent);
+    it('should render as <a> tag by default', () => {
+        renderComponent({ href: '' });
+
+        const component = screen.getByTestId(testId);
+
+        expect(component.tagName).toMatch(/a/i);
+    });
+
+    it('should render as <div> tag', () => {
+        renderComponent({ as: 'div' });
+
+        const component = screen.getByTestId(testId);
+
+        expect(component.tagName).toMatch(/div/i);
+    });
+
+    it('should call onClick when clicked', () => {
+        const onClick = jest.fn();
+        renderComponent({ onClick });
+
+        const component = screen.getByTestId(testId);
+        fireEvent.click(component);
+
+        expect(onClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onClick when clicked if disabled is true', () => {
+        const onClick = jest.fn();
+        renderComponent({ onClick, disabled: true });
+
+        const component = screen.getByTestId(testId);
+        fireEvent.click(component);
+
+        expect(onClick).toHaveBeenCalledTimes(0);
+    });
+
+    it('should not call onClick when clicked if isDisabled is true', () => {
+        const onClick = jest.fn();
+        renderComponent({ onClick, isDisabled: true });
+
+        const component = screen.getByTestId(testId);
+        fireEvent.click(component);
+
+        expect(onClick).toHaveBeenCalledTimes(0);
+    });
+
+    testBulmaProps(testId, renderComponent);
 });
 
 describe('Pagination Ellipsis Component', () => {
@@ -108,11 +250,11 @@ describe('Pagination Ellipsis Component', () => {
 
     it('should render ellipsis entity &hellip; (u+2026)', () => {
         const expected = '\u2026';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             textColor: 'has-text-black',
         });
 
-        const component = getByTestId('PaginationEllipsis');
+        const component = screen.getByTestId('PaginationEllipsis');
 
         expect(component).toHaveTextContent(expected);
     });

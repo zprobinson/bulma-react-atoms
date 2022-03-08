@@ -1,3 +1,4 @@
+import { BulmaHelpers } from './component';
 export type OneOrMore<T> = T | T[];
 
 export type PartialReadonly<T> = Partial<Readonly<T>>;
@@ -11,7 +12,7 @@ export type Has<TemplateLiteral extends string> = `has-${TemplateLiteral}`;
 
 export type Polymorphic<
     PolymorphicElement extends React.ElementType = React.ElementType,
-    Props extends {} = {}
+    Props extends BulmaHelpers = BulmaHelpers
 > = Props &
     Omit<React.ComponentPropsWithoutRef<PolymorphicElement>, keyof Props> & {
         as?: PolymorphicElement;

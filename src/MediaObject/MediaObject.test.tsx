@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import MediaObject from './MediaObject';
 import MediaLeft from './MediaLeft';
@@ -19,9 +19,9 @@ describe('Media Object Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('MediaObject');
+        const component = screen.getByTestId('MediaObject');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -35,9 +35,9 @@ describe('Media Left Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('MediaLeft');
+        const component = screen.getByTestId('MediaLeft');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -51,9 +51,9 @@ describe('Media Content Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('MediaContent');
+        const component = screen.getByTestId('MediaContent');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -67,9 +67,9 @@ describe('Media Right Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('MediaRight');
+        const component = screen.getByTestId('MediaRight');
 
         expect(component).toHaveTextContent(expected);
     });

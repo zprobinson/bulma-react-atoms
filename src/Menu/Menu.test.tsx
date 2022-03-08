@@ -1,15 +1,13 @@
 // Generated with util/create-component.js
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Menu from './Menu';
 import MenuLabel from './MenuLabel';
-import MenuLink from './MenuLink';
 import MenuList from './MenuList';
 import MenuListItem from './MenuListItem';
 import {
     MenuLabelProps,
-    MenuLinkProps,
     MenuListItemProps,
     MenuListProps,
     MenuProps,
@@ -21,9 +19,9 @@ describe('Menu Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Menu');
+        const component = screen.getByTestId('Menu');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -37,33 +35,14 @@ describe('Menu Label Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('MenuLabel');
+        const component = screen.getByTestId('MenuLabel');
 
         expect(component).toHaveTextContent(expected);
     });
 
     testBulmaProps('MenuLabel', renderComponent);
-});
-
-describe('Menu Link Component', () => {
-    const renderComponent = (props: MenuLinkProps) =>
-        render(<MenuLink {...props} />);
-
-    it('should render children correctly', () => {
-        const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({
-            children: expected,
-            isActive: true,
-        });
-
-        const component = getByTestId('MenuLink');
-
-        expect(component).toHaveTextContent(expected);
-    });
-
-    testBulmaProps('MenuLink', renderComponent);
 });
 
 describe('Menu List Component', () => {
@@ -72,9 +51,9 @@ describe('Menu List Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('MenuList');
+        const component = screen.getByTestId('MenuList');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -83,21 +62,42 @@ describe('Menu List Component', () => {
 });
 
 describe('Menu List Item Component', () => {
-    const renderComponent = (props: MenuListItemProps) =>
-        render(<MenuListItem {...props} />);
+    const renderComponent = <E extends React.ElementType = 'a'>(
+        props: MenuListItemProps<E>
+    ) => render(<MenuListItem {...props} />);
+    const renderListParent = <E extends React.ElementType = 'a'>(
+        props: MenuListItemProps<E>['_innerListItemProps']
+    ) => render(<MenuListItem _innerListItemProps={props} />);
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             children: expected,
             isActive: false,
         });
 
-        const component = getByTestId('MenuListItem');
+        const component = screen.getByTestId('MenuListItem');
 
         expect(component).toHaveTextContent(expected);
     });
 
+    it('should render as a tag by default', () => {
+        renderComponent({ href: '' });
+
+        const component = screen.getByTestId('MenuListItemAnchor');
+
+        expect(component.tagName).toMatch(/a/i);
+    });
+
+    it('should render as div tag when provided', () => {
+        renderComponent({ as: 'div' });
+
+        const component = screen.getByTestId('MenuListItemAnchor');
+
+        expect(component.tagName).toMatch(/div/i);
+    });
+
     // In this component, bulma styles are applied to the child anchor tag.
     testBulmaProps('MenuListItemAnchor', renderComponent);
+    testBulmaProps('MenuListItem', renderListParent);
 });

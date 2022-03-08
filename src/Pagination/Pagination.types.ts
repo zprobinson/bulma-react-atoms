@@ -1,4 +1,10 @@
-import { BulmaComponentPropsWithoutRef, Is, Size } from '../types';
+import {
+    BulmaComponentPropsWithoutRef,
+    BulmaHelpers,
+    Is,
+    Polymorphic,
+    Size,
+} from '../types';
 
 export type PaginationProps = BulmaComponentPropsWithoutRef<'nav'> & {
     alignment?: Is<'centered' | 'right'>;
@@ -6,25 +12,34 @@ export type PaginationProps = BulmaComponentPropsWithoutRef<'nav'> & {
     isRounded?: boolean;
 };
 
-export type PaginationIncrementalProps = BulmaComponentPropsWithoutRef<'a'> & {
-    // TODO: Figure out breaking change to using 'is-disabled' class over disabled attribute on anchor tags. -z
-    // see https://github.com/jgthms/bulma/commit/a28bf751b10d47d59f83a979748b32c3e7f85a62
-    // see https://github.com/jgthms/bulma/issues/276#issuecomment-578889739
-    isDisabled?: boolean;
-    paginationType: 'previous' | 'next';
-};
-export type PaginationPreviousProps = Omit<
-    PaginationIncrementalProps,
+// see https://github.com/jgthms/bulma/commit/a28bf751b10d47d59f83a979748b32c3e7f85a62
+// see https://github.com/jgthms/bulma/issues/276#issuecomment-578889739
+export type PaginationIncrementalProps<
+    E extends React.ElementType
+> = Polymorphic<
+    E,
+    BulmaHelpers & {
+        isDisabled?: boolean;
+        paginationType: 'previous' | 'next';
+    }
+>;
+export type PaginationPreviousProps<E extends React.ElementType> = Omit<
+    PaginationIncrementalProps<E>,
     'paginationType'
 >;
-export type PaginationNextProps = PaginationPreviousProps;
+export type PaginationNextProps<
+    E extends React.ElementType
+> = PaginationPreviousProps<E>;
 
 export type PaginationListProps = BulmaComponentPropsWithoutRef<'ul'>;
-export type PaginationLinkProps = BulmaComponentPropsWithoutRef<'a'> & {
-    isCurrent?: boolean;
-    isDisabled?: boolean;
-    innerListItemProps?: React.ComponentPropsWithoutRef<'li'>;
-};
+export type PaginationLinkProps<E extends React.ElementType> = Polymorphic<
+    E,
+    BulmaHelpers & {
+        isCurrent?: boolean;
+        isDisabled?: boolean;
+        innerListItemProps?: React.ComponentPropsWithoutRef<'li'>;
+    }
+>;
 export type PaginationEllipsisProps = Omit<
     BulmaComponentPropsWithoutRef<'span'> & {
         innerListItemProps?: React.ComponentPropsWithoutRef<'li'>;

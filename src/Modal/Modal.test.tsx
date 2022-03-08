@@ -1,6 +1,6 @@
 // Generated with util/create-component.js
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Modal from './Modal';
 import ModalContent from './ModalContent';
@@ -25,9 +25,9 @@ describe('Modal Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Modal');
+        const component = screen.getByTestId('Modal');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -41,9 +41,9 @@ describe('Modal Content Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('ModalContent');
+        const component = screen.getByTestId('ModalContent');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -57,9 +57,9 @@ describe('Modal Card Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('ModalCard');
+        const component = screen.getByTestId('ModalCard');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -73,9 +73,9 @@ describe('Modal Card Body Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('ModalCardBody');
+        const component = screen.getByTestId('ModalCardBody');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -89,9 +89,9 @@ describe('Modal Card Footer Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('ModalCardFooter');
+        const component = screen.getByTestId('ModalCardFooter');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -105,9 +105,9 @@ describe('Modal Card Header Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('ModalCardHeader');
+        const component = screen.getByTestId('ModalCardHeader');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -121,9 +121,9 @@ describe('Modal Card Title Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('ModalCardTitle');
+        const component = screen.getByTestId('ModalCardTitle');
 
         expect(component).toHaveTextContent(expected);
     });

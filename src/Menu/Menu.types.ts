@@ -1,4 +1,8 @@
-import { BulmaComponentPropsWithoutRef } from './../types/component';
+import {
+    Polymorphic,
+    BulmaHelpers,
+    BulmaComponentPropsWithoutRef,
+} from '../types';
 
 export type MenuProps = BulmaComponentPropsWithoutRef<'aside'>;
 
@@ -6,6 +10,10 @@ export type MenuLabelProps = BulmaComponentPropsWithoutRef<'p'>;
 
 export type MenuListProps = BulmaComponentPropsWithoutRef<'ul'>;
 
-type IsActive = { isActive?: boolean };
-export type MenuListItemProps = BulmaComponentPropsWithoutRef<'a'> & IsActive;
-export type MenuLinkProps = BulmaComponentPropsWithoutRef<'a'> & IsActive;
+export type MenuListItemProps<E extends React.ElementType> = Polymorphic<
+    E,
+    BulmaHelpers & {
+        isActive?: boolean;
+        _innerListItemProps?: BulmaComponentPropsWithoutRef<'li'>;
+    }
+>;
