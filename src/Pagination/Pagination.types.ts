@@ -12,7 +12,6 @@ export type PaginationProps = BulmaComponentPropsWithoutRef<'nav'> & {
     isRounded?: boolean;
 };
 
-// TODO: Figure out breaking change to using 'is-disabled' class over disabled attribute on anchor tags. -z
 // see https://github.com/jgthms/bulma/commit/a28bf751b10d47d59f83a979748b32c3e7f85a62
 // see https://github.com/jgthms/bulma/issues/276#issuecomment-578889739
 export type PaginationIncrementalProps<
