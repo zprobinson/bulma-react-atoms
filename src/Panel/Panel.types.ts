@@ -11,12 +11,9 @@ export type PanelProps = BulmaComponentPropsWithoutRef<'nav'> & {
 };
 
 export type PanelTabsProps = BulmaComponentPropsWithoutRef<'p'>;
-export type PanelTabProps<E extends React.ElementType> = Polymorphic<
-    E,
-    BulmaHelpers & {
-        isActive?: boolean;
-    }
->;
+export type PanelTabProps = BulmaComponentPropsWithoutRef<'a'> & {
+    isActive?: boolean;
+};
 
 export type PanelHeadingProps = BulmaComponentPropsWithoutRef<'p'>;
 

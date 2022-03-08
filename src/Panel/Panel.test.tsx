@@ -65,9 +65,8 @@ describe('Panel Icon Component', () => {
 });
 
 describe('Panel Tab Component', () => {
-    const renderComponent = <E extends React.ElementType>(
-        props: PanelTabProps<E>
-    ) => render(<PanelTab {...props} />);
+    const renderComponent = (props: PanelTabProps) =>
+        render(<PanelTab {...props} />);
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
@@ -84,14 +83,6 @@ describe('Panel Tab Component', () => {
         const component = screen.getByTestId('PanelTab');
 
         expect(component.tagName).toMatch(/a/i);
-    });
-
-    it('should render as <button> tag when provided', () => {
-        renderComponent({ as: 'button' });
-
-        const component = screen.getByTestId('PanelTab');
-
-        expect(component.tagName).toMatch(/button/i);
     });
 
     it('should recognize a single click', () => {
