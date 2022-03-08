@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `MenuListItem` is now a polymorphic component with a default tag type set to `<a>`.
 -   `PaginationLink` is now a polymorphic component with a default tag type set to `<a>`.
 -   `PaginationIncremental` and the derived components `PaginationNext` and `PaginationPrevious` are now polymorphic components with a default tag type set to `<a>`.
+-   `BulmaHelpers` has been converted back to a _type_ from an _interface_.
+    -   Unfortunately, occasionally the TypeScript compiler isn't able to derive the extended props from BulmaHelpers and apply them to the Component Props. The workaround for this is to reload the developer window, but
+        we want to minimize this as much as possible to improve the developer experience while creating components. This has the tradeoff that the error messages will be more verbose as types are fully qualified in their error
+        messages rather than concisely referenced by name like interfaces are.
 
 ### Removed
 
