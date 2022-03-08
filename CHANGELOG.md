@@ -19,7 +19,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `MenuListItem` is now a polymorphic component with a default tag type set to `<a>`.
 -   `PaginationLink` is now a polymorphic component with a default tag type set to `<a>`.
 -   `PaginationIncremental` and the derived components `PaginationNext` and `PaginationPrevious` are now polymorphic components with a default tag type set to `<a>`.
--   `PanelTab` is now a polymorphic component with a default tag type set to `<a>`.
 
 ### Removed
 
