@@ -6,7 +6,18 @@ export type TableContainerProps = Omit<
 >;
 
 export type TableProps = BulmaComponentPropsWithoutRef<'table'> & {
+    /**
+     * Either use modifiers to apply styles to the table or use the boolean flag props.
+     * Using both will result in duplicate class names (which is ugly HTML but won't affect styling).
+     * The lesser used API will be deprecated and removed on release.
+     * Who will win? _YOU_ decide!
+     */
     modifiers?: OneOrMore<TableModifierOption>;
+    isBordered?: boolean;
+    isFullwidth?: boolean;
+    isStriped?: boolean;
+    isNarrow?: boolean;
+    isHoverable?: boolean;
 };
 
 export type TableHeaderProps = Omit<
