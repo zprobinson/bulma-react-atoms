@@ -12,7 +12,3 @@ export type TabsListProps = BulmaComponentPropsWithoutRef<'ul'>;
 export type TabsListItemProps = BulmaComponentPropsWithoutRef<'li'> & {
     isActive?: boolean;
 };
-export type TabsLinkProps = BulmaComponentPropsWithoutRef<'a'> & {
-    isActive?: boolean;
-    innerListItemProps?: React.ComponentPropsWithoutRef<'li'>;
-};

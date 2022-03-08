@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2022-03-07
+
+### Added
+
+-   `TableProps` now accepts `boolean` flag arguments for table styling.
+    -   Depending on use, either `modifiers` or the `boolean` flag arguments will be deprecated on release.
+
+### Changed
+
+-   `MenuListItem` is now a polymorphic component with a default tag type set to `<a>`.
+-   `PaginationLink` is now a polymorphic component with a default tag type set to `<a>`.
+-   `PaginationIncremental` and the derived components `PaginationNext` and `PaginationPrevious` are now polymorphic components with a default tag type set to `<a>`.
+-   `PanelTab` is now a polymorphic component with a default tag type set to `<a>`.
+
+### Removed
+
+-   `TabsLink` component served as a worse API for users using a `TabsListItem` and providing/styling their own child component.
+-   `MenuLink` component was removed in favor of using the polymorphic component `MenuListItem`.
+-   `CardFooterItemAnchor` was a deprecated component whose implementation could be derived from the polymorphic component `CardFooterItem`.
+-   `CardFooterItemParagraph` was a deprecated component whose implementation could be derived from the polymorphic component `CardFooterItem`.
+
 ## [0.1.0] - 2022-03-01
 
 ### Added
@@ -43,8 +64,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
         -   DropdownDiv.tsx
         -   DropdownAnchor.tsx
     -   Card
-        -   CardFooterItemAnchor.tsx (todo)
-        -   CardFooterItemParagraph.tsx (todo)
+        -   CardFooterItemAnchor.tsx
+        -   CardFooterItemParagraph.tsx
     -   Navbar
         -   NavbarItemAnchor.tsx
         -   NavbarItemDiv.tsx
