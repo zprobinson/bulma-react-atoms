@@ -33,6 +33,13 @@ jobs:
       customCommand: 'run build'
 
   - task: Npm@1
+    displayName: 'npm run lint'
+    inputs:
+      command: custom
+      verbose: false
+      customCommand: 'run lint'
+
+  - task: Npm@1
     displayName: 'npm run test'
     inputs:
       command: custom
