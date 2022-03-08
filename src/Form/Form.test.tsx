@@ -20,6 +20,7 @@ import {
     FormProps,
     FormRadioProps,
     FormSelectProps,
+    FormSubmitButtonProps,
     FormTextAreaProps,
 } from './Form.types';
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
@@ -32,6 +33,7 @@ import FormIcon from './FormIcon';
 import FormRadio from './FormRadio';
 import { FormHelpProps } from './Form.types';
 import FormHelp from './FormHelp';
+import SubmitButton from './SubmitButton';
 
 describe('Form Component', () => {
     const renderComponent = (props: FormProps) => render(<Form {...props} />);
@@ -1061,4 +1063,47 @@ describe('Form Help Component', () => {
     });
 
     testBulmaProps(TEST_ID, renderComponent);
+});
+
+describe('SubmitButton tests', () => {
+    const renderComponent = (props: FormSubmitButtonProps) =>
+        render(<SubmitButton {...props} />);
+    const testId = 'SubmitButton';
+
+    it('should render children when passed to it', () => {
+        const expected = 'harvey was here';
+        renderComponent({ children: expected });
+
+        const component = screen.getByTestId(testId);
+
+        expect(component).toHaveTextContent(expected);
+    });
+
+    it("should render 'Submit' as default if no children are passed", () => {
+        const expected = 'Submit';
+        renderComponent({});
+
+        const component = screen.getByText(expected);
+
+        expect(component).toBeInTheDocument();
+    });
+
+    it('should be rendered as a <button>', () => {
+        renderComponent({});
+
+        const component = screen.getByTestId(testId);
+
+        expect(component.tagName).toMatch(/button/i);
+    });
+
+    it("should have type 'submit'", () => {
+        const expected = 'submit';
+        renderComponent({});
+
+        const component = screen.getByTestId(testId);
+
+        expect(component).toHaveAttribute('type', expected);
+    });
+
+    testBulmaProps(testId, renderComponent);
 });
