@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Block from './Block';
 import { BlockProps } from './Block.types';
@@ -10,11 +10,28 @@ describe('Block Component', () => {
 
     it('should render foo text correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Block');
+        const component = screen.getByTestId('Block');
 
         expect(component).toHaveTextContent(expected);
+    });
+
+    it('should have block class', () => {
+        const expected = 'block';
+        renderComponent({});
+
+        const component = screen.getByTestId('Block');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should always render as a div tag', () => {
+        renderComponent({});
+
+        const component = screen.getByTestId('Block');
+
+        expect(component.tagName).toMatch(/div/i);
     });
 
     testBulmaProps('Block', renderComponent);

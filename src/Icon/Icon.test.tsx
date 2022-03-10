@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Icon from './Icon';
 import IconText from './IconText';
@@ -11,9 +11,9 @@ describe('Icon Component', () => {
 
     it('should render foo text correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Icon');
+        const component = screen.getByTestId('Icon');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -27,21 +27,21 @@ describe('Icon Test Component', () => {
 
     it('should render foo text correctly as span', () => {
         const expected = 'some icon text';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('IconText');
+        const component = screen.getByTestId('IconText');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should render foo text correctly as div', () => {
         const expected = 'some icon text';
-        const { getByTestId } = renderComponent({
+        renderComponent({
             children: expected,
             as: 'div',
         });
 
-        const component = getByTestId('IconText');
+        const component = screen.getByTestId('IconText');
 
         expect(component).toHaveTextContent(expected);
     });

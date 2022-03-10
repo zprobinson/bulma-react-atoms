@@ -11,9 +11,9 @@ describe("${componentName} Component", () => {
 
   it("should render children correctly", () => {
     const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    renderComponent({ children: expected });
 
-    const component = getByTestId("${componentName}");
+    const component = screen.getByTestId("${componentName}");
 
     expect(component).toHaveTextContent(expected);
   });

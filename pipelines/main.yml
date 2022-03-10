@@ -1,0 +1,14 @@
+pool: Default
+
+trigger:
+- main
+
+extends:
+  template: build-and-test.yml
+  parameters:
+    postBuildSteps:
+    - task: Npm@1
+      displayName: 'npm run local-publish'
+      inputs:
+        command: custom
+        customCommand: 'run local-publish'

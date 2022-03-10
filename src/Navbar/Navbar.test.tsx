@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Navbar from './Navbar';
 import NavbarBrand from './NavbarBrand';
-import NavbarDropdown from './NavbarDropdown';
+// import NavbarDropdown from './NavbarDropdown';
 import NavbarItem from './NavbarItem';
 import NavbarLink from './NavbarLink';
 import NavbarMenu from './NavbarMenu';
@@ -12,7 +12,7 @@ import NavbarMenuEnd from './NavbarMenuEnd';
 import {
     NavbarProps,
     NavbarBrandProps,
-    NavbarDropdownProps,
+    // NavbarDropdownProps,
     NavbarItemProps,
     NavbarLinkProps,
     NavbarMenuProps,
@@ -20,6 +20,8 @@ import {
     NavbarMenuEndProps,
 } from './Navbar.types';
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
+import { NavbarBurgerProps } from './Navbar.types';
+import NavbarBurger from './NavbarBurger';
 
 describe('Navbar Component', () => {
     const renderComponent = (props: NavbarProps) =>
@@ -27,9 +29,9 @@ describe('Navbar Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Navbar');
+        const component = screen.getByTestId('Navbar');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -43,9 +45,9 @@ describe('Navbar Brand Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('NavbarBrand');
+        const component = screen.getByTestId('NavbarBrand');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -54,19 +56,37 @@ describe('Navbar Brand Component', () => {
 });
 
 describe('Navbar Burger Component', () => {
-    const renderComponent = (props: NavbarDropdownProps) =>
-        render(<NavbarDropdown {...props} />);
+    const renderComponent = (props: NavbarBurgerProps) =>
+        render(<NavbarBurger {...props} />);
 
-    it('should render children correctly', () => {
-        const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+    it('should render as an <a> tag by default', () => {
+        renderComponent({});
 
-        const component = getByTestId('NavbarDropdown');
+        const component = screen.getByTestId('NavbarBurger');
 
-        expect(component).toHaveTextContent(expected);
+        expect(component.tagName).toMatch(/a/i);
     });
 
-    testBulmaProps('NavbarDropdown', renderComponent);
+    it('should have navbar-burger class embedded', () => {
+        const expected = 'navbar-burger';
+        renderComponent({});
+
+        const component = screen.getByTestId('NavbarBurger');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have is-active class when provided', () => {
+        const isActive: NavbarBurgerProps['isActive'] = true;
+        const expected = 'is-active';
+        renderComponent({ isActive });
+
+        const component = screen.getByTestId('NavbarBurger');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    testBulmaProps('NavbarBurger', renderComponent);
 });
 
 describe('Navbar Link Component', () => {
@@ -75,9 +95,9 @@ describe('Navbar Link Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('NavbarLink');
+        const component = screen.getByTestId('NavbarLink');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -91,9 +111,9 @@ describe('Navbar Menu Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('NavbarMenu');
+        const component = screen.getByTestId('NavbarMenu');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -107,9 +127,9 @@ describe('Navbar Menu Start Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('NavbarMenuStart');
+        const component = screen.getByTestId('NavbarMenuStart');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -123,9 +143,9 @@ describe('Navbar Menu End Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('NavbarMenuEnd');
+        const component = screen.getByTestId('NavbarMenuEnd');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -140,34 +160,34 @@ describe('Navbar Item Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('NavbarItem');
+        const component = screen.getByTestId('NavbarItem');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should have navbar-item class', () => {
         const expected = 'navbar-item';
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('NavbarItem');
+        const component = screen.getByTestId('NavbarItem');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should render as a div tag', () => {
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('NavbarItem');
+        const component = screen.getByTestId('NavbarItem');
 
         expect(component.tagName).toMatch(/div/i);
     });
 
     it('should render as an anchor tag', () => {
-        const { getByTestId } = renderComponent({ as: 'a', href: 'test' });
+        renderComponent({ as: 'a', href: 'test' });
 
-        const component = getByTestId('NavbarItem');
+        const component = screen.getByTestId('NavbarItem');
 
         expect(component.tagName).toMatch(/a/i);
     });

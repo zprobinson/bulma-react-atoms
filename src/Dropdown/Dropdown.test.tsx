@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Dropdown from './Dropdown';
 import DropdownContent from './DropdownContent';
@@ -21,9 +21,9 @@ describe('Dropdown Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('Dropdown');
+        const component = screen.getByTestId('Dropdown');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -37,9 +37,9 @@ describe('Dropdown Content Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'some text';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('DropdownContent');
+        const component = screen.getByTestId('DropdownContent');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -53,9 +53,9 @@ describe('Dropdown Menu Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'some text';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('DropdownMenu');
+        const component = screen.getByTestId('DropdownMenu');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -69,9 +69,9 @@ describe('Dropdown Trigger Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'some text';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('DropdownTrigger');
+        const component = screen.getByTestId('DropdownTrigger');
 
         expect(component).toHaveTextContent(expected);
     });
@@ -86,34 +86,34 @@ describe('Dropdown Item Component', () => {
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
-        const { getByTestId } = renderComponent({ children: expected });
+        renderComponent({ children: expected });
 
-        const component = getByTestId('DropdownItem');
+        const component = screen.getByTestId('DropdownItem');
 
         expect(component).toHaveTextContent(expected);
     });
 
     it('should have dropdown-item class', () => {
         const expected = 'dropdown-item';
-        const { getByTestId } = renderComponent({});
+        renderComponent({});
 
-        const component = getByTestId('DropdownItem');
+        const component = screen.getByTestId('DropdownItem');
 
         expect(component).toHaveClass(expected);
     });
 
     it('should render as an anchor tag', () => {
-        const { getByTestId } = renderComponent({ href: 'test ' });
+        renderComponent({ href: 'test ' });
 
-        const component = getByTestId('DropdownItem');
+        const component = screen.getByTestId('DropdownItem');
 
         expect(component.tagName).toMatch(/a/i);
     });
 
     it('should render as a div tag', () => {
-        const { getByTestId } = renderComponent({ as: 'div' });
+        renderComponent({ as: 'div' });
 
-        const component = getByTestId('DropdownItem');
+        const component = screen.getByTestId('DropdownItem');
 
         expect(component.tagName).toMatch(/div/i);
     });
