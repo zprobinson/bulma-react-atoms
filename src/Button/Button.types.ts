@@ -14,6 +14,7 @@ export type ButtonProps = BulmaComponentPropsWithoutRef<'button'> & {
     modifiers?: OneOrMore<ButtonModifier>;
     isLoading?: boolean;
     isSelected?: boolean;
+    isResponsive?: boolean;
 };
 
 export type ButtonsProps = BulmaComponentPropsWithoutRef<'div'> & {
