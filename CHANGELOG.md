@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - Not Released
+
+### Updated
+
+-   The `package.json` dependencies have been updated slightly.
+    -   [**BREAKING**] `bulma` has been upgraded to `^0.9.4` from `^0.9.3` and is now a `dependency` rather than a `peerDependency`.
+        -   You _must_ have the version of `bulma` installed in the calling client or be able to resolve it manually.
+    -   `react-dom` and `@types/react-dom` have been removed from both `peerDependency` and `devDependency`.
+        -   `control-bulma-atoms` does not render to the DOM itself.
+-   Note that `react` and `@types/react` dependencies remain unchanged at a `peerDependency` and `devDependency` respectively.
+    -   It is up to the calling code to resolve any discrepancies.
+    -   `npm` version `7.0.0` and above should attempt to resolve this for you. If you have a lower version, it will warn you during the install that your version is out of date.
+
 ## [0.2.0] - 2022-03-07
 
 ### Added
