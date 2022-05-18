@@ -5,10 +5,13 @@ trigger:
 
 extends:
   template: build-and-test.yml
-  parameters:
-    postBuildSteps:
-    - task: Npm@1
-      displayName: 'npm run local-publish'
-      inputs:
-        command: custom
-        customCommand: 'run local-publish'
+  # Build machine cannot automatically run local-publish.
+  # Reintroduce once a fix is found.
+  # Until a fix is found, deploy to private registry manually. -zach
+  # parameters:
+    # postBuildSteps:
+    # - task: Npm@1
+    #   displayName: 'npm run local-publish'
+    #   inputs:
+    #     command: custom
+    #     customCommand: 'run local-publish'
