@@ -14,6 +14,7 @@ import {
 
 export type FormFieldContextType = {
     size?: Size | undefined;
+    isHorizontal?: boolean | undefined;
 };
 
 export type FormProps = BulmaComponentPropsWithRef<'form'>;
