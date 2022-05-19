@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 
 import Navbar from './Navbar';
 import NavbarBrand from './NavbarBrand';
-// import NavbarDropdown from './NavbarDropdown';
+import NavbarDropdown from './NavbarDropdown';
 import NavbarItem from './NavbarItem';
 import NavbarLink from './NavbarLink';
 import NavbarMenu from './NavbarMenu';
@@ -12,7 +12,7 @@ import NavbarMenuEnd from './NavbarMenuEnd';
 import {
     NavbarProps,
     NavbarBrandProps,
-    // NavbarDropdownProps,
+    NavbarDropdownProps,
     NavbarItemProps,
     NavbarLinkProps,
     NavbarMenuProps,
@@ -194,4 +194,58 @@ describe('Navbar Item Component', () => {
     });
 
     testBulmaProps('NavbarItem', renderComponent);
+});
+
+describe('Navbar Dropdown Component', () => {
+    const renderComponent = (props: NavbarDropdownProps) =>
+        render(<NavbarDropdown {...props} />);
+
+    const TEST_ID = 'NavbarDropdown';
+
+    it('should render children correctly', () => {
+        const expected = 'harvey was here';
+        renderComponent({ children: expected });
+
+        const component = screen.getByText(expected);
+
+        expect(component).toBeInTheDocument();
+    });
+
+    it("should'nt have is-boxed as a default", () => {
+        const redHerring = 'is-boxed';
+        renderComponent({});
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).not.toHaveClass(redHerring);
+    });
+
+    it('should have is-boxed class when provided', () => {
+        const expected = 'is-boxed';
+        renderComponent({ isBoxed: true });
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it("shouldn't have is-right as a default", () => {
+        const redHerring = 'is-right';
+        renderComponent({});
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).not.toHaveClass(redHerring);
+    });
+
+    it('should have is-right class when provided', () => {
+        const expected = 'is-right';
+        renderComponent({ isRight: true });
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
+    });
+
+    testBulmaProps(TEST_ID, renderComponent);
 });
