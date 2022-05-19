@@ -2,7 +2,7 @@ import React from 'react';
 import { foldClassNames } from '../utilities/listUtils';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
 import { FormFieldProps } from './Form.types';
-import useFormFieldContext, { FormFieldContext } from './formFieldContext';
+import useFormFieldContext, { FormFieldContext } from './useFormFieldContext';
 
 type KindProps = Pick<
     FormFieldProps,

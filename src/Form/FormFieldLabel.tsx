@@ -1,7 +1,7 @@
 import React from 'react';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
 import { FormFieldLabelProps } from './Form.types';
-import useFormFieldContext from './formFieldContext';
+import useFormFieldContext from './useFormFieldContext';
 
 const FormFieldLabel: React.FC<FormFieldLabelProps> = ({ size, ...props }) => {
     const context = useFormFieldContext();

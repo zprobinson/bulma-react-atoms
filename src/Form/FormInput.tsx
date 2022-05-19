@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
 import { FormInputProps } from './Form.types';
-import useFormFieldContext from './formFieldContext';
+import useFormFieldContext from './useFormFieldContext';
 
 const FormInput: React.FC<
     FormInputProps & { innerRef?: React.Ref<HTMLInputElement> }
