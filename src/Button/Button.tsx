@@ -10,6 +10,7 @@ const Button: React.FC<ButtonProps> = ({
     modifiers = [],
     isLoading = false,
     isSelected = false,
+    isResponsive = false,
     ...props
 }) => {
     const { classNames, rest } = useInnerBulmaProps(
@@ -19,7 +20,8 @@ const Button: React.FC<ButtonProps> = ({
         state ?? '',
         foldClassNames(modifiers),
         isLoading ? 'is-loading' : '',
-        isSelected ? 'is-selected' : ''
+        isSelected ? 'is-selected' : '',
+        isResponsive ? 'is-responsive' : ''
     );
 
     return (
