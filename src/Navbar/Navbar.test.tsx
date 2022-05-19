@@ -18,6 +18,7 @@ import {
     NavbarMenuProps,
     NavbarMenuStartProps,
     NavbarMenuEndProps,
+    NavbarItemDefault,
 } from './Navbar.types';
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
 import { NavbarBurgerProps } from './Navbar.types';
@@ -154,9 +155,9 @@ describe('Navbar Menu End Component', () => {
 });
 
 describe('Navbar Item Component', () => {
-    const renderComponent = <E extends React.ElementType = React.ElementType>(
+    const renderComponent = <E extends React.ElementType = NavbarItemDefault>(
         props: NavbarItemProps<E>
-    ) => render(<NavbarItem {...props} />);
+    ) => render(<NavbarItem<E> {...props} />);
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';

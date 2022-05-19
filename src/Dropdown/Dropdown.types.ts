@@ -14,8 +14,10 @@ export type DropdownTriggerProps = BulmaComponentPropsWithoutRef<'div'>;
 export type DropdownMenuProps = BulmaComponentPropsWithoutRef<'div'>;
 export type DropdownContentProps = BulmaComponentPropsWithoutRef<'div'>;
 
+export type DropdownItemDefault = 'a';
 export type DropdownItemProps<E extends React.ElementType> = Polymorphic<
     E,
+    DropdownItemDefault,
     BulmaHelpers & { isActive?: boolean }
 >;
 

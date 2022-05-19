@@ -34,8 +34,10 @@ export type NavbarMenuProps = BulmaComponentPropsWithoutRef<'div'> & {
 export type NavbarMenuStartProps = BulmaComponentPropsWithoutRef<'div'>;
 export type NavbarMenuEndProps = NavbarMenuStartProps;
 
+export type NavbarItemDefault = 'div';
 export type NavbarItemProps<E extends React.ElementType> = Polymorphic<
     E,
+    NavbarItemDefault,
     BulmaHelpers & {
         isActive?: boolean;
         hasDropdown?: boolean;

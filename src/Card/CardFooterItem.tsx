@@ -1,12 +1,10 @@
 import React from 'react';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
-import { CardFooterItemProps } from './Card.types';
+import { CardFooterItemProps, CardFooterItemDefault } from './Card.types';
 
 const _default_element_ = 'a';
 
-const CardFooterItem = <
-    E extends React.ElementType = typeof _default_element_
->({
+const CardFooterItem = <E extends React.ElementType = CardFooterItemDefault>({
     as,
     ...props
 }: CardFooterItemProps<E>) => {

@@ -12,12 +12,14 @@ export type PaginationProps = BulmaComponentPropsWithoutRef<'nav'> & {
     isRounded?: boolean;
 };
 
+export type PaginationIncrementalDefault = 'a';
 // see https://github.com/jgthms/bulma/commit/a28bf751b10d47d59f83a979748b32c3e7f85a62
 // see https://github.com/jgthms/bulma/issues/276#issuecomment-578889739
 export type PaginationIncrementalProps<
     E extends React.ElementType
 > = Polymorphic<
     E,
+    PaginationIncrementalDefault,
     BulmaHelpers & {
         isDisabled?: boolean;
         paginationType: 'previous' | 'next';
@@ -32,8 +34,11 @@ export type PaginationNextProps<
 > = PaginationPreviousProps<E>;
 
 export type PaginationListProps = BulmaComponentPropsWithoutRef<'ul'>;
+
+export type PaginationLinkDefault = 'a';
 export type PaginationLinkProps<E extends React.ElementType> = Polymorphic<
     E,
+    PaginationLinkDefault,
     BulmaHelpers & {
         isCurrent?: boolean;
         isDisabled?: boolean;
