@@ -61,7 +61,9 @@ const FormField: React.FC<FormFieldProps> = ({
         isHorizontal ? 'is-horizontal' : ''
     );
     return (
-        <FormFieldContext.Provider value={{ size: size ?? context.size }}>
+        <FormFieldContext.Provider
+            value={{ size: size ?? context.size, isHorizontal }}
+        >
             <div
                 data-testid="FormField"
                 className={`field ${classNames}`}
