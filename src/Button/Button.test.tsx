@@ -100,6 +100,16 @@ describe('Button Component', () => {
         expect(component).toHaveClass(expected);
     });
 
+    it('should have is-responsive class when provided', () => {
+        const isResponsive: ButtonProps['isResponsive'] = true;
+        const expected = 'is-responsive';
+        renderComponent({ size: 'is-large', isResponsive });
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
+    });
+
     testBulmaProps('Button', renderComponent);
 });
 
