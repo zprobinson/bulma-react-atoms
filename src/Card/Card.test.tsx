@@ -17,6 +17,7 @@ import {
     CardImageProps,
     CardProps,
     CardFooterItemProps,
+    CardFooterItemDefault,
 } from './Card.types';
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
@@ -134,10 +135,10 @@ describe('Card Component', () => {
 
     describe('Card Footer Item', () => {
         const renderComponent = <
-            E extends React.ElementType = React.ElementType
+            E extends React.ElementType = CardFooterItemDefault
         >(
             props: CardFooterItemProps<E>
-        ) => render(<CardFooterItem {...props} />);
+        ) => render(<CardFooterItem<E> {...props} />);
 
         it('should render children correctly', () => {
             const expected = 'harvey was here';
