@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
 import Tag from './Tag';
-import { TagProps } from './Tag.types';
+import { TagProps, TagDefault } from './Tag.types';
 import Tags from './Tags';
 import { TagsProps } from './Tags.types';
 
@@ -22,9 +22,9 @@ describe('Tags Component', () => {
 });
 
 describe('Tag Component', () => {
-    const renderComponent = <E extends React.ElementType = React.ElementType>(
+    const renderComponent = <E extends React.ElementType = TagDefault>(
         props: TagProps<E>
-    ) => render(<Tag {...props} />);
+    ) => render(<Tag<E> {...props} />);
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';

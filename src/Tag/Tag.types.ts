@@ -8,7 +8,7 @@ import {
 } from '../types';
 
 export type TagDefault = 'span';
-export type TagProps<E extends React.ElementType> = Polymorphic<
+export type TagProps<E extends React.ElementType = TagDefault> = Polymorphic<
     E,
     TagDefault,
     BulmaHelpers & {
