@@ -14,6 +14,7 @@ import {
 
 export type FormFieldContextType = {
     size?: Size | undefined;
+    isHorizontal?: boolean | undefined;
 };
 
 export type FormProps = BulmaComponentPropsWithRef<'form'>;
@@ -33,7 +34,11 @@ export type FormFieldProps = Override<
 export type FormFieldLabelProps = Override<
     BulmaComponentPropsWithRef<'label'>,
     {
-        size?: Size;
+        /**
+         * Use the empty string for size to intentionally reset the spacing for labels
+         * on radio buttons and check boxes.
+         */
+        size?: Size | '';
     }
 >;
 export type FormFieldBodyProps = BulmaComponentPropsWithoutRef<'div'>;

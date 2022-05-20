@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import { foldClassNames } from '../utilities/listUtils';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
 import { FormSelectProps } from './Form.types';
-import useFormFieldContext from './formFieldContext';
+import useFormFieldContext from './useFormFieldContext';
 
 const FormSelect: React.FC<
     FormSelectProps & { innerRef?: React.Ref<HTMLSelectElement> }

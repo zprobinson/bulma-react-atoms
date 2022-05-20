@@ -2,7 +2,7 @@ import React from 'react';
 import { foldClassNames } from '../utilities/listUtils';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
 import { FormFieldProps } from './Form.types';
-import useFormFieldContext, { FormFieldContext } from './formFieldContext';
+import useFormFieldContext, { FormFieldContext } from './useFormFieldContext';
 
 type KindProps = Pick<
     FormFieldProps,
@@ -61,7 +61,9 @@ const FormField: React.FC<FormFieldProps> = ({
         isHorizontal ? 'is-horizontal' : ''
     );
     return (
-        <FormFieldContext.Provider value={{ size: size ?? context.size }}>
+        <FormFieldContext.Provider
+            value={{ size: size ?? context.size, isHorizontal }}
+        >
             <div
                 data-testid="FormField"
                 className={`field ${classNames}`}
