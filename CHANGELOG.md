@@ -19,8 +19,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Updated
 
+-   The `FieldLabel` component will automatically render as valid Bulma markup for a horizontal form if nested as a child of a `Field` component that is passed a `isHorizontal={true}` property.
+    -   If you wish to create a horizontal field component, the body of the form field must still be rendered manually. See below for the relevant markup (note the nested `Field`):
+
+```tsx
+const MyField = () => (
+    <Field isHorizontal>
+        <FieldLabel>Name</FieldLabel>
+        <FieldBody>
+            <Field>
+                <Control>
+                    <Input type="text" />
+                </Control>
+            </Field>
+        </FieldBody>
+    </Field>
+);
+```
+
 -   The `package.json` dependencies have been updated slightly.
-    -   [**BREAKING**] `bulma` has been upgraded to `^0.9.4` from `^0.9.3` and is now a `dependency` rather than a `peerDependency`.
+    -   `bulma` has been upgraded to `^0.9.4` from `^0.9.3` and is now a `dependency` rather than a `peerDependency`.
         -   You _must_ have the version of `bulma` installed in the calling client or be able to resolve it manually.
 -   Note that `react`, `react-dom`, `@types/react`, and `@types/react-dom` dependencies remain unchanged at a `peerDependency` and `devDependency` respectively.
     -   It is up to the calling code to resolve any discrepancies.

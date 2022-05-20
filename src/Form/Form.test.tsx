@@ -536,6 +536,87 @@ describe('Form Field Label Component', () => {
         expect(component).toHaveClass(expected);
     });
 
+    describe('Horizontal Form Field Label Component', () => {
+        const TEST_ID = 'FormFieldLabelHorizontal';
+        const renderComponent = (size?: FormFieldProps['size']) => (
+            props: FormFieldLabelProps
+        ) =>
+            render(
+                <FormField isHorizontal size={size}>
+                    <FormFieldLabel {...props}></FormFieldLabel>
+                </FormField>
+            );
+
+        it('should render field-label container in field component with is-horizontal flag', () => {
+            const expected = 'hello world';
+
+            renderComponent()({ children: expected });
+
+            const component = screen.getByTestId(TEST_ID);
+
+            expect(component).toBeInTheDocument();
+            expect(screen.getByText(expected)).toBeInTheDocument();
+        });
+
+        it('should have the field-label class', () => {
+            const expected = 'field-label';
+
+            renderComponent()({});
+
+            const component = screen.getByTestId(TEST_ID);
+
+            expect(component).toHaveClass(expected);
+        });
+
+        it("should override the context's size if passed in explicitly", () => {
+            const expected = 'is-small';
+
+            renderComponent('is-medium')({ size: expected });
+
+            const component = screen.getByTestId(TEST_ID);
+
+            expect(component).toHaveClass(expected);
+        });
+
+        it("should use the context's size nor the default size if size is not passed explicitly", () => {
+            const expected = 'is-large';
+
+            renderComponent(expected)({});
+
+            const component = screen.getByTestId(TEST_ID);
+
+            expect(component).toHaveClass(expected);
+        });
+
+        it('should default to is-normal by default', () => {
+            const expected = 'is-normal';
+
+            renderComponent()({});
+
+            const component = screen.getByTestId(TEST_ID);
+
+            expect(component).toHaveClass(expected);
+        });
+
+        it("shouldn't include any size class if passed an empty string for size.", () => {
+            const redHerrings: Exclude<FormFieldLabelProps['size'], ''>[] = [
+                'is-small',
+                'is-normal',
+                'is-medium',
+                'is-large',
+            ];
+
+            renderComponent('is-large')({ size: '' });
+
+            const component = screen.getByTestId(TEST_ID);
+
+            expect(component).not.toHaveClass(...(redHerrings as string[]));
+        });
+
+        // horizontal label render helper function is curried. See declaration above. -z
+        testBulmaProps(TEST_ID, renderComponent());
+    });
+
     testBulmaProps('FormFieldLabel', renderComponent);
 });
 
