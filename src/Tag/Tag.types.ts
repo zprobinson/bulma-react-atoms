@@ -7,10 +7,10 @@ import {
     Size,
 } from '../types';
 
-export type TagProps<
-    E extends React.ElementType = React.ElementType
-> = Polymorphic<
+export type TagDefault = 'span';
+export type TagProps<E extends React.ElementType> = Polymorphic<
     E,
+    TagDefault,
     BulmaHelpers & {
         color?: TagColor;
         size?: Exclude<Size, 'is-small'>;

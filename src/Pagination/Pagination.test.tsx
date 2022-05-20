@@ -14,6 +14,7 @@ import {
     PaginationListProps,
     PaginationLinkProps,
     PaginationEllipsisProps,
+    PaginationLinkDefault,
 } from './Pagination.types';
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
@@ -178,9 +179,11 @@ describe('Pagination List Component', () => {
 });
 
 describe('Pagination Link Component', () => {
-    const renderComponent = <E extends React.ElementType>(
+    const renderComponent = <
+        E extends React.ElementType = PaginationLinkDefault
+    >(
         props: PaginationLinkProps<E>
-    ) => render(<PaginationLink {...props} />);
+    ) => render(<PaginationLink<E> {...props} />);
     const testId = 'PaginationLink';
 
     it('should render children correctly', () => {
@@ -223,7 +226,7 @@ describe('Pagination Link Component', () => {
 
     it('should not call onClick when clicked if disabled is true', () => {
         const onClick = jest.fn();
-        renderComponent({ onClick, disabled: true });
+        renderComponent({ onClick, isDisabled: true });
 
         const component = screen.getByTestId(testId);
         fireEvent.click(component);
