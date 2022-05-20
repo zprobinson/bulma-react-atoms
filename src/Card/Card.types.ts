@@ -18,7 +18,9 @@ export type CardContentProps = BulmaComponentPropsWithoutRef<'div'>;
 
 export type CardFooterProps = BulmaComponentPropsWithoutRef<'footer'>;
 
+export type CardFooterItemDefault = 'a';
 export type CardFooterItemProps<E extends React.ElementType> = Polymorphic<
     E,
+    CardFooterItemDefault,
     BulmaHelpers
 >;

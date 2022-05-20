@@ -3,6 +3,7 @@ import { FormFieldContextType } from './Form.types';
 
 export const FormFieldContext = React.createContext<FormFieldContextType>({
     size: undefined,
+    isHorizontal: undefined,
 });
 
 const useFormFieldContext = () => {

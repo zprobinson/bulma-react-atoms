@@ -17,8 +17,10 @@ export type PanelTabProps = BulmaComponentPropsWithoutRef<'a'> & {
 
 export type PanelHeadingProps = BulmaComponentPropsWithoutRef<'p'>;
 
+export type PanelBlockDefault = 'div';
 export type PanelBlockProps<E extends React.ElementType> = Polymorphic<
     E,
+    PanelBlockDefault,
     BulmaHelpers
 >;
 

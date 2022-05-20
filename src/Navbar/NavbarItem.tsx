@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import { foldClassNames } from '../utilities/listUtils';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
-import { NavbarItemProps } from './Navbar.types';
+import { NavbarItemProps, NavbarItemDefault } from './Navbar.types';
 
 const _default_element_ = 'div';
 
-const NavbarItem = <E extends React.ElementType = typeof _default_element_>({
+const NavbarItem = <E extends React.ElementType = NavbarItemDefault>({
     as,
     isActive = false,
     hasDropdown = false,

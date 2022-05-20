@@ -1,13 +1,11 @@
 import React, { useMemo } from 'react';
 import { id } from '../utilities/functionalUtils';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
-import { PaginationLinkProps } from './Pagination.types';
+import { PaginationLinkProps, PaginationLinkDefault } from './Pagination.types';
 
 const _default_element_: React.ElementType = 'a';
 
-const PaginationLink = <
-    E extends React.ElementType = typeof _default_element_
->({
+const PaginationLink = <E extends React.ElementType = PaginationLinkDefault>({
     as,
     isCurrent,
     isDisabled,

@@ -1,6 +1,6 @@
 {
     "name": "control-bulma-atoms",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "main": "build/index.js",
     "module": "build/index.esm.js",
     "files": [
@@ -44,8 +44,10 @@
         "url": "http://icsi-teamsrvr:8080/tfs/Samples/Web%20Components/_workitems/"
     },
     "homepage": "http://icsi-teamsrvr:8080/tfs/Samples/Web%20Components/_git/BulmaReact",
+    "dependencies": {
+        "bulma": "^0.9.4"
+    },
     "peerDependencies": {
-        "bulma": "^0.9.3",
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0"
     },
@@ -70,8 +72,6 @@
         "identity-obj-proxy": "^3.0.0",
         "jest": "^26.6.3",
         "node-sass": "^5.0.0",
-        "react": "^16.14.0",
-        "react-dom": "^16.14.0",
         "rollup": "^2.56.3",
         "rollup-plugin-copy": "^3.4.0",
         "rollup-plugin-peer-deps-external": "^2.2.4",

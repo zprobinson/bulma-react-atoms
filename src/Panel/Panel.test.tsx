@@ -14,6 +14,7 @@ import {
     PanelIconProps,
     PanelTabProps,
     PanelTabsProps,
+    PanelBlockDefault,
 } from './Panel.types';
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
@@ -115,9 +116,9 @@ describe('Panel Tabs Component', () => {
 });
 
 describe('Panel Block Component', () => {
-    const renderComponent = <E extends React.ElementType = React.ElementType>(
+    const renderComponent = <E extends React.ElementType = PanelBlockDefault>(
         props: PanelBlockProps<E>
-    ) => render(<PanelBlock {...props} />);
+    ) => render(<PanelBlock<E> {...props} />);
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';
