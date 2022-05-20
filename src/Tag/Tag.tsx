@@ -1,10 +1,10 @@
 import React from 'react';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
-import { TagProps } from './Tag.types';
+import { TagProps, TagDefault } from './Tag.types';
 
 const _default_element_ = 'span';
 
-const Tag = <E extends React.ElementType = typeof _default_element_>({
+const Tag = <E extends React.ElementType = TagDefault>({
     as,
     color,
     size,

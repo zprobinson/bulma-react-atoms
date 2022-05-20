@@ -1,10 +1,10 @@
 import React from 'react';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
-import { DropdownItemProps } from './Dropdown.types';
+import { DropdownItemProps, DropdownItemDefault } from './Dropdown.types';
 
 const _default_element_ = 'a';
 
-const DropdownItem = <E extends React.ElementType = typeof _default_element_>({
+const DropdownItem = <E extends React.ElementType = DropdownItemDefault>({
     as,
     isActive = false,
     ...props

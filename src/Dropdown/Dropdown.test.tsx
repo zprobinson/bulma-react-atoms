@@ -12,6 +12,7 @@ import {
     DropdownProps,
     DropdownTriggerProps,
     DropdownItemProps,
+    DropdownItemDefault,
 } from './Dropdown.types';
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
@@ -80,9 +81,9 @@ describe('Dropdown Trigger Component', () => {
 });
 
 describe('Dropdown Item Component', () => {
-    const renderComponent = <E extends React.ElementType = React.ElementType>(
+    const renderComponent = <E extends React.ElementType = DropdownItemDefault>(
         props: DropdownItemProps<E>
-    ) => render(<DropdownItem {...props} />);
+    ) => render(<DropdownItem<E> {...props} />);
 
     it('should render children correctly', () => {
         const expected = 'harvey was here';

@@ -2,7 +2,7 @@ import React from 'react';
 import { foldClassNames } from '../utilities/listUtils';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
 import { FormControlProps } from './Form.types';
-import useFormFieldContext from './formFieldContext';
+import useFormFieldContext from './useFormFieldContext';
 
 const FormControl: React.FC<FormControlProps> = ({
     iconAlignment = [],

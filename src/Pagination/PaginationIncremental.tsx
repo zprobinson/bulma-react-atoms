@@ -1,12 +1,15 @@
 import React, { useMemo } from 'react';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
-import { PaginationIncrementalProps } from './Pagination.types';
+import {
+    PaginationIncrementalProps,
+    PaginationIncrementalDefault,
+} from './Pagination.types';
 import { id } from '../utilities/functionalUtils';
 
 const _default_element_: React.ElementType = 'a';
 
 const PaginationIncremental = <
-    E extends React.ElementType = typeof _default_element_
+    E extends React.ElementType = PaginationIncrementalDefault
 >({
     as,
     isDisabled = false,

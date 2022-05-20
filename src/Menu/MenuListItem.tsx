@@ -1,10 +1,10 @@
 import React from 'react';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
-import { MenuListItemProps } from './Menu.types';
+import { MenuListItemProps, MenuListItemDefault } from './Menu.types';
 
 const _default_element_ = 'a';
 
-const MenuListItem = <E extends React.ElementType = typeof _default_element_>({
+const MenuListItem = <E extends React.ElementType = MenuListItemDefault>({
     as,
     isActive = false,
     _innerListItemProps,

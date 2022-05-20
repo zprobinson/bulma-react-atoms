@@ -12,8 +12,14 @@ export type Has<TemplateLiteral extends string> = `has-${TemplateLiteral}`;
 
 export type Polymorphic<
     PolymorphicElement extends React.ElementType = React.ElementType,
+    DefaultElement extends React.ElementType = React.ElementType,
     Props extends BulmaHelpers = BulmaHelpers
 > = Props &
-    Omit<React.ComponentPropsWithoutRef<PolymorphicElement>, keyof Props> & {
-        as?: PolymorphicElement;
-    };
+    Omit<React.ComponentPropsWithoutRef<PolymorphicElement>, keyof Props> &
+    (Equals<DefaultElement, PolymorphicElement> extends true
+        ? {
+              as?: DefaultElement | undefined;
+          }
+        : {
+              as: PolymorphicElement;
+          });

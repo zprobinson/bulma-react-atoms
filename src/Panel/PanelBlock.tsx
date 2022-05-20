@@ -1,10 +1,10 @@
 import React from 'react';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
-import { PanelBlockProps } from './Panel.types';
+import { PanelBlockProps, PanelBlockDefault } from './Panel.types';
 
 const _default_element_ = 'div';
 
-const PanelBlock = <E extends React.ElementType = typeof _default_element_>({
+const PanelBlock = <E extends React.ElementType = PanelBlockDefault>({
     as,
     ...props
 }: PanelBlockProps<E>) => {

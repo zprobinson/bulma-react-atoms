@@ -1,4 +1,3 @@
-// Generated with util/create-component.js
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
@@ -11,6 +10,7 @@ import {
     MenuListItemProps,
     MenuListProps,
     MenuProps,
+    MenuListItemDefault,
 } from './Menu.types';
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
@@ -62,9 +62,9 @@ describe('Menu List Component', () => {
 });
 
 describe('Menu List Item Component', () => {
-    const renderComponent = <E extends React.ElementType = 'a'>(
+    const renderComponent = <E extends React.ElementType = MenuListItemDefault>(
         props: MenuListItemProps<E>
-    ) => render(<MenuListItem {...props} />);
+    ) => render(<MenuListItem<E> {...props} />);
     const renderListParent = <E extends React.ElementType = 'a'>(
         props: MenuListItemProps<E>['_innerListItemProps']
     ) => render(<MenuListItem _innerListItemProps={props} />);
