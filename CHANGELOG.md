@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 -   `FormControlProps` now contains an optional `isExpanded` property that will apply the `is-expanded` class to the form control.
+-   `FormCheckbox` now forwards a `React.Ref` object into its underlying `<input type="checkbox" />` element.
+    -   This component should now be able to be used with `react-hook-form`.
+-   `FormRadio` now forwards a `React.Ref` object into its underlying `<input type="radio" />` element.
+    -   This component should now be able to be used with `react-hook-form`.
 
 ### Updated
 
