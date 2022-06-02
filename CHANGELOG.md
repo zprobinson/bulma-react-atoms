@@ -7,7 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.0] - Not Released
+## [0.4.0] - Not Released
+
+### Added
+
+-   `FormControlProps` now contains an optional `isExpanded` property that will apply the `is-expanded` class to the form control.
+
+### Updated
+
+-   The `isFullwidth` property on `FormControlProps` is now _deprecated_.
+    -   You can still provide it, but it will apply the `is-expanded` class instead of the `is-fullwidth` class.
+    -   There were no valid css selectors/style rules that matched `.control.is-fullwidth` in the Bulma source.
+
+## [0.3.0] - 2022-05-20
 
 -   [Update to match new release of Bulma v 0.9.4](https://github.com/jgthms/bulma/blob/master/CHANGELOG.md)
 

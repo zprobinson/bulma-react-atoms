@@ -6,6 +6,7 @@ import useFormFieldContext from './useFormFieldContext';
 
 const FormControl: React.FC<FormControlProps> = ({
     iconAlignment = [],
+    isExpanded = false,
     isFullwidth = false,
     isLoading = false,
     ...props
@@ -14,7 +15,7 @@ const FormControl: React.FC<FormControlProps> = ({
     const { classNames, rest } = useInnerBulmaProps(
         props,
         foldClassNames(iconAlignment) ?? '',
-        isFullwidth ? 'is-fullwidth' : '',
+        isExpanded || isFullwidth ? 'is-expanded' : '',
         isLoading ? 'is-loading' : '',
         context.size ?? ''
     );

@@ -1,6 +1,6 @@
 # Control Bulma Atoms
 
-Atomic React/TypeScript components for [Bulma v0.9.3](https://bulma.io/documentation/). Useful for type-safe implementations of the Bulma CSS Framework.
+Atomic React/TypeScript components for [Bulma v0.9.4](https://bulma.io/documentation/). Useful for type-safe implementations of the Bulma CSS Framework.
 
 # To Install
 
