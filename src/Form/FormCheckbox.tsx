@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
 import { FormCheckboxProps } from './Form.types';
 
-const FormCheckbox: React.FC<FormCheckboxProps> = ({
+const FormCheckbox: React.FC<
+    FormCheckboxProps & { innerRef?: React.Ref<HTMLInputElement> }
+> = ({
     children,
     _innerDisabledColor,
     _innerCheckboxClassName,
+    innerRef,
     ...props
 }) => {
     const { classNames, rest } = useInnerBulmaProps(props);
@@ -27,6 +30,7 @@ const FormCheckbox: React.FC<FormCheckboxProps> = ({
                 type="checkbox"
                 data-testid="FormCheckbox"
                 className={_innerCheckboxClassName}
+                ref={innerRef}
                 {...rest}
             />
             {children}
@@ -34,4 +38,8 @@ const FormCheckbox: React.FC<FormCheckboxProps> = ({
     );
 };
 
-export default FormCheckbox;
+export default forwardRef<HTMLInputElement, Parameters<typeof FormCheckbox>[0]>(
+    (props, ref) => {
+        return <FormCheckbox {...props} innerRef={ref} />;
+    }
+);

@@ -45,6 +45,8 @@ export type FormFieldBodyProps = BulmaComponentPropsWithoutRef<'div'>;
 
 export type FormControlProps = BulmaComponentPropsWithoutRef<'div'> & {
     iconAlignment?: OneOrMore<Has<'icons-left' | 'icons-right'>>;
+    isExpanded?: boolean;
+    /** deprecated: use `isExpanded` instead */
     isFullwidth?: boolean;
     isLoading?: boolean;
 };

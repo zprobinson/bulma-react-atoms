@@ -257,10 +257,20 @@ describe('Form Control Component', () => {
         expect(component).toHaveClass(expected);
     });
 
-    it('should have is-fullwidth class', () => {
+    it('should have is-expanded class when provided isFullwidth', () => {
         const isFullwidth: FormControlProps['isFullwidth'] = true;
-        const expected = 'is-fullwidth';
+        const expected = 'is-expanded';
         renderComponent({ isFullwidth });
+
+        const component = screen.getByTestId('FormControl');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have is-expanded class when provided isExpanded', () => {
+        const isExpanded: FormControlProps['isExpanded'] = true;
+        const expected = 'is-expanded';
+        renderComponent({ isExpanded });
 
         const component = screen.getByTestId('FormControl');
 

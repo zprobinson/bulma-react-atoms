@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
 import { FormRadioProps } from './Form.types';
 
-const FormRadio: React.FC<FormRadioProps> = ({
+const FormRadio: React.FC<
+    FormRadioProps & { innerRef?: React.Ref<HTMLInputElement> }
+> = ({
     children,
     _innerDisabledColor,
     _innerRadioClassName,
+    innerRef,
     ...props
 }) => {
     const { classNames, rest } = useInnerBulmaProps(props);
@@ -27,6 +30,7 @@ const FormRadio: React.FC<FormRadioProps> = ({
                 type="radio"
                 data-testid="FormRadio"
                 className={_innerRadioClassName}
+                ref={innerRef}
                 {...rest}
             />
             {children}
@@ -34,4 +38,8 @@ const FormRadio: React.FC<FormRadioProps> = ({
     );
 };
 
-export default FormRadio;
+export default forwardRef<HTMLInputElement, Parameters<typeof FormRadio>[0]>(
+    (props, ref) => {
+        return <FormRadio {...props} innerRef={ref} />;
+    }
+);
