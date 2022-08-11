@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 import { FormSubmitButtonProps } from './Form.types';
+import { ButtonDefault } from '../Button/Button.types';
 
 /**
  * Notice that because this button should exist as a child of the Form component,
@@ -12,7 +13,11 @@ const SubmitButton: React.FC<FormSubmitButtonProps> = ({
     ...props
 }) => {
     return (
-        <Button data-testid="SubmitButton" type="submit" {...props}>
+        <Button<ButtonDefault>
+            data-testid="SubmitButton"
+            type="submit"
+            {...props}
+        >
             {children ?? 'Submit'}
         </Button>
     );
