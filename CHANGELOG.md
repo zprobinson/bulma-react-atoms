@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2022-08-11
+
+### Added
+
+-   `ButtonProps` is now a polymorphic component with a default tag type set to `<button>`.
+    -   You are only able to choose between `<button>` and `<a>` for the dynamic binding
+        due to the limits placed on the Bulma CSS library.
+
+### Removed
+
+-   **[BREAKING]** `FormInputProps` no longer includes the `isLoading` prop.
+    -   This prop did not interact with the Bulma CSS library.
+
 ## [0.4.0] - 2022-06-02
 
 ### Added
