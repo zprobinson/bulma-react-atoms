@@ -61,7 +61,6 @@ export type FormInputProps = Override<
         size?: Size;
         color?: Is<PrimaryColor | 'dark'>;
         isStatic?: boolean;
-        isLoading?: boolean;
         isRounded?: boolean;
         state?: Is<'focused' | 'hovered'>;
         _innerInputSize?: React.ComponentProps<'input'>['size'];
@@ -110,7 +109,10 @@ export type FormRadioProps = Omit<
     'type'
 >;
 
-export type FormSubmitButtonProps = Omit<ButtonProps, 'type' | 'onClick'>;
+export type FormSubmitButtonProps = Omit<
+    ButtonProps<'button'>,
+    'type' | 'onClick'
+>;
 
 export type FormFileProps = Override<
     BulmaComponentPropsWithRef<'input'>,
