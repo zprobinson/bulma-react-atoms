@@ -1,21 +1,30 @@
+import React from 'react';
 import {
     BulmaComponentPropsWithoutRef,
+    BulmaHelpers,
     Is,
     OneOrMore,
+    Polymorphic,
     PrimaryColor,
     SecondaryColor,
     Size,
 } from '../types';
 
-export type ButtonProps = BulmaComponentPropsWithoutRef<'button'> & {
-    color?: ButtonColor;
-    size?: Size;
-    state?: Exclude<Is<State>, 'is-loading'>;
-    modifiers?: OneOrMore<ButtonModifier>;
-    isLoading?: boolean;
-    isSelected?: boolean;
-    isResponsive?: boolean;
-};
+export type ButtonDefault = 'button';
+export type ButtonProps<E extends Extract<React.ElementType, 'a' | 'button'>> =
+    Polymorphic<
+        E,
+        ButtonDefault,
+        BulmaHelpers & {
+            color?: ButtonColor;
+            size?: Size;
+            state?: Exclude<Is<State>, 'is-loading'>;
+            modifiers?: OneOrMore<ButtonModifier>;
+            isLoading?: boolean;
+            isSelected?: boolean;
+            isResponsive?: boolean;
+        }
+    >;
 
 export type ButtonsProps = BulmaComponentPropsWithoutRef<'div'> & {
     hasAddons?: boolean;

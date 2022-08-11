@@ -90,17 +90,6 @@ describe('Form Input Component', () => {
         expect(component).toHaveClass(expected);
     });
 
-    it('should render is-loading class', () => {
-        const value: FormInputProps['isLoading'] = true;
-        const expected = 'is-loading';
-
-        renderComponent({ isLoading: value });
-
-        const component = screen.getByTestId('FormInput');
-
-        expect(component).toHaveClass(expected);
-    });
-
     it('should render is-rounded class', () => {
         const value: FormInputProps['isRounded'] = true;
         const expected = 'is-rounded';
@@ -548,14 +537,13 @@ describe('Form Field Label Component', () => {
 
     describe('Horizontal Form Field Label Component', () => {
         const TEST_ID = 'FormFieldLabelHorizontal';
-        const renderComponent = (size?: FormFieldProps['size']) => (
-            props: FormFieldLabelProps
-        ) =>
-            render(
-                <FormField isHorizontal size={size}>
-                    <FormFieldLabel {...props}></FormFieldLabel>
-                </FormField>
-            );
+        const renderComponent =
+            (size?: FormFieldProps['size']) => (props: FormFieldLabelProps) =>
+                render(
+                    <FormField isHorizontal size={size}>
+                        <FormFieldLabel {...props}></FormFieldLabel>
+                    </FormField>
+                );
 
         it('should render field-label container in field component with is-horizontal flag', () => {
             const expected = 'hello world';

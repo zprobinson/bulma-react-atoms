@@ -1,9 +1,14 @@
 import React from 'react';
 import { foldClassNames } from '../utilities/listUtils';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
-import { ButtonProps } from './Button.types';
+import { ButtonDefault, ButtonProps } from './Button.types';
 
-const Button: React.FC<ButtonProps> = ({
+const _default_element_ = 'button';
+
+const Button = <
+    E extends Extract<React.ElementType, 'a' | 'button'> = ButtonDefault
+>({
+    as,
     color,
     size,
     state,
@@ -12,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
     isSelected = false,
     isResponsive = false,
     ...props
-}) => {
+}: ButtonProps<E>) => {
     const { classNames, rest } = useInnerBulmaProps(
         props,
         color ?? '',
@@ -23,13 +28,14 @@ const Button: React.FC<ButtonProps> = ({
         isSelected ? 'is-selected' : '',
         isResponsive ? 'is-responsive' : ''
     );
+    const Component = as ?? _default_element_;
 
     return (
-        <button
+        <Component
             data-testid="Button"
             className={`button ${classNames}`}
             {...rest}
-        ></button>
+        ></Component>
     );
 };
 

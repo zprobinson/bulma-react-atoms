@@ -10,7 +10,6 @@ const FormInput: React.FC<
     color,
     state,
     isStatic = false,
-    isLoading = false,
     isRounded = false,
     type = 'text',
     _innerInputSize,
@@ -24,7 +23,6 @@ const FormInput: React.FC<
         color ?? '',
         state ?? '',
         isStatic ? 'is-static' : '',
-        isLoading ? 'is-loading' : '',
         isRounded ? 'is-rounded' : ''
     );
 
