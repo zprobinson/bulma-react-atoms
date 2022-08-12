@@ -5,9 +5,7 @@ import { ButtonDefault, ButtonProps } from './Button.types';
 
 const _default_element_ = 'button';
 
-const Button = <
-    E extends Extract<React.ElementType, 'a' | 'button'> = ButtonDefault
->({
+const Button = <E extends React.ElementType = ButtonDefault>({
     as,
     color,
     size,

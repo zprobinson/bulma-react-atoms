@@ -11,7 +11,7 @@ import {
 } from '../types';
 
 export type ButtonDefault = 'button';
-export type ButtonProps<E extends Extract<React.ElementType, 'a' | 'button'>> =
+export type ButtonProps<E extends React.ElementType = ButtonDefault> =
     Polymorphic<
         E,
         ButtonDefault,
