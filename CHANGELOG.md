@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.1] - 2022-08-12
+
+### Updated
+
+-   `ButtonProps` and `Button` polymorphic behavior widened to include all `React.ElementType` due to errors in the type-narrowing in use in complex molecules.
+
 ## [0.5.0] - 2022-08-11
 
 ### Added
