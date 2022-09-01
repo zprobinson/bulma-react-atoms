@@ -6,13 +6,15 @@ const Dropdown: React.FC<DropdownProps> = ({
     isActive = false,
     isHoverable = false,
     isRightAligned = false,
+    isUp = false,
     ...props
 }) => {
     const { classNames, rest } = useInnerBulmaProps(
         props,
         isActive ? 'is-active' : '',
         isHoverable ? 'is-hoverable' : '',
-        isRightAligned ? 'is-right' : ''
+        isRightAligned ? 'is-right' : '',
+        isUp ? 'is-up' : ''
     );
     return (
         <div

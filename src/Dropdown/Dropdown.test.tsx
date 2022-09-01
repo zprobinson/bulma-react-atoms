@@ -17,6 +17,7 @@ import {
 import { testBulmaProps } from '../bulmaTests/bulmaTests';
 
 describe('Dropdown Component', () => {
+    const TEST_ID = 'Dropdown';
     const renderComponent = (props: DropdownProps) =>
         render(<Dropdown {...props} />);
 
@@ -24,9 +25,45 @@ describe('Dropdown Component', () => {
         const expected = 'harvey was here';
         renderComponent({ children: expected });
 
-        const component = screen.getByTestId('Dropdown');
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveTextContent(expected);
+    });
+
+    it('should have "is-active" class when provided', () => {
+        const expected = 'is-active';
+        renderComponent({ isActive: true });
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have "is-hoverable" class when provided', () => {
+        const expected = 'is-hoverable';
+        renderComponent({ isHoverable: true });
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have "is-right" class when provided', () => {
+        const expected = 'is-right';
+        renderComponent({ isRightAligned: true });
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have "is-up" class when provided', () => {
+        const expected = 'is-up';
+        renderComponent({ isUp: true });
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
     });
 
     testBulmaProps('Dropdown', renderComponent);

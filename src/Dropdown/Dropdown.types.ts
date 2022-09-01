@@ -8,6 +8,7 @@ export type DropdownProps = BulmaComponentPropsWithoutRef<'div'> & {
     isActive?: boolean;
     isHoverable?: boolean;
     isRightAligned?: boolean;
+    isUp?: boolean;
 };
 
 export type DropdownTriggerProps = BulmaComponentPropsWithoutRef<'div'>;
