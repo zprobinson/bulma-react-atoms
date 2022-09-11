@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.2] - 2022-09-01
+
+## Added
+
+-   `DropdownProps` now includes `isUp` which will render the component with the `is-up` class. This will display the `DropdownMenu` _above_ the `DropdownTrigger` rather than below it.
+-   Some additional tests were written to ensure correct class rendering behavior of the `Dropdown` component.
+
 ## [0.5.1] - 2022-08-12
 
 ### Updated

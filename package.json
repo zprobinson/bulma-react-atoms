@@ -1,6 +1,6 @@
 {
     "name": "control-bulma-atoms",
-    "version": "0.5.1",
+    "version": "0.5.2-beta.0",
     "main": "build/index.js",
     "module": "build/index.esm.js",
     "files": [
@@ -20,7 +20,8 @@
         "local-patch": "npm version patch && npm run local-publish",
         "local-minor": "npm version minor && npm run local-publish",
         "compile": "tsc --noEmit",
-        "lint": "npx eslint ./src --ignore-pattern *stories*"
+        "lint": "npx eslint ./src --ignore-pattern *stories*",
+        "local-beta": "npm publish --tag beta --registry http://icsi-teamsrvr:8081/"
     },
     "repository": {
         "type": "git",
