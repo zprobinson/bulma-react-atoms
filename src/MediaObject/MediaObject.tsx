@@ -7,7 +7,7 @@ const MediaObject: React.FC<MediaObjectProps> = (props) => {
     return (
         <article
             data-testid="MediaObject"
-            className={classNames}
+            className={`media ${classNames}`}
             {...rest}
         ></article>
     );

@@ -7,7 +7,7 @@ const MediaLeft: React.FC<MediaLeftProps> = (props) => {
     return (
         <figure
             data-testid="MediaLeft"
-            className={classNames}
+            className={`media-left ${classNames}`}
             {...rest}
         ></figure>
     );
