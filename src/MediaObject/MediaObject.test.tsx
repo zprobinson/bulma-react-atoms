@@ -26,6 +26,15 @@ describe('Media Object Component', () => {
         expect(component).toHaveTextContent(expected);
     });
 
+    it("should render have class 'media'", () => {
+        const expected = 'media';
+        renderComponent({ children: expected });
+
+        const component = screen.getByTestId('MediaObject');
+
+        expect(component).toHaveClass(expected);
+    });
+
     testBulmaProps('MediaObject', renderComponent);
 });
 
@@ -40,6 +49,15 @@ describe('Media Left Component', () => {
         const component = screen.getByTestId('MediaLeft');
 
         expect(component).toHaveTextContent(expected);
+    });
+
+    it("should render have class 'media-left'", () => {
+        const expected = 'media-left';
+        renderComponent({ children: expected });
+
+        const component = screen.getByTestId('MediaLeft');
+
+        expect(component).toHaveClass(expected);
     });
 
     testBulmaProps('MediaLeft', renderComponent);
@@ -58,6 +76,15 @@ describe('Media Content Component', () => {
         expect(component).toHaveTextContent(expected);
     });
 
+    it("should render have class 'media-content'", () => {
+        const expected = 'media-content';
+        renderComponent({ children: expected });
+
+        const component = screen.getByTestId('MediaContent');
+
+        expect(component).toHaveClass(expected);
+    });
+
     testBulmaProps('MediaContent', renderComponent);
 });
 
@@ -72,6 +99,15 @@ describe('Media Right Component', () => {
         const component = screen.getByTestId('MediaRight');
 
         expect(component).toHaveTextContent(expected);
+    });
+
+    it("should render have class 'media-right'", () => {
+        const expected = 'media-right';
+        renderComponent({ children: expected });
+
+        const component = screen.getByTestId('MediaRight');
+
+        expect(component).toHaveClass(expected);
     });
 
     testBulmaProps('MediaRight', renderComponent);

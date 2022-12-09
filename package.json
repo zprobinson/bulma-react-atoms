@@ -1,6 +1,6 @@
 {
     "name": "control-bulma-atoms",
-    "version": "0.5.2-beta.0",
+    "version": "0.5.2",
     "main": "build/index.js",
     "module": "build/index.esm.js",
     "files": [
