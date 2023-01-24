@@ -7,9 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.3] - 2023-01-24
+
+### Updated
+
+-   `NavbarProps['color']` options now correctly have the `is-` prefix.
+
 ## [0.5.2] - 2022-09-01
 
-## Added
+### Added
 
 -   `DropdownProps` now includes `isUp` which will render the component with the `is-up` class. This will display the `DropdownMenu` _above_ the `DropdownTrigger` rather than below it.
 -   Some additional tests were written to ensure correct class rendering behavior of the `Dropdown` component.

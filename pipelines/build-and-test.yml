@@ -16,7 +16,7 @@ jobs:
     displayName: 'npm install'
     inputs:
       command: 'custom'
-      customCommand: 'install --registry http://icsi-teamsrvr:8081/'
+      customCommand: 'install --registry https://azuredevops.interstates.com:8444/'
 
   - task: Npm@1
     displayName: 'npm run compile'
