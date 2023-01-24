@@ -8,7 +8,7 @@ import {
     SecondaryColor,
 } from '../types';
 
-type NavbarColor = PrimaryColor | SecondaryColor;
+type NavbarColor = Is<PrimaryColor | SecondaryColor>;
 
 export type NavbarProps = BulmaComponentPropsWithoutRef<'nav'> & {
     isTransparent?: boolean;
