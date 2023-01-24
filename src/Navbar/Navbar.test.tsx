@@ -25,6 +25,8 @@ import { NavbarBurgerProps } from './Navbar.types';
 import NavbarBurger from './NavbarBurger';
 
 describe('Navbar Component', () => {
+    const TEST_ID = 'Navbar';
+
     const renderComponent = (props: NavbarProps) =>
         render(<Navbar {...props} />);
 
@@ -32,9 +34,45 @@ describe('Navbar Component', () => {
         const expected = 'harvey was here';
         renderComponent({ children: expected });
 
-        const component = screen.getByTestId('Navbar');
+        const component = screen.getByTestId(TEST_ID);
 
         expect(component).toHaveTextContent(expected);
+    });
+
+    it('should have color class when provided', () => {
+        const expected: NavbarProps['color'] = 'is-danger';
+        renderComponent({ color: expected });
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have transparent class when provided', () => {
+        const expected = 'is-transparent';
+        renderComponent({ isTransparent: true });
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have fixed class when provided', () => {
+        const expected: NavbarProps['isFixedHtmlInterop'] = 'is-fixed-top';
+        renderComponent({ isFixedHtmlInterop: expected });
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should have modifier classes when provided', () => {
+        const expected: NavbarProps['modifiers'] = ['is-spaced', 'has-shadow'];
+        renderComponent({ modifiers: expected });
+
+        const component = screen.getByTestId(TEST_ID);
+
+        expected.forEach(expected => expect(component).toHaveClass(expected));
     });
 
     testBulmaProps('Navbar', renderComponent);
