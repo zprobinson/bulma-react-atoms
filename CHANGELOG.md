@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.3] - 2023-03-08
+
+## Added
+
+-   The `Dropdown` component now accepts a `React.Ref<HTMLDivElement>` type which should allow direct DOM manipulation on the top-most parent of the `Dropdown` component tree.
+-   `DropdownProps` has been changed to `BulmaPropsWithRef<'div'>`, up from `BulmaPropsWithoutRef<'div'>`
+
 ## [0.5.2] - 2022-09-01
 
 ## Added

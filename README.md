@@ -4,11 +4,11 @@ Atomic React/TypeScript components for [Bulma v0.9.4](https://bulma.io/documenta
 
 # To Install
 
-`control-bulma-atoms` is hosted on Interstates' private internal npm registry, which is hosted on [http://icsi-teamsrvr:8081/](http://icsi-teamsrvr:8081/).
+`control-bulma-atoms` is hosted on Interstates' private internal npm registry, which is hosted on [https://azuredevops.interstates.com:4444/](https://azuredevops.interstates.com:4444/).
 
 In order to access the internal npm registry, you will need to update your npm configuration to point at the new internal location (instead of the default public registry).
 
-1. `npm set registry http://icsi-teamsrvr:8081/`
+1. `npm set registry https://azuredevops.interstates.com:4444/`
 2. You're done!
 
 You will still be able to access the public npm registry, we are using a tool called [Verdaccio](https://verdaccio.org) that acts as a middleman/cache between us and the scary world. We also get the benefit of being able to publish packages internally that no one else can access/use.
@@ -18,10 +18,10 @@ This should have no change in your current npm package installation behavior oth
 If you would like to keep your registry as default, but _opt in_ to the internal registry on a _per npm install_ basis, you can do the following instead:
 
 1. Add the `--registry` flag to the CLI command when performing an `npm install`
-    1. e.g. `npm i control-bulma-atoms --registry http://icsi-teamsrvr:8081/`
+    1. e.g. `npm i control-bulma-atoms --registry https://azuredevops.interstates.com:4444/`
 2. You're done!
 
-Careful with this approach, however... If there are naming conflicts (some other shmuck published a public npm package called `control-bulma-atoms`), and you forgot the `--registry` flag, you will grab **their** version of the package instead of _our_ wonderful package! The recommended approach is to update your npm configuration via `npm set registry http://icsi-teamsrvr:8081/` and never have to worry about it again.
+Careful with this approach, however... If there are naming conflicts (some other shmuck published a public npm package called `control-bulma-atoms`), and you forgot the `--registry` flag, you will grab **their** version of the package instead of _our_ wonderful package! The recommended approach is to update your npm configuration via `npm set registry https://azuredevops.interstates.com:4444/` and never have to worry about it again.
 
 You should now be ready to use `control-bulma-atoms`!
 
@@ -59,9 +59,9 @@ All of these Bulma components are wrappers around the CSS styles and therefore t
 ```tsx
 import React from 'react';
 import 'bulma/css/bulma.min.css';
-import { Button } from 'control-bulma-atoms';
+import { Button, ButtonProps } from 'control-bulma-atoms';
 
-export default () => (
+export const MyStyledButton = () => (
     <Button
         color="is-primary"
         size="is-large"
