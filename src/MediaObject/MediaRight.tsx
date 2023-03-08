@@ -5,7 +5,11 @@ import { MediaRightProps } from './MediaObject.types';
 const MediaRight: React.FC<MediaRightProps> = (props) => {
     const { classNames, rest } = useInnerBulmaProps(props);
     return (
-        <div data-testid="MediaRight" className={classNames} {...rest}></div>
+        <div
+            data-testid="MediaRight"
+            className={`media-right ${classNames}`}
+            {...rest}>
+        </div>
     );
 };
 
