@@ -1,10 +1,11 @@
 import { Polymorphic } from '..';
 import {
     BulmaComponentPropsWithoutRef,
+    BulmaComponentPropsWithRef,
     BulmaHelpers,
 } from './../types/component';
 
-export type DropdownProps = BulmaComponentPropsWithoutRef<'div'> & {
+export type DropdownProps = BulmaComponentPropsWithRef<'div'> & {
     isActive?: boolean;
     isHoverable?: boolean;
     isRightAligned?: boolean;

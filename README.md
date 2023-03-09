@@ -59,9 +59,9 @@ All of these Bulma components are wrappers around the CSS styles and therefore t
 ```tsx
 import React from 'react';
 import 'bulma/css/bulma.min.css';
-import { Button } from 'control-bulma-atoms';
+import { Button, ButtonProps } from 'control-bulma-atoms';
 
-export default () => (
+export const MyStyledButton = () => (
     <Button
         color="is-primary"
         size="is-large"

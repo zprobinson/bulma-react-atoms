@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { useInnerBulmaProps } from '../utilities/propUtilities';
 import { DropdownProps } from './Dropdown.types';
 
-const Dropdown: React.FC<DropdownProps> = ({
+const Dropdown: React.FC<
+    DropdownProps & { innerRef?: React.Ref<HTMLDivElement> }
+> = ({
     isActive = false,
     isHoverable = false,
     isRightAligned = false,
     isUp = false,
+    innerRef,
     ...props
 }) => {
     const { classNames, rest } = useInnerBulmaProps(
@@ -20,9 +23,14 @@ const Dropdown: React.FC<DropdownProps> = ({
         <div
             data-testid="Dropdown"
             className={`dropdown ${classNames}`}
+            ref={innerRef}
             {...rest}
         ></div>
     );
 };
 
-export default Dropdown;
+export default forwardRef<HTMLDivElement, Parameters<typeof Dropdown>[0]>(
+    (props, ref) => {
+        return <Dropdown {...props} innerRef={ref} />;
+    }
+);
