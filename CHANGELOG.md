@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.6] - 2023-06-26
+
+## Updated
+
+-   **[BREAKING]** The incorrectly named `TabsLIst` component has been renamed to `TabsList`.
+
 ## [0.5.5] - 2023-03-08
 
 ## Added
