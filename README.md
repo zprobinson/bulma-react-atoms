@@ -56,7 +56,7 @@ All of these Bulma components are wrappers around the CSS styles and therefore t
 
 # To Use
 
-```tsx
+```jsx
 import React from 'react';
 import 'bulma/css/bulma.min.css';
 import { Button, ButtonProps } from 'control-bulma-atoms';
