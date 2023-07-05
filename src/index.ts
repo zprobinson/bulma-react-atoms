@@ -32,3 +32,4 @@ export * from './Tile';
 export * from './Form';
 export * from './types';
 export { default as useBulmaProps } from './useBulmaProps';
+export { useInnerBulmaProps } from './utilities/propUtilities';
