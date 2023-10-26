@@ -30,6 +30,24 @@ describe('Panel Component', () => {
         expect(component).toHaveTextContent(expected);
     });
 
+    it('should render color correctly when passed minimal color prop', () => {
+        const expected = 'is-danger';
+        renderComponent({ color: 'danger' });
+
+        const component = screen.getByTestId('Panel');
+
+        expect(component).toHaveClass(expected);
+    });
+
+    it('should render color correctly when passed explicit color prop', () => {
+        const expected = 'is-primary';
+        renderComponent({ color: 'is-primary' });
+
+        const component = screen.getByTestId('Panel');
+
+        expect(component).toHaveClass(expected);
+    });
+
     testBulmaProps('Panel', renderComponent);
 });
 
