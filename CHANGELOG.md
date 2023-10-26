@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+## [1.1.0] - 2023-10-26
+
+## Added
+
+-   `Panel` color prop now accepts either `"danger"` or `"is-danger"` (and other colors) variations when passing in.
+    -   Other components still require `"is-{color}"`
+    -   `"{color}"` should be deprecated in favor of consistency with `"is-{color}"`
+
 ## [1.0.0] - 2023-07-06
 
 ## Added

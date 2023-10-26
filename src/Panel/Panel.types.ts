@@ -2,12 +2,13 @@ import { IconProps } from './../Icon/Icon.types';
 import {
     BulmaComponentPropsWithoutRef,
     BulmaHelpers,
+    Is,
     Polymorphic,
     PrimaryColor,
 } from './../types';
 
 export type PanelProps = BulmaComponentPropsWithoutRef<'nav'> & {
-    color?: PrimaryColor;
+    color?: PrimaryColor | Is<PrimaryColor>;
 };
 
 export type PanelTabsProps = BulmaComponentPropsWithoutRef<'p'>;
